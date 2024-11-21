@@ -1,6 +1,6 @@
 # Cela
 
-<p align="center">*Cela* is a simple and lightweight zola ssg theme.<br>If you like it, Please give a 🌟 on Github :)<br>Cela is based on hugo theme [PaperMod](https://github.com/adityatelange/hugo-PaperMod) and style sheet provided by [Catppuccin](https://github.com/catppuccin/catppuccin).</p>
+*Cela* is a simple and lightweight theme for Zola.<br>If you like it, Please give a 🌟 on Github :)<br>Cela is based on hugo theme [PaperMod](https://github.com/adityatelange/hugo-PaperMod) and style sheet provided by [Catppuccin](https://github.com/catppuccin/catppuccin).
 
 In progress
 
