@@ -1,0 +1,16 @@
+{% import 'macros/social_icon.svg.html' as macro_social -%}
+<div class="social-icons">
+    {% for social_icon in config.extra.cela.social_icons %}
+    {% set rawpath = social_icon.path | trim  %}
+    {% if rawpath is containing("@") %}
+    {% set icon_path = "mailto:" ~ rawpath %}
+    {% elif rawpath is starting_with("/")  %}
+    {% set icon_path = config.base_url ~ rawpath %}
+    {% else %}
+    {% set icon_path = rawpath %}
+    {% endif %}
+    <a href="{{ icon_path }}" target="_blank" rel="noopener noreferrer me" title="{{ social_icon.title }}">
+        {{ macro_social::factory(icon=social_icon.icon) }}
+    </a>
+    {% endfor %}
+</div>

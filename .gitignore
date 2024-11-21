@@ -1,0 +1,43 @@
+# Compiled output
+/public/
+/data/
+/docs_public/
+/content/_bak
+
+# Zola build artifacts
+/target/
+
+# Dependency directories
+/node_modules/  # If using Node.js in theme development
+
+# Configuration files that may contain sensitive information
+config.toml
+.env
+
+# Operating system generated files
+.DS_Store        # macOS folder metadata
+/static/.DS_Store # macOS folder metadata
+Thumbs.db        # Windows image file cache
+ehthumbs.db      # Windows Explorer thumbnail database (if applicable)
+Desktop.ini      # Windows desktop configuration
+
+# Editor/IDE-specific files
+.idea/           # JetBrains IDE
+.vscode/         # Visual Studio Code
+*.sublime-workspace  # Sublime Text
+
+# Temporary files created by editors or operating systems
+*.swp            # Vim swap files
+*.bak            # Generic backup files
+*~               # Temporary files created by many text editors
+
+# Log files and directories
+*.log
+logs/
+
+# Optional: Ignore all markdown files within a specific directory (e.g., example content)
+# /content/example/*.md
+
+# Optional: Ignore specific environment-based configuration files
+# config.development.toml
+# config.production.toml

@@ -1,0 +1,35 @@
+{%- import "macros/external-link.svg.html" as macro_external %}
+<!DOCTYPE html>
+<html lang="{{ lang }}" dir="{{ config.extra.cela.global.i18n_dir }}">
+
+<head>
+  {% block head %}
+  {% include "partials/head.html" %}
+  {% endblock %}
+</head>
+
+<body
+  class="{% if section or term or taxonomy %}list {% endif %}{% if config.extra.cela.color.theme == 'dark' %} dark{% endif %}"
+  id="top">
+  {% block header %}
+  {% include "partials/home/home_header.html" %}
+  {% endblock %}
+  <main class="main">
+    {% block main %}
+    {% include "partials/home/home_info.html" %}
+    {% include "partials/home/home_posts.html" %}
+    {% endblock %}
+  </main>
+  {% block footer %}
+  {% include "partials/home/home_footer.html" %}
+  {% endblock %}
+
+
+  {% block extra_js %}
+  {% if config.extra.debug %}
+  {% include "macros/debug_console.html" %}
+  {% endif %}
+  {% endblock %}
+</body>
+
+</html>
