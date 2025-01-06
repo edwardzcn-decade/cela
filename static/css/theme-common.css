@@ -1,104 +1,20 @@
-*,
-::after,
-::before {
-  box-sizing: border-box;
+
+.dark {
+  --theme: var(--ctp-macchiato-mantle);
+  --entry: var(--ctp-macchiato-base);
+  --primary: var(--ctp-macchiato-text);
+  --secondary: var(--ctp-macchiato-subtext1);
+  --tertiary: var(--ctp-macchiato-surface0);
+  --content: var(--ctp-macchiato-subtext0);
+  --hljs-bg: var(--ctp-macchiato-crust);
+  --code-bg: var(--ctp-macchiato-crust);
+  --border: var(--ctp-macchiato-mantle);
 }
-html {
-  -webkit-tap-highlight-color: transparent;
-  overflow-y: scroll;
+.list {
+  background: var(--code-bg);
 }
-a,
-button,
-body,
-h1,
-h2,
-h3,
-h4,
-h5,
-h6 {
-  color: var(--primary);
-}
-body {
-  font-family: -apple-system, BlinkMacSystemFont, segoe ui, Roboto, Oxygen,
-    Ubuntu, Cantarell, open sans, helvetica neue, sans-serif;
-  font-size: 18px;
-  line-height: 1.6;
-  word-break: break-word;
+.dark.list {
   background: var(--theme);
-}
-article,
-aside,
-figcaption,
-figure,
-footer,
-header,
-hgroup,
-main,
-nav,
-section,
-table {
-  display: block;
-}
-h1,
-h2,
-h3,
-h4,
-h5,
-h6 {
-  line-height: 1.2;
-}
-h1,
-h2,
-h3,
-h4,
-h5,
-h6,
-p {
-  margin-top: 0;
-  margin-bottom: 0;
-}
-ul {
-  padding: 0;
-}
-a {
-  text-decoration: none;
-}
-body,
-figure,
-ul {
-  margin: 0;
-}
-table {
-  width: 100%;
-  border-collapse: collapse;
-  border-spacing: 0;
-  overflow-x: auto;
-  word-break: keep-all;
-}
-button,
-input,
-textarea {
-  padding: 0;
-  font: inherit;
-  background: 0 0;
-  border: 0;
-}
-input,
-textarea {
-  outline: 0;
-}
-button,
-input[type="button"],
-input[type="submit"] {
-  cursor: pointer;
-}
-input:-webkit-autofill,
-textarea:-webkit-autofill {
-  box-shadow: 0 0 0 50px var(--theme) inset;
-}
-img {
-  display: block;
-  max-width: 100%;
 }
 .not-found {
   position: absolute;
@@ -336,11 +252,13 @@ pre:hover .copy-code {
 .first-entry {
   position: relative;
   display: flex;
+  align-items: flex-end;
   flex-direction: column;
   justify-content: center;
   min-height: 320px;
   margin: var(--gap) 0 calc(var(--gap) * 2);
 }
+
 .first-entry .entry-header {
   overflow: hidden;
   display: -webkit-box;
@@ -528,13 +446,13 @@ pre:hover .copy-code {
   margin-top: 10px;
 }
 .post-content table {
-  margin-bottom: 32px;
+  margin-bottom: 5px;
 }
 .post-content table th,
 .post-content table td {
-  min-width: 80px;
+  min-width: 30px;
   padding: 12px 8px;
-  line-height: 1.5;
+  line-height: 1;
   border-bottom: 1px solid var(--border);
 }
 .post-content table th {
@@ -575,23 +493,40 @@ pre:hover .copy-code {
 .post-content .highlighttable td .linenodiv pre {
   margin-bottom: 0;
 }
+/* 通用代码框样式 */
+.post-content pre {
+  color: var(--content); /* 文本颜色 */
+  background: var(--hljs-bg); /* 背景颜色 */
+  border-radius: var(--radius); /* 圆角 */
+  padding: 10px; /* 内边距 */
+  overflow-x: auto; /* 横向滚动 */
+  margin: 16px 0; /* 外边距 */
+}
+
 .post-content code {
-  margin: auto 4px;
+  color: var(--content);
+  background: var(--hljs-bg);
+  border-radius: var(--radius);
   padding: 4px 6px;
   font-size: 0.78em;
-  line-height: 1.5;
-  background: var(--code-bg);
-  border-radius: 2px;
+  margin: auto 4px;
+  display: inline-block;
 }
+
+/* 标记语言的代码框样式 */
 .post-content pre code {
   display: block;
-  margin: auto 0;
-  padding: 10px;
-  color: #d5d5d6;
-  background: var(--hljs-bg) !important;
-  border-radius: var(--radius);
+  background: transparent;
+  color: var(--content);
+  padding: 0;
+  word-break: break-word;
   overflow-x: auto;
-  word-break: break-all;
+}
+
+/* 解决某些高亮工具动态添加的背景问题 */
+.post-content pre code[class*="language-"] {
+  background: transparent !important; /* 强制透明背景 */
+  border-radius: inherit; /* 继承父元素的圆角 */
 }
 .post-content blockquote {
   margin: 20px 0;
@@ -865,6 +800,7 @@ img.in-text {
 ::-webkit-scrollbar:not(.highlighttable, .highlight table, .gist .highlight) {
   background: var(--theme);
 }
+
 .post-content .highlighttable td .highlight pre code::-webkit-scrollbar {
   display: none;
 }
@@ -876,18 +812,22 @@ img.in-text {
   background: #a3a3a5;
 }
 .gist table::-webkit-scrollbar-thumb {
-  border: 2px solid #fff;
+  border: 0px solid #fff;
   background: #adadad;
 }
 .gist table::-webkit-scrollbar-thumb:hover {
   background: #707070;
 }
 .post-content table::-webkit-scrollbar-thumb {
-  border-width: 2px;
+  border-width: 0px;
 }
+.post-content pre code::-webkit-scrollbar-thumb {
+  border-width: 0px;
+}
+
 @media screen and (min-width: 768px) {
   ::-webkit-scrollbar {
-    width: 19px;
+    width: 22px;
     height: 11px;
   }
 }

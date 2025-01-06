@@ -7,8 +7,10 @@
 {% if page.keywords %}
 <meta name="keywords" content="{{ page.keywords | join(sep=', ') }}">
 {% else %}
-<meta name="keywords" content="{{ config.extra.cela.keywords | join(sep=', ') }}">
+<meta name="keywords" content="{{ config.extra.cela.default_keywords | default(value=["Rust zola blog", "Theme cela"]) | join(sep=', ') }}">
 {% endif %}
+
+
 
 {% if page.description %}
 <meta name="description" content="{{ page.description }}">
@@ -20,27 +22,25 @@
 <meta name="author" content="{{ page.author }}">
 {% elif config.author %}
 <meta name="author" content="{{ config.author }}">
-{% else %}
 {% endif %}
-{% if current_url %}
+
+
+
+
+{% if page.path %}
+{% set current_url = config.base_url ~ '/' ~ page.path %}
+{% endif %}
 <link rel="canonical" href="{{ current_url }}">
-{% endif %}
 
-<!-- <link rel="stylesheet" href="{{ get_url(path='css/includes/scroll-bar.css') }}"> -->
 <link rel="stylesheet" href="{{ get_url(path='css/theme-vars.css') }}">
-<link rel="stylesheet" href="{{ get_url(path='css/common.css') }}">
-
-{% block head_favicons %}
-{# /* Favicons */}
-<link rel="icon" href="{{ site.Params.assets.favicon | default "favicon.ico" | absURL }}">
-<link rel="icon" type="image/png" sizes="16x16" href="{{ site.Params.assets.favicon16x16 | default "favicon-16x16.png" | absURL }}">
-<link rel="icon" type="image/png" sizes="32x32" href="{{ site.Params.assets.favicon32x32 | default "favicon-32x32.png" | absURL }}">
-<link rel="apple-touch-icon" href="{{ site.Params.assets.apple_touch_icon | default "apple-touch-icon.png" | absURL }}">
-<link rel="mask-icon" href="{{ site.Params.assets.safari_pinned_tab | default "safari-pinned-tab.svg" | absURL }}">
-<meta name="theme-color" content="{{ site.Params.assets.theme_color | default "#2e2e33" }}">
-<meta name="msapplication-TileColor" content="{{ site.Params.assets.msapplication_TileColor | default "#2e2e33" }}">
-#}
-{% endblock %}
+<link rel="stylesheet" href="{{ get_url(path='css/theme-base.css') }}">
+<link rel="stylesheet" href="{{ get_url(path='css/theme-common.css') }}">
+<link rel="icon" href="{{ get_url(path=(config.extra.cela.favicon | default(value='favicon.ico'))) }}">
+<link rel="icon" type="image/png" sizes="16x16" href="{{ get_url(path=(config.extra.cela.favicon16x16 | default(value='favicon-16x16.png'))) }}">
+<link rel="icon" type="image/png" sizes="32x32" href="{{ get_url(path=(config.extra.cela.favicon32x32 | default(value='favicon-32x32.png'))) }}">
+<link rel="apple-touch-icon" href="{{ get_url(path=(config.extra.cela.apple_touch_icon | default(value='apple-touch-icon.png'))) }}">
+<meta name="theme-color" content="{{ config.extra.cela.theme_color | default(value='#2e2e33') }}">
+<meta name="msapplication-TileColor" content="{{ config.extra.cela.msapplication_TileColor | default(value='#2e2e33') }}">
 
 {% if config.generate_feeds %}
 {% for feed_filename in config.feed_filenames %}
@@ -55,19 +55,19 @@
             display: none;
         }
     </style>
-    {% if config.extra.cela.color.theme != "light" and config.extra.cela.color.theme != "dark" %}
+    {% if config.extra.cela.color.default_theme == "dark" %}
     <style>
         @media (prefers-color-scheme: dark) {
             :root {
-                --theme: rgb(29, 30, 32);
-                --entry: rgb(46, 46, 51);
-                --primary: rgb(218, 218, 219);
-                --secondary: rgb(155, 156, 157);
-                --tertiary: rgb(65, 66, 68);
-                --content: rgb(196, 196, 197);
-                --hljs-bg: rgb(46, 46, 51);
-                --code-bg: rgb(55, 56, 62);
-                --border: rgb(51, 51, 51);
+                --theme: rgb(30, 32, 48);           /* macchiato-mantle */
+                --entry: rgb(36, 39, 58);           /* macchiato-base  */
+                --primary: rgb(202, 211, 245);      /* macchiato-text */
+                --secondary: rgb(184,192, 224);     /* macchiato-subtext1 */
+                --tertiary: rgb(54, 58, 79);        /* macchiato-surface0 */
+                --content: rgb(165, 173, 203);      /* macchiato-subtext0 */
+                --hljs-bg: rgb(24, 25, 38);         /* macchiato-crust */
+                --code-bg: rgb(24, 25, 38);         /* macchiato-crust */
+                --border: rgb(30, 32, 48);          /* macchiato-mantle */
             }
 
             .list {
@@ -86,13 +86,3 @@
     </style>
     {% endif %}
 </noscript>
-
-{% block ext_head %}
-    {#- /* Misc */}}
-    {{- if hugo.IsProduction | or (eq site.Params.env "production") }}
-    {{- template "_internal/google_analytics.html" . }}
-    {{- template "partials/templates/opengraph.html" . }}
-    {{- template "partials/templates/twitter_cards.html" . }}
-    {{- template "partials/templates/schema_json.html" . }}
-    {{- end -#}
-{% endblock %}

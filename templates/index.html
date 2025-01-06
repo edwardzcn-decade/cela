@@ -9,7 +9,7 @@
 </head>
 
 <body
-  class="{% if section or term or taxonomy %}list {% endif %}{% if config.extra.cela.color.theme == 'dark' %} dark{% endif %}"
+  class="{% if section or term or taxonomy %}list {% endif %}{% if config.extra.cela.color.default_theme == 'dark' %} dark{% endif %}"
   id="top">
   {% block header %}
   {% include "partials/home/home_header.html" %}

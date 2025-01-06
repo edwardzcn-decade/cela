@@ -11,7 +11,7 @@
 /node_modules/  # If using Node.js in theme development
 
 # Configuration files that may contain sensitive information
-config.toml
+# config.toml
 .env
 
 # Operating system generated files
@@ -41,3 +41,6 @@ logs/
 # Optional: Ignore specific environment-based configuration files
 # config.development.toml
 # config.production.toml
+test_svg.html
+tasks.json
+settings.json

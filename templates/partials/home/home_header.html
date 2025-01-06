@@ -1,46 +1,108 @@
-
-{% if config.extra.cela.color.theme == "light" %}
+{% if config.extra.cela.color.default_theme == "light" %}
 <script>
   if (localStorage.getItem("pref-theme") === "dark") {
-    document.body.classList.add('dark');
+    document.body.classList.add("dark");
   }
 </script>
-{% elif config.extra.cela.color.theme == "dark" %}
+{% elif config.extra.cela.color.default_theme == "dark" %}
 <script>
   if (localStorage.getItem("pref-theme") === "light") {
-    document.body.classList.remove('dark')
+    document.body.classList.remove("dark");
   }
 </script>
 {% else %}
 <script>
   if (localStorage.getItem("pref-theme") === "dark") {
-    document.body.classList.add('dark');
+    document.body.classList.add("dark");
   } else if (localStorage.getItem("pref-theme") === "light") {
-    document.body.classList.remove('dark')
-  } else if (window.matchMedia('(prefers-color-scheme: dark)').matches) {
-    document.body.classList.add('dark');
+    document.body.classList.remove("dark");
+  } else if (window.matchMedia("(prefers-color-scheme: dark)").matches) {
+    document.body.classList.add("dark");
   }
 </script>
 {% endif %}
 <header class="header">
   <nav class="nav">
     <div class="logo">
-      <a href="{{ config.base_url }}" accesskey="h" title="{{ config.extra.cela.title }} (Alt + H)">
-        {%- if config.extra.cela.color.theme != "light" and config.extra.cela.icon_dark %}
-        <img src="{{ get_url(path=config.extra.cela.icon_dark) }}" alt="logo" aria-label="logo" height="30px">
-        {%- elif config.extra.cela.icon %}
-        <img src="{{ get_url(path=config.extra.cela.icon) }}" alt="logo" aria-label="logo" height="30px">
-        {%- endif %}
-        {{ config.extra.cela.title }}
+      <a
+        href="{{ config.base_url }}"
+        accesskey="h"
+        title="{{ config.extra.cela.title }} (Alt + H)"
+      >
+        {% if config.extra.cela.show_cela_logo %}
+        <svg
+          id="cela-logo"
+          xmlns="http://www.w3.org/2000/svg"
+          height="30"
+          viewBox="0 0 50 24"
+          fill="none"
+          stroke="currentColor"
+          stroke-width="2"
+          stroke-linecap="butt"
+          stroke-linejoin="miter"
+          stroke-miterlimit="4"
+          stroke-opacity="1"
+        >
+          <path
+            style="fill: currentColor; stroke-width: 0.0479086"
+            d="M 12.270265,1.9966968 V 2.442102 h 10.985976 v 9.68036 H 12.50726 v 0.474769 h 10.748981 v 9.712398 H 1.3364433 V 1.9971379 H 0.86090326 V 22.751899 H 23.731004 V 1.9966869 Z"
+          />
+          <path
+            style="fill: none; stroke-width: 0.574903"
+            d="M 32.198343,22.621669 40.600759,2.5585859 49.04204,22.613747"
+          />
+          <path
+            style="fill: currentColor; stroke-width: 0.574903"
+            d="m 36.438812,12.346394 h 8.364306"
+          />
+          <rect
+            style="fill: currentColor; stroke-width: 0.134146"
+            width="8.8630762"
+            height="0.4188053"
+            x="23.518629"
+            y="22.305271"
+          />
+          <rect
+            style="fill: currentColor; stroke-width: 0.134146"
+            width="9.8420162"
+            height="0.4188053"
+            x="1.0488266"
+            y="1.9709774"
+          />
+        </svg>
+        {% endif %}
+        {% if config.extra.cela.show_title %}
+        {{ config.extra.cela.title }} 
+        {% endif %}
       </a>
       <div class="logo-switches">
         <button id="theme-toggle" accesskey="t" title="(Alt + T)">
-          <svg id="moon" xmlns="http://www.w3.org/2000/svg" width="24" height="18" viewBox="0 0 24 24" fill="none"
-            stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <svg
+            id="moon"
+            xmlns="http://www.w3.org/2000/svg"
+            width="24"
+            height="18"
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke="currentColor"
+            stroke-width="2"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+          >
             <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
           </svg>
-          <svg id="sun" xmlns="http://www.w3.org/2000/svg" width="24" height="18" viewBox="0 0 24 24" fill="none"
-            stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <svg
+            id="sun"
+            xmlns="http://www.w3.org/2000/svg"
+            width="24"
+            height="18"
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke="currentColor"
+            stroke-width="2"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+          >
             <circle cx="12" cy="12" r="5"></circle>
             <line x1="12" y1="1" x2="12" y2="3"></line>
             <line x1="12" y1="21" x2="12" y2="23"></line>
@@ -60,23 +122,25 @@
     </div>
     {% if config.extra.cela.navigation %}
     <ul id="menu">
-        {% for item in config.extra.cela.navigation %}
+      {% for item in config.extra.cela.navigation %}
         {% set path = item.path | trim | trim_start_matches(pat="//") %}
         {% if path is starting_with("https") %}
-        {% set url = path %}
+          {% set url = path %}
         {% else %}
-        {% set url = config.base_url ~ path %}
+          {% set url = config.base_url ~ path %}
         {% endif %}
         {% set is_active_link = current_url and url | trim_end_matches(pat="/") == current_url | trim_end_matches(pat="/") %}
-        <li>
-            <a href="{{ url }}" title="{{ item.title }}">
-                <span {%- if is_active_link -%} class="active" {%- endif -%}>{{ item.title }}</span>
-                {%- if item.is_external and item.is_external == true -%}
-                {{ macro_external::external(icon='external-link') }}
-                {%- endif -%}
-            </a>
-        </li>
-        {% endfor %}
+      <li>
+        <a href="{{ url }}" title="{{ item.title }}">
+          <span {%- if is_active_link -%} class="active" {%- endif -%}>{{ item.title }}</span>
+          {%- if item.is_external and item.is_external == true -%}
+            {{ macro_external::external(icon='link') }}
+          {%- elif item.is_robot and item.is_robot == true -%}
+            {{ macro_external::external(icon='robot')}}
+          {%- endif -%}
+        </a>
+      </li>
+      {% endfor %}
     </ul>
     {% endif %}
   </nav>
