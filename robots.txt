@@ -1,4 +1,4 @@
 User-agent: *
 Disallow:
 Allow: /
-Sitemap: https://github.com/edwardzcn-decade/cela/sitemap.xml
+Sitemap: https://edwardzcn-decade.github.io/cela/sitemap.xml
