@@ -6,18 +6,15 @@ In progress
 
 <!-- Demo TODO -->
 
-
 ## Features
 
 + [x] Themes in the middle ground between low and high contrast
 + [x] Blog post archive
-+ [ ] Light/Dark mode support
++ [x] Light/Dark mode support
 + [ ] Blog post RSS feeds
 + [ ] Internationalization support (i18n directory and translation)
 
-
 ## Installation
-
 
 ## 👐 Contributing
 
