@@ -1,0 +1,35 @@
+name: Deploy zola-theme-cela to GitHub Pages
+
+on:
+  push:
+    branches:
+      - main
+  pull_request:
+    branches:
+      - main
+
+jobs:
+  build-deploy:
+    runs-on: ubuntu-latest
+
+    steps:
+      # checkout code
+      - name: Checkout code
+        uses: actions/checkout@v3
+
+      # install zola via install-action
+      - name: Install Zola
+        uses: taiki-e/install-action@v2
+        with:
+          tool: zola@0.19.1
+
+      # build zola static site
+      - name: Build site
+        run: zola build
+
+      # deploy to GitHub Pages
+      - name: Deploy to GitHub Pages
+        uses: peaceiris/actions-gh-pages@v3
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          publish_dir: ./public  # Zola default public folder

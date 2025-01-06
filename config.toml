@@ -1,6 +1,6 @@
 # The base URL of the site; the only required configuration variable.
 # [Cela hint] just use your github repository url or personal website domain
-base_url = "https://github.com/edwardzcn-decade/cela"
+base_url = "https://edwardzcn-decade.github.io/cela"
 
 # The site title and description; used in feeds by default.
 title = "Cela : A simple, lightweight theme for Zola🌟"
@@ -79,11 +79,11 @@ build_search_index = true
 
 # When set to "false", Sitemap.xml is not generated
 # [Cela hint] Cela will enable this feature by default
-generate_sitemap = true
+# generate_sitemap = true
 
 # When set to "false", robots.txt is not generated
 # [Cela hint] Cela will enable this feature by default
-generate_robots_txt = true
+# generate_robots_txt = true
 
 # Configuration of the Markdown rendering
 [markdown]
