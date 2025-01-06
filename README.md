@@ -18,7 +18,6 @@ In progress
 
 ## Installation
 
-TODO
 
 ## 👐 Contributing
 
