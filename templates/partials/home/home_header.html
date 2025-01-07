@@ -27,7 +27,7 @@
       <a
         href="{{ config.base_url }}"
         accesskey="h"
-        title="{{ config.extra.cela.title }} (Alt + H)"
+        title="{{ config.extra.cela.header_title }} (Alt + H)"
       >
         {% if config.extra.cela.show_cela_logo %}
         <svg
@@ -71,8 +71,8 @@
           />
         </svg>
         {% endif %}
-        {% if config.extra.cela.show_title %}
-        {{ config.extra.cela.title }} 
+        {% if config.extra.cela.show_header_title %}
+        {{ config.extra.cela.header_title }}
         {% endif %}
       </a>
       <div class="logo-switches">

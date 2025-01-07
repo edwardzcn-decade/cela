@@ -1,0 +1,8 @@
+<h1>All {{ taxonomy.kind | capitalize }}</h1>
+<ul>
+  {% for term in taxonomy.terms %}
+    <li>
+      <a href="{{ term.permalink }}">{{ term.name }} ({{ term.count }})</a>
+    </li>
+  {% endfor %}
+</ul>

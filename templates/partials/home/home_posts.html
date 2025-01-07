@@ -1,29 +1,9 @@
-{% for page in paginator.pages %}
-<article class="post-entry">
-  <header class="entry-header">
-    <h2>{{ page.title }}</h2>
-  </header>
-  {% if page.summary %}
-  <div class="entry-content">
-    <p>{{ page.summary | safe }}</p>
-  </div>
-  {% endif %}
-  <footer class="entry-footer">
-    {% include "partials/post/post_meta.html" %}
-  </footer>
-  <a class="entry-link" aria-label="post link to {{ page.title }}" href="{{ page.permalink }}"></a>
-</article>
-{% endfor %}
+{% set home_post_style = config.extra.cela.home_post_style | default(value="default") %}
 
-{% if paginator %}
-<footer class="page-footer">
-  <nav class="pagination">
-    {% if paginator.previous %}
-    <a class="previous" href="{{ paginator.previous | safe }}">« Previous</a>
-    {% endif %}
-    {% if paginator.next %}
-    <a class="next" href="{{ paginator.next | safe }}">Next »</a>
-    {% endif %}
-  </nav>
-</footer>
+{% if home_post_style == "multi" %}
+  {% include "partials/home/home_posts_multi.html" %}
+{% elif home_post_style == "bare" %}
+  {% include "partials/home/home_posts_bare.html" %}
+{% else %}
+  {% include "partials/home/home_post_default.html" %}
 {% endif %}

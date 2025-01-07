@@ -70,7 +70,10 @@ feed_limit = 50
 #       {name = "authors"}, # Basic definition: no feed or pagination
 #     ]
 #
-taxonomies = []
+taxonomies = [
+  {name = "tags", slug = "tag", feed = true, render = true},
+  {name = "categories", slug = "category", feed = true, render = true},
+]
 
 # When set to "true", a search index is built from the pages and section
 # content for `default_language`.
@@ -101,7 +104,8 @@ render_emoji = true
 toc_open = false
 
 [extra.cela]
-title = "Cela"
+# The template title (shown in home page )
+header_title = "Cela Template"
 default_keywords = ["Rust zola blog", "cela theme"]
 icon = "svg/cela_new_small_rec.svg"
 icon_dark = "svg/cela_new_small_rec.svg"
@@ -119,6 +123,8 @@ navigation = [
 ]
 home_title = "Cela"
 home_content = "Welcome to a demo of the <b>Cela</b> theme!<br><b>Cela</b> is a simple and lightweight theme.<br>If you like it, Please give a 🌟 on Github :)<br>Cela is based on [PaperMod](https://github.com/adityatelange/hugo-PaperMod) and style sheet provided by [Catppuccin](https://github.com/catppuccin/catppuccin)."
+home_post_style = "multi"
+
 social_icons = [
     { path = "https://github.com/edwardzcn-decade", title = "GitHub", icon = "github" },
     { path = "https://scholar.google.com/", title = "Google Scholar", icon = "googlescholar"},
@@ -138,7 +144,7 @@ show_post_meta = true
 show_toc_default = true
 show_post_edit_button = true
 show_cela_logo = true
-show_title = false
+show_header_title = true
 edit_post_url = ""
 
 [extra.cela.color]
