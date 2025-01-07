@@ -1,0 +1,6 @@
+name = "cela"
+description = "A modern, clean Zola theme for personal blogs."
+author = "Edward Zhang"
+license = "MIT"
+min_version = "0.19.0"
+homepage = "https://github.com/edwardzcn-decade/cela"
