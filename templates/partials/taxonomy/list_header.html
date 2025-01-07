@@ -1,0 +1,22 @@
+<article class="taxonomy-list-entry">
+	
+<header class="taxonomy-header">
+	<h1>{{ title }}</h1>
+</header>
+
+{% if config.extra.cela.show_taxonomies_description %}
+<div class="taxonomy-desc">
+{% set form_taxonomy = (taxonomy.name | replace(from="_",to=" ")) %}
+{% set default_desc = "Here is a list of " ~ form_taxonomy ~ " in this site." %}
+{% set description = default_desc %}
+
+{% for kv in config.extra.cela.taxonomies_desc %}
+{% if kv.name == taxonomy.name %}
+	{% set description = kv.desc %}
+	<p>{{ description }}</p>
+{% endif %}
+
+{% endfor %}
+</div>
+{% endif %}
+</article>

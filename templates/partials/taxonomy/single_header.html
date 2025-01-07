@@ -1,0 +1,28 @@
+<!-- taxonomy header (mostly used in single template) just below the nav bar -->
+<header class="page-header">
+  <div class="breadcrumbs">
+      <a href="{{ config.base_url }}">Home</a>&nbsp;»&nbsp;
+      <a href="{{ config.base_url }}/{{ taxonomy.name }}">
+        {{- taxonomy_title -}}
+        {% if config.extra.cela.show_taxonomies_tail %}
+        {% for tail in config.extra.cela.taxonomies_tail %}
+          {% if tail.name == taxonomy.name %}
+            {{- tail.emoji -}}
+          {% endif %}
+        {% endfor %}
+        {% endif %}
+      </a>&nbsp;»&nbsp;
+      <a href="{{ current_url }}">{{ term.name }}</a>
+  </div>
+  <h1>{{ term.name | replace(from="_",to=" ") | title }}
+    {% for feed_filename in config.feed_filenames %}
+    <a href="{{ term.permalink ~ feed_filename }}" title="RSS" aria-label="RSS">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" height="23">
+        <path d="M4 11a9 9 0 0 1 9 9"></path>
+        <path d="M4 4a16 16 0 0 1 16 16"></path>
+        <circle cx="5" cy="19" r="1"></circle>
+      </svg>
+    </a>
+    {% endfor %}
+</h1>
+</header>

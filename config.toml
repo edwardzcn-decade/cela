@@ -71,8 +71,8 @@ feed_limit = 50
 #     ]
 #
 taxonomies = [
-  {name = "tags", slug = "tag", feed = true, render = true},
-  {name = "categories", slug = "category", feed = true, render = true},
+  {name = "tags", feed = true},
+  {name = "categories", feed = true},
 ]
 
 # When set to "true", a search index is built from the pages and section
