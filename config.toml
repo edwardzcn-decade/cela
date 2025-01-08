@@ -73,7 +73,6 @@ feed_limit = 50
 taxonomies = [
   {name = "tags", feed = true},
   {name = "categories", feed = true},
-  {name = "music"}
 ]
 
 # When set to "true", a search index is built from the pages and section
@@ -99,10 +98,33 @@ highlight_code = true
 # Unicode emoji equivalent in the rendered Markdown files. (e.g.: :smile: => 😄)
 render_emoji = true
 
+# Whether smart punctuation is enabled (changing quotes, dashes, dots in their typographic form)
+# For example, `...` into `…`, `"quote"` into `“curly”` etc
+smart_punctuation = false
+
+# Whether footnotes are rendered in the GitHub-style (at the bottom, with back references) or plain (in the place, where they are defined)
+# Default to open
+# Reference [Github Docs](https://docs.github.com/en/get-started/writing-on-github/getting-started-with-writing-and-formatting-on-github/basic-writing-and-formatting-syntax#footnotes)
+bottom_footnotes = true
+
+[slugify]
+# default is on
+paths = "on"
+# default is on (slugify the categories and tags ..)
+taxonomies = "on"
+# Whether to remove date prefixes for page path slugs.
+# For example, content/posts/2016-10-08_a-post-with-dates.md => posts/a-post-with-dates
+# When true, content/posts/2016-10-08_a-post-with-dates.md => posts/2016-10-08-a-post-with-dates
+paths_keep_dates = false
+
 [extra]
 # Put all your custom variables here
 # Whether open the TOC on each page
 toc_open = false
+
+# Whether to use mathjax on each page
+# default false
+enable_mathjax = false
 
 [extra.cela]
 # The template title (shown in home page )

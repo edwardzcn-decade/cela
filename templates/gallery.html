@@ -1,5 +1,7 @@
 {% extends 'index.html' %}
 {% block main %}
+
+<!-- Gallery header -->
 <header class="page-header">
     <div class="breadcrumbs">
         <a href="{{ config.base_url }}">Home</a>
@@ -16,30 +18,6 @@
       {% endfor %}
   </h1>
 </header>
-{% for page in paginator.pages %}
-<article class="post-entry">
-  <header class="entry-header">
-      <h2>{{ page.title }}</h2>
-  </header>
-  {% if page.summary %}
-  <div class="entry-content">
-      <p>{{ page.summary | safe }}</p>
-  </div>
-  {% endif %}
-  <footer class="entry-footer">
-      {% include "partials/post/post_meta.html" %}
-  </footer>
-  <a class="entry-link" aria-label="post link to {{ page.title }}" href="{{ page.permalink }}"></a>
-</article>
-{% endfor %}
 
-<!-- pagniator previous and next -->
-<nav class="pagination">
-  {% if paginator.previous %}
-  <a class="previous" href="{{ paginator.previous }}">« Previous</a>
-  {% endif %}
-  {% if paginator.next %}
-  <a class="next" href="{{ paginator.next }}">Next »</a>
-  {% endif %}
-</nav>
+<!-- Gallery items -->
 {% endblock %}
