@@ -73,6 +73,7 @@ feed_limit = 50
 taxonomies = [
   {name = "tags", feed = true},
   {name = "categories", feed = true},
+  {name = "music"}
 ]
 
 # When set to "true", a search index is built from the pages and section
@@ -121,31 +122,39 @@ navigation = [
     { path = "/robot", title = "Robot", is_robot = true},
     { path = "https://getzola.org/", title = "Zola", is_external = true }
 ]
-home_title = "Cela"
+home_title = "Cela Template"
 home_content = "Welcome to a demo of the <b>Cela</b> theme!<br><b>Cela</b> is a simple and lightweight theme.<br>If you like it, Please give a 🌟 on Github :)<br>Cela is based on [PaperMod](https://github.com/adityatelange/hugo-PaperMod) and style sheet provided by [Catppuccin](https://github.com/catppuccin/catppuccin)."
-home_post_style = "multi"
+home_post_style = "default"
 
 social_icons = [
-    { path = "https://github.com/edwardzcn-decade", title = "GitHub", icon = "github" },
+    { path = "https://github.com/", title = "GitHub", icon = "github" },
     { path = "https://scholar.google.com/", title = "Google Scholar", icon = "googlescholar"},
     { path = "https://sg.linkedin.com/", title = "Linkedin", icon = "linkedin"},
     { path = "xxx@gmail.com", title = "Email", icon = "email"},
     { path = "https://www.wikipedia.org", title = "Wiki", icon = "wiki" },
     { path = "/atom.xml", title = "RSS", icon = "rss" },
 ]
+taxonomies_desc = []
+taxonomies_tail = [
+  {name = "tags", emoji = "🏷️"},
+  {name = "categories", emoji = "📂"},
+]
 
-show_reading_time = true
-show_word_count = true
-show_theme_toggle = true
-show_scroll_to_top = true
-show_code_copy_buttons = true
-show_post_nav_links = true
-show_post_meta = true
-show_toc_default = true
-show_post_edit_button = true
-show_cela_logo = true
-show_header_title = true
+
 edit_post_url = ""
+show_cela_logo = true
+show_code_copy_buttons = true
+show_post_edit_button = true
+show_post_meta = true
+show_post_nav_links = true
+show_reading_time = true
+show_scroll_to_top = true
+show_taxonomies_description = true
+show_taxonomies_tail = true
+show_theme_toggle = true
+show_header_title = false
+show_toc_default = true
+show_word_count = true
 
 [extra.cela.color]
 default_theme = "light"
