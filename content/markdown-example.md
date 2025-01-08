@@ -3,7 +3,6 @@ title = "Markdown Examples"
 date = 2023-11-21
 paginate_by = 5
 [taxonomies]
-music = ["Unknow"]
 tags = ["Rust", "Zola", "Markdown", "Test"]
 categories = ["Programming", "Test"]
 +++

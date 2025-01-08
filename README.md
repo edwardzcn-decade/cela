@@ -11,6 +11,7 @@ In progress
 + [x] Themes in the middle ground between low and high contrast
 + [x] Blog post archive
 + [x] Light/Dark mode support
++ [x] Mathjax support
 + [ ] Blog post RSS feeds
 + [ ] Internationalization support (i18n directory and translation)
 
