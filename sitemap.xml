@@ -17,13 +17,37 @@
         <loc>https://edwardzcn-decade.github.io/cela/categories/</loc>
     </url>
     <url>
+        <loc>https://edwardzcn-decade.github.io/cela/categories/programming/</loc>
+    </url>
+    <url>
+        <loc>https://edwardzcn-decade.github.io/cela/categories/test/</loc>
+    </url>
+    <url>
         <loc>https://edwardzcn-decade.github.io/cela/markdown-example/</loc>
         <lastmod>2023-11-21</lastmod>
+    </url>
+    <url>
+        <loc>https://edwardzcn-decade.github.io/cela/music/</loc>
+    </url>
+    <url>
+        <loc>https://edwardzcn-decade.github.io/cela/music/unknow/</loc>
     </url>
     <url>
         <loc>https://edwardzcn-decade.github.io/cela/page/1/</loc>
     </url>
     <url>
         <loc>https://edwardzcn-decade.github.io/cela/tags/</loc>
+    </url>
+    <url>
+        <loc>https://edwardzcn-decade.github.io/cela/tags/markdown/</loc>
+    </url>
+    <url>
+        <loc>https://edwardzcn-decade.github.io/cela/tags/rust/</loc>
+    </url>
+    <url>
+        <loc>https://edwardzcn-decade.github.io/cela/tags/test/</loc>
+    </url>
+    <url>
+        <loc>https://edwardzcn-decade.github.io/cela/tags/zola/</loc>
     </url>
 </urlset>
