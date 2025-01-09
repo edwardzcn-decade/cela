@@ -1,0 +1,10 @@
+{% import "macros/social_icon.svg.html" as macro_social -%}
+{% import "macros/external-link.svg.html" as macro_external -%}
+{% set home_list_style = config.extra.cela.home_list_style | default(value="default") %}
+{% if home_list_style == "multi" %}
+  {% include "partials/home/home_posts_multi.html" %}
+{% elif home_list_style == "bare" %}
+  {% include "partials/home/home_posts_bare.html" %}
+{% else %}
+  {% include "partials/home/home_list_default.html" %}
+{% endif %}

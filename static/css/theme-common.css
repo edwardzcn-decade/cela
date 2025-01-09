@@ -280,6 +280,66 @@ pre:hover .copy-code {
 .home-info .entry-content {
   -webkit-line-clamp: unset;
 }
+
+.home-list.row {
+  display: flex;
+  flex-direction: column;
+  border-top: 3px solid var(--content);
+  /* border-bottom: 1px solid var(--content); */
+  margin: 0px 0px 30px;
+}
+
+.home-list-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin: 10px 0;
+  width: 100%;
+}
+
+.home-list.row a {
+  display: flex;
+  align-items: center;
+}
+
+/* 第一个 a 标签样式 */
+a.toggle-content {
+  flex: 1; /* 左侧标签占据剩余空间 */
+  font-weight: bold;
+  font-size: 24px;
+}
+a.toggle-content span {
+  margin-right: 6px;
+}
+
+a.section-count {
+  flex-shrink: 0;
+  margin-left: 10px;
+  font-size: 14px;
+}
+
+
+a.section-count span {
+  margin-left: 4px;
+}
+
+a.section-count:hover {
+  text-decoration: underline;
+}
+
+.home-list-content {
+  max-height: 0;
+  overflow: hidden;
+  transition: max-height 0.3s ease-in-out, padding 0.3s ease-in-out;
+}
+
+.home-list-content.show {
+  max-height: 1000px; /* TODO 一个足够大的值，确保容纳所有内容 */
+  padding-top: 10px;
+  padding-bottom: 10px;
+}
+
+
 .taxonomy-list-entry{
   display: flex;
   align-items: center;

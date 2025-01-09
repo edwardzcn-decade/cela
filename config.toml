@@ -146,7 +146,12 @@ navigation = [
 ]
 home_title = "Cela Template"
 home_content = "Welcome to a demo of the <b>Cela</b> theme!<br><b>Cela</b> is a simple and lightweight theme.<br>If you like it, Please give a 🌟 on Github :)<br>Cela is based on [PaperMod](https://github.com/adityatelange/hugo-PaperMod) and style sheet provided by [Catppuccin](https://github.com/catppuccin/catppuccin)."
-home_post_style = "default"
+# The default home directory you will write your blog post content
+# This will be used to generate the home page (with subsections) posts list
+# If you set this to "", the all the content under "content" will be shown (not recommand)
+# If you set this to "blog", the all the content under "content/blog" will be shown (recommand)
+# home_content_dir = "posts"
+home_list_style = "default"
 
 social_icons = [
     { path = "https://github.com/", title = "GitHub", icon = "github" },

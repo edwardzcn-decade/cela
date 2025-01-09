@@ -35,7 +35,7 @@ taxonomies:
   categories: ["Programming"]
 ```
 
-Zola taxonomies are more powerful for structuring or indexing your content. For now, Cela native provides tags, categories and gallery taxonomies. You can add more taxonomies in `config.toml` file. See [zola taxonomies](https://www.getzola.org/documentation/content/taxonomies/) for more information.
+Zola taxonomies are more powerful for structuring or indexing your content. For now, Cela native provides tags, categories taxonomies. You can add more taxonomies in `config.toml` file. See [zola taxonomies](https://www.getzola.org/documentation/content/taxonomies/) for more information.
 
 
 

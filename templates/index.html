@@ -17,7 +17,7 @@
   <main class="main">
     {% block main %}
     {% include "partials/home/home_info.html" %}
-    {% include "partials/home/home_posts.html" %}
+    {% include "partials/home/home_list.html" %}
     {% endblock %}
   </main>
   {% block footer %}
@@ -26,6 +26,7 @@
 
 
   {% block extra_js %}
+  <script src="{{ get_url(path='js/toggle-sections.js') | safe }}"></script>
   {% if config.extra.debug %}
   {% include "macros/debug_console.html" %}
   {% endif %}

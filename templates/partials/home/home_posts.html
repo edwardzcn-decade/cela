@@ -1,9 +1,0 @@
-{% set home_post_style = config.extra.cela.home_post_style | default(value="default") %}
-
-{% if home_post_style == "multi" %}
-  {% include "partials/home/home_posts_multi.html" %}
-{% elif home_post_style == "bare" %}
-  {% include "partials/home/home_posts_bare.html" %}
-{% else %}
-  {% include "partials/home/home_posts_default.html" %}
-{% endif %}
