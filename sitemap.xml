@@ -7,11 +7,25 @@
         <loc>https://edwardzcn-decade.github.io/cela/blog/</loc>
     </url>
     <url>
-        <loc>https://edwardzcn-decade.github.io/cela/blog/markdown-example-2/</loc>
-        <lastmod>2023-11-22</lastmod>
+        <loc>https://edwardzcn-decade.github.io/cela/blog/example/</loc>
+        <lastmod>2025-01-01</lastmod>
+    </url>
+    <url>
+        <loc>https://edwardzcn-decade.github.io/cela/blog/markdown-example/</loc>
+        <lastmod>2023-11-21</lastmod>
     </url>
     <url>
         <loc>https://edwardzcn-decade.github.io/cela/blog/page/1/</loc>
+    </url>
+    <url>
+        <loc>https://edwardzcn-decade.github.io/cela/blog/test/</loc>
+    </url>
+    <url>
+        <loc>https://edwardzcn-decade.github.io/cela/blog/test/markdown-example-2/</loc>
+        <lastmod>2023-11-22</lastmod>
+    </url>
+    <url>
+        <loc>https://edwardzcn-decade.github.io/cela/blog/test/page/1/</loc>
     </url>
     <url>
         <loc>https://edwardzcn-decade.github.io/cela/categories/</loc>
@@ -21,17 +35,6 @@
     </url>
     <url>
         <loc>https://edwardzcn-decade.github.io/cela/categories/test/</loc>
-    </url>
-    <url>
-        <loc>https://edwardzcn-decade.github.io/cela/example/</loc>
-        <lastmod>2025-01-01</lastmod>
-    </url>
-    <url>
-        <loc>https://edwardzcn-decade.github.io/cela/markdown-example/</loc>
-        <lastmod>2023-11-21</lastmod>
-    </url>
-    <url>
-        <loc>https://edwardzcn-decade.github.io/cela/page/1/</loc>
     </url>
     <url>
         <loc>https://edwardzcn-decade.github.io/cela/tags/</loc>

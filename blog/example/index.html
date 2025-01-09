@@ -7,7 +7,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 <meta name="robots" content="index, follow">
-<title>Cela : A simple, lightweight theme for Zola🌟</title>
+<title>My First Post</title>
 
 
 <meta name="keywords" content="Rust zola blog, cela theme">
@@ -27,7 +27,9 @@
 
 
 
-<link rel="canonical" href="https:&#x2F;&#x2F;edwardzcn-decade.github.io&#x2F;cela&#x2F;tags&#x2F;zola&#x2F;">
+
+
+<link rel="canonical" href="https:&#x2F;&#x2F;edwardzcn-decade.github.io&#x2F;cela&#x2F;&#x2F;blog&#x2F;example&#x2F;">
 
 <link rel="stylesheet" href="https://edwardzcn-decade.github.io/cela/css/theme-vars.css">
 <link rel="stylesheet" href="https://edwardzcn-decade.github.io/cela/css/theme-base.css">
@@ -60,7 +62,7 @@
 </head>
 
 <body
-  class="list "
+  class=""
   id="top">
   
   
@@ -248,40 +250,17 @@
   
   <main class="main">
     
-
-  <!-- taxonomy header (mostly used in single template) just below the nav bar -->
-<header class="page-header">
-  <div class="breadcrumbs">
-      <a href="https:&#x2F;&#x2F;edwardzcn-decade.github.io&#x2F;cela">Home</a>&nbsp;»&nbsp;
-      <a href="https:&#x2F;&#x2F;edwardzcn-decade.github.io&#x2F;cela/tags">Tags
-        
-          🏷️
-        
-          
-        
-        
-      </a>&nbsp;»&nbsp;
-      <a href="https:&#x2F;&#x2F;edwardzcn-decade.github.io&#x2F;cela&#x2F;tags&#x2F;zola&#x2F;">Zola</a>
-  </div>
-  <h1>Zola
-    
-    <a href="https://edwardzcn-decade.github.io/cela/tags/zola/atom.xml" title="RSS" aria-label="RSS">
-      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" height="23">
-        <path d="M4 11a9 9 0 0 1 9 9"></path>
-        <path d="M4 4a16 16 0 0 1 16 16"></path>
-        <circle cx="5" cy="19" r="1"></circle>
-      </svg>
-    </a>
-    
-</h1>
-</header>
-
-<article class="post-entry">
-  <header class="entry-header">
-      <h2>My First Post</h2>
-  </header>
-  
-  <footer class="entry-footer">
+<article class="post-single">
+  <header class="post-header">
+      <div class="breadcrumbs">
+          <a href="https:&#x2F;&#x2F;edwardzcn-decade.github.io&#x2F;cela">Home</a>&nbsp;»&nbsp;
+          <a href="https://edwardzcn-decade.github.io/cela/blog/">Posts</a>&nbsp;»&nbsp;
+          <a href="https:&#x2F;&#x2F;edwardzcn-decade.github.io&#x2F;cela&#x2F;blog&#x2F;example&#x2F;">My First Post</a>
+      </div>
+      <h1 class="post-title">My First Post</h1>
+      
+      
+      <div class="post-meta">
       
 
 
@@ -298,41 +277,65 @@
 
 
 <span title="2025-01-01 00:00:00 +0000">2025-01-01</span>&nbsp;·&nbsp;1 min&nbsp;·&nbsp;29 words&nbsp;·&nbsp;edwardzcn-decade
-  </footer>
-  <a class="entry-link" aria-label="post link to My First Post" href="https:&#x2F;&#x2F;edwardzcn-decade.github.io&#x2F;cela&#x2F;blog&#x2F;example&#x2F;"></a>
-</article>
-
-<article class="post-entry">
-  <header class="entry-header">
-      <h2>Markdown Examples</h2>
+      
+          &nbsp;|&nbsp;<a href="/content/blog&#x2F;example.md" rel="noopener noreferrer" target="_blank">Suggest Changes</a>
+      
+      </div>
+      
   </header>
+
   
-  <div class="entry-content">
-      <p><p>This article offers a sample of basic Markdown syntax that can be used in <del>Hugo</del> Zola content files, also it shows whether basic HTML elements are decorated with CSS in a <del>Hugo</del> Zola theme.</p>
-</p>
+  
+  
+
+  
+  <div class="post-content">
+      <p>This is my first post in Zola. It is tagged with Rust and Zola.</p>
+<p>Test the yaml front matter in this post.</p>
+<pre data-lang="yaml" style="background-color:#2b303b;color:#c0c5ce;" class="language-yaml "><code class="language-yaml" data-lang="yaml"><span style="color:#bf616a;">taxonomies</span><span>:
+</span><span>  </span><span style="color:#bf616a;">tags</span><span>: [&quot;</span><span style="color:#a3be8c;">Rust</span><span>&quot;, &quot;</span><span style="color:#a3be8c;">Zola</span><span>&quot;]
+</span><span>  </span><span style="color:#bf616a;">categories</span><span>: [&quot;</span><span style="color:#a3be8c;">Programming</span><span>&quot;]
+</span></code></pre>
+
   </div>
   
-  <footer class="entry-footer">
+
+  <footer class="post-footer">
+      
+      <ul class="post-tags">
+          
+          
+          <li><a href="https:&#x2F;&#x2F;edwardzcn-decade.github.io&#x2F;cela&#x2F;tags&#x2F;rust&#x2F;">Rust</a></li>
+          
+          
+          <li><a href="https:&#x2F;&#x2F;edwardzcn-decade.github.io&#x2F;cela&#x2F;tags&#x2F;zola&#x2F;">Zola</a></li>
+          
+          
+          <li><a href="https:&#x2F;&#x2F;edwardzcn-decade.github.io&#x2F;cela&#x2F;tags&#x2F;yaml&#x2F;">YAML</a></li>
+          
+      </ul>
       
 
+    
+    
 
 
+<nav class="paginav">
+    
+    <a class="prev" href="https:&#x2F;&#x2F;edwardzcn-decade.github.io&#x2F;cela&#x2F;blog&#x2F;markdown-example&#x2F;">
+        <span class="title">« Prev</span>
+        <br>
+        <span>Markdown Examples</span>
+    </a>
+    
+    
+</nav>
 
-
-
-
-
-
-
-
-
-
-
-<span title="2023-11-21 00:00:00 +0000">2023-11-21</span>&nbsp;·&nbsp;4 min&nbsp;·&nbsp;623 words&nbsp;·&nbsp;edwardzcn-decade
+    
+    
   </footer>
-  <a class="entry-link" aria-label="post link to Markdown Examples" href="https:&#x2F;&#x2F;edwardzcn-decade.github.io&#x2F;cela&#x2F;blog&#x2F;markdown-example&#x2F;"></a>
-</article>
 
+</article>
 
   </main>
   

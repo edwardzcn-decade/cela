@@ -20,10 +20,10 @@
           </name>
         </author>
         
-        <link rel="alternate" type="text/html" href="https://edwardzcn-decade.github.io/cela/example/"/>
-        <id>https://edwardzcn-decade.github.io/cela/example/</id>
+        <link rel="alternate" type="text/html" href="https://edwardzcn-decade.github.io/cela/blog/example/"/>
+        <id>https://edwardzcn-decade.github.io/cela/blog/example/</id>
         
-        <content type="html" xml:base="https://edwardzcn-decade.github.io/cela/example/">&lt;p&gt;This is my first post in Zola. It is tagged with Rust and Zola.&lt;&#x2F;p&gt;
+        <content type="html" xml:base="https://edwardzcn-decade.github.io/cela/blog/example/">&lt;p&gt;This is my first post in Zola. It is tagged with Rust and Zola.&lt;&#x2F;p&gt;
 &lt;p&gt;Test the yaml front matter in this post.&lt;&#x2F;p&gt;
 &lt;pre data-lang=&quot;yaml&quot; style=&quot;background-color:#2b303b;color:#c0c5ce;&quot; class=&quot;language-yaml &quot;&gt;&lt;code class=&quot;language-yaml&quot; data-lang=&quot;yaml&quot;&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;taxonomies&lt;&#x2F;span&gt;&lt;span&gt;:
 &lt;&#x2F;span&gt;&lt;span&gt;  &lt;&#x2F;span&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;tags&lt;&#x2F;span&gt;&lt;span&gt;: [&amp;quot;&lt;&#x2F;span&gt;&lt;span style=&quot;color:#a3be8c;&quot;&gt;Rust&lt;&#x2F;span&gt;&lt;span&gt;&amp;quot;, &amp;quot;&lt;&#x2F;span&gt;&lt;span style=&quot;color:#a3be8c;&quot;&gt;Zola&lt;&#x2F;span&gt;&lt;span&gt;&amp;quot;]
