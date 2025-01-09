@@ -1,7 +1,9 @@
 +++
-title = "Markdown Examples 2"
-date = 2023-11-22
-paginate_by = 5
+title = "Markdown Examples"
+date = 2023-11-21
+[taxonomies]
+tags = ["Rust", "Zola", "Markdown", "Test"]
+categories = ["Programming", "Test"]
 +++
 
 
@@ -93,6 +95,22 @@ This is pre text
 ### Code block with backticks and language specified
 
 ```html,linenos
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8" />
+        <title>Example HTML5 Document</title>
+        <meta name="description" content="Sample article showcasing basic Markdown syntax and formatting for HTML elements.">
+    </head>
+    <body>
+        <p>Test</p>
+    </body>
+</html>
+```
+
+### Code block with only language specified
+
+```html
 <!DOCTYPE html>
 <html lang="en">
     <head>

@@ -138,7 +138,7 @@ favicon32x32 = "favicon-32x32.png"
 
 date_format = "%Y-%m-%d"
 navigation = [
-    { path = "/archive", title = "Archive" },
+    { path = "/blog", title = "Archive" },
     { path = "/tags", title = "Tags" },
     { path = "/search", title = "Search" },
     { path = "/robot", title = "Robot", is_robot = true},
@@ -150,8 +150,9 @@ home_content = "Welcome to a demo of the <b>Cela</b> theme!<br><b>Cela</b> is a 
 # This will be used to generate the home page (with subsections) posts list
 # If you set this to "", the all the content under "content" will be shown (not recommand)
 # If you set this to "blog", the all the content under "content/blog" will be shown (recommand)
-# home_content_dir = "posts"
-home_list_style = "default"
+home_content_dir = "blog"
+# TODO fix "" empty string
+home_list_style = ""
 
 social_icons = [
     { path = "https://github.com/", title = "GitHub", icon = "github" },
