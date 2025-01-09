@@ -23,6 +23,10 @@
         <loc>https://edwardzcn-decade.github.io/cela/categories/test/</loc>
     </url>
     <url>
+        <loc>https://edwardzcn-decade.github.io/cela/example/</loc>
+        <lastmod>2025-01-01</lastmod>
+    </url>
+    <url>
         <loc>https://edwardzcn-decade.github.io/cela/markdown-example/</loc>
         <lastmod>2023-11-21</lastmod>
     </url>
@@ -40,6 +44,9 @@
     </url>
     <url>
         <loc>https://edwardzcn-decade.github.io/cela/tags/test/</loc>
+    </url>
+    <url>
+        <loc>https://edwardzcn-decade.github.io/cela/tags/yaml/</loc>
     </url>
     <url>
         <loc>https://edwardzcn-decade.github.io/cela/tags/zola/</loc>

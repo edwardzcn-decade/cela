@@ -1,12 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <feed xmlns="http://www.w3.org/2005/Atom" xml:lang="en">
-    <title>Cela : A simple, lightweight theme for Zola🌟 - Zola</title>
+    <title>Cela : A simple, lightweight theme for Zola🌟 - YAML</title>
     <subtitle>A light weight theme for zola</subtitle>
-    <link rel="self" type="application/atom+xml" href="https://edwardzcn-decade.github.io/cela/tags/zola/atom.xml"/>
+    <link rel="self" type="application/atom+xml" href="https://edwardzcn-decade.github.io/cela/tags/yaml/atom.xml"/>
     <link rel="alternate" type="text/html" href="https://edwardzcn-decade.github.io/cela"/>
     <generator uri="https://www.getzola.org/">Zola</generator>
     <updated>2025-01-01T00:00:00+00:00</updated>
-    <id>https://edwardzcn-decade.github.io/cela/tags/zola/atom.xml</id>
+    <id>https://edwardzcn-decade.github.io/cela/tags/yaml/atom.xml</id>
     <entry xml:lang="en">
         <title>My First Post</title>
         <published>2025-01-01T00:00:00+00:00</published>
@@ -30,26 +30,6 @@
 &lt;&#x2F;span&gt;&lt;span&gt;  &lt;&#x2F;span&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;categories&lt;&#x2F;span&gt;&lt;span&gt;: [&amp;quot;&lt;&#x2F;span&gt;&lt;span style=&quot;color:#a3be8c;&quot;&gt;Programming&lt;&#x2F;span&gt;&lt;span&gt;&amp;quot;]
 &lt;&#x2F;span&gt;&lt;&#x2F;code&gt;&lt;&#x2F;pre&gt;
 </content>
-        
-    </entry>
-    <entry xml:lang="en">
-        <title>Markdown Examples</title>
-        <published>2023-11-21T00:00:00+00:00</published>
-        <updated>2023-11-21T00:00:00+00:00</updated>
-        
-        <author>
-          <name>
-            
-              edwardzcn-decade
-            
-          </name>
-        </author>
-        
-        <link rel="alternate" type="text/html" href="https://edwardzcn-decade.github.io/cela/markdown-example/"/>
-        <id>https://edwardzcn-decade.github.io/cela/markdown-example/</id>
-        
-        <summary type="html">&lt;p&gt;This article offers a sample of basic Markdown syntax that can be used in &lt;del&gt;Hugo&lt;&#x2F;del&gt; Zola content files, also it shows whether basic HTML elements are decorated with CSS in a &lt;del&gt;Hugo&lt;&#x2F;del&gt; Zola theme.&lt;&#x2F;p&gt;
-</summary>
         
     </entry>
 </feed>
