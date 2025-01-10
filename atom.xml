@@ -33,6 +33,27 @@
         
     </entry>
     <entry xml:lang="en">
+        <title>Github Footnotes Test</title>
+        <published>2025-01-01T00:00:00+00:00</published>
+        <updated>2025-01-01T00:00:00+00:00</updated>
+        
+        <author>
+          <name>
+            
+              edwardzcn-decade
+            
+          </name>
+        </author>
+        
+        <link rel="alternate" type="text/html" href="https://edwardzcn-decade.github.io/cela/blog/test/github-footnotes-test/"/>
+        <id>https://edwardzcn-decade.github.io/cela/blog/test/github-footnotes-test/</id>
+        
+        <summary type="html">&lt;h1 id=&quot;introduction-to-markdown-on-github&quot;&gt;Introduction to Markdown on GitHub&lt;&#x2F;h1&gt;
+&lt;p&gt;Markdown is a lightweight markup language that you can use to add formatting elements to plaintext text documents. It’s a great tool for writing documentation, READMEs, or blog posts.&lt;&#x2F;p&gt;
+</summary>
+        
+    </entry>
+    <entry xml:lang="en">
         <title>Markdown Examples 2</title>
         <published>2023-11-22T00:00:00+00:00</published>
         <updated>2023-11-22T00:00:00+00:00</updated>

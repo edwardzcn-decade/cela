@@ -10,6 +10,7 @@
 <title>Cela : A simple, lightweight theme for Zola🌟</title>
 
 
+
 <meta name="keywords" content="Rust zola blog, cela theme">
 
 
@@ -60,9 +61,9 @@
 </head>
 
 <body
-  class="list "
-  id="top">
-  
+class="list "
+id="top">
+
   
 <script>
   if (localStorage.getItem("pref-theme") === "dark") {
@@ -176,8 +177,8 @@
         
         
       <li>
-        <a href="https:&#x2F;&#x2F;edwardzcn-decade.github.io&#x2F;cela&#x2F;blog" title="Archive">
-          <spanclass="active">Archive</span></a>
+        <a href="https:&#x2F;&#x2F;edwardzcn-decade.github.io&#x2F;cela&#x2F;" title="Archive">
+          <span>Archive</span></a>
       </li>
       
         
@@ -196,7 +197,17 @@
         
         
       <li>
-        <a href="https:&#x2F;&#x2F;edwardzcn-decade.github.io&#x2F;cela&#x2F;search" title="Search">
+        <a href="https:&#x2F;&#x2F;edwardzcn-decade.github.io&#x2F;cela&#x2F;categories" title="Categories">
+          <span>Categories</span></a>
+      </li>
+      
+        
+        
+          
+        
+        
+      <li>
+        <a href="https:&#x2F;&#x2F;edwardzcn-decade.github.io&#x2F;cela#" title="Search">
           <span>Search</span></a>
       </li>
       
@@ -246,8 +257,8 @@
 </header>
 
 
-  <main class="main">
-    
+<main class="main">
+  
   <header class="page-header">
   <div class="breadcrumbs">
       <a href="https:&#x2F;&#x2F;edwardzcn-decade.github.io&#x2F;cela">Home</a>
@@ -335,9 +346,9 @@
 </footer>
 
 
-  </main>
-  
-  <footer class="footer">
+</main>
+
+<footer class="footer">
   
   <span>&copy; 2025 <a href="https:&#x2F;&#x2F;edwardzcn-decade.github.io&#x2F;cela">edwardzcn-decade</a></span>
   
@@ -470,13 +481,21 @@
 
 
 
-  
 
 
-  
-  <script src="https://edwardzcn-decade.github.io/cela/js/toggle-sections.js"></script>
-  
-  
+
+<div id="searchbox" class="hidden">
+  <div class="search-modal">
+    <input type="text" id="searchInput" placeholder="Type to search..." />
+    <button id="searchButton">Search</button>
+  </div>
+</div>
+
+
+
+<script src="https://edwardzcn-decade.github.io/cela/js/toggle-sections.js"></script>
+
+
 </body>
 
 </html>
