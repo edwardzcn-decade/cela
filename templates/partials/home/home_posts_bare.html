@@ -1,0 +1,25 @@
+{% set content_dir = config.extra.cela.home_content_dir | default(value = "blog") %}
+{% if content_dir == "" or content_dir == "content" %}
+{% set home_section_path = '_index.md' %}
+{% else %}
+{% set content_dir = content_dir | trim_start_matches(pat="content/") %}
+{% set home_section_path = content_dir ~ '/_index.md' %}
+{% endif %}
+{% set home_section = get_section(path=home_section_path)%}
+
+{% for page in home_section.pages %}
+<article class="post-entry">
+  <header class="entry-header">
+    <h2>{{ page.title }}</h2>
+  </header>
+  {% if page.summary %}
+  <div class="entry-content">
+    <p>{{ page.summary | safe }}</p>
+  </div>
+  {% endif %}
+  <footer class="entry-footer">
+    {% include "partials/post/post_meta.html" %}
+  </footer>
+  <a class="entry-link" aria-label="post link to {{ page.title }}" href="{{ page.permalink }}"></a>
+</article>
+{% endfor %}

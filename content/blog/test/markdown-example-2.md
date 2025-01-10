@@ -1,12 +1,14 @@
 +++
 title = "Markdown Examples 2"
 date = 2023-11-22
+[extra]
+mathjax = true
 +++
 
 
 This article offers a sample of basic Markdown syntax that can be used in ~~Hugo~~ Zola content files, also it shows whether basic HTML elements are decorated with CSS in a ~~Hugo~~ Zola theme.
 
-<!--more-->
+<!-- more -->
 
 # Headings
 
@@ -163,6 +165,8 @@ This is pre text
     -   Cheese
 
 # Other Elements — abbr, sub, sup, kbd, mark
+
+$/lambda_1$
 
 <abbr title="Graphics Interchange Format">GIF</abbr> is a bitmap image format.
 

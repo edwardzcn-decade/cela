@@ -4,7 +4,11 @@
 <meta name="robots" content="index, follow">
 <title>{% if page.title %}{{ page.title }}{% else %}{{ config.title }}{% endif %}</title>
 
-{% if page.keywords %}
+
+{% if page.taxonomies %}
+{% set tags = page.taxonomies.tags %}
+<meta name="keywords" content="{{ tags | join(sep=', ') }}">
+{% elif page.keywords %}
 <meta name="keywords" content="{{ page.keywords | join(sep=', ') }}">
 {% else %}
 <meta name="keywords" content="{{ config.extra.cela.default_keywords | default(value=["Rust zola blog", "Theme cela"]) | join(sep=', ') }}">

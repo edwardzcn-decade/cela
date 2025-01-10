@@ -1,19 +1,12 @@
 {% set content_dir = config.extra.cela.home_content_dir | default(value = "blog") %}
-{% if content_dir == "" or content_dir == "content" %}
-TODO
-<ul>
-  {% for subsec in section.subsections %}
-  <li>
-    <a href="{{ get_url(path='@/' ~ subsec) }}">{{ subsec | capitalize }}</a>
-  </li>
-  {% endfor %}
-</ul>
-{% else %}
-{% set content_dir = content_dir | replace(from="content/", to = "") %}
+{% set content_dir = content_dir | trim_start_matches(pat="content/") %}
 {% set home_section_path = content_dir ~ '/_index.md' %}
 {% set home_section = get_section(path=home_section_path)%}
+<!-- Add home section pages (and transparent subsection pages)-->
 
-{% for page in home_section.pages %}
+{% for year, pages in home_section.pages | group_by(attribute="year") %}
+<h1>{{ year }}</h1>
+{% for page in pages %}
 <article class="post-entry">
   <header class="entry-header">
     <h2>{{ page.title }}</h2>
@@ -29,56 +22,4 @@ TODO
   <a class="entry-link" aria-label="post link to {{ page.title }}" href="{{ page.permalink }}"></a>
 </article>
 {% endfor %}
-
-
-<div class="home-list-container">
-    {% for subsec_path in home_section.subsections %}
-      {% set subsec = get_section(path=subsec_path) %}
-      {% set default_title = subsec.path | regex_replace(pattern="^.*/([^/]+)/$", rep="$1") %}
-      <div class="home-list row">
-        <div class="home-list-header">
-        <a href="javascript:void(0);" 
-          title="{{ subsec.title | default(value=default_title) }}" 
-          role="tab" 
-          aria-expanded="false" 
-          class="toggle-content">
-          <span>{{ subsec.title | default(value=default_title | capitalize) }}</span>
-          {{ macro_external::external(icon='arrowright', size="18") }}
-        </a>
-
-        <a href="{{ subsec.permalink }}" 
-          class="section-count" 
-          title="Go to {{ subsec.title | default(value=default_title) }}">
-          {{ macro_external::external(icon='articles', size="18") }}
-          <span>{{ subsec.pages | length }}</span>
-        </a>
-        </div>
-      <div class="home-list-content">
-      {% if subsec.pages %}
-        {% for page in subsec.pages %}
-        <article class="post-entry">
-          <header class="entry-header">
-            <h2>{{ page.title }}</h2>
-          </header>
-          {% if page.summary %}
-          <div class="entry-content">
-            <p>{{ page.summary | safe }}</p>
-          </div>
-          {% endif %}
-          <footer class="entry-footer">
-            {% include "partials/post/post_meta.html" %}
-          </footer>
-          <a class="entry-link" aria-label="post link to {{ page.title }}" href="{{ page.permalink }}"></a>
-        </article>
-        {% endfor %}
-      {% else %}
-        <p>No pages available in this section.</p>
-      {% endif %}
-      </div>
-
-      </div>
-    {% endfor %}
-
-</div>
-{% endif %}
-
+{% endfor %}

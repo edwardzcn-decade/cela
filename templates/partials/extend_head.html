@@ -1,15 +1,17 @@
 {% if config.extra.enable_mathjax %}
-<script async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
-<script>
-  window.MathJax = {
-    tex: {
-      inlineMath: [['$', '$'], ['\\(', '\\)']],
-      displayMath: [['$$', '$$'], ['\\[', '\\]']]
-    },
-    options: {
-      ignoreHtmlClass: "no-mathjax",
-      processHtmlClass: "mathjax"
-    }
-  };
-</script>
+  {% if page.extra.mathjax %}
+  <script async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+  <script>
+    window.MathJax = {
+      tex: {
+        inlineMath: [['$', '$'], ['\\(', '\\)']],
+        displayMath: [['$$', '$$'], ['\\[', '\\]']]
+      },
+      options: {
+        ignoreHtmlClass: "no-mathjax",
+        processHtmlClass: "mathjax"
+      }
+    };
+  </script>
+  {% endif %}
 {% endif %}
