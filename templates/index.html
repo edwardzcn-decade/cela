@@ -9,28 +9,36 @@
 </head>
 
 <body
-  class="{% if section or term or taxonomy %}list {% endif %}{% if config.extra.cela.color.default_theme == 'dark' %} dark{% endif %}"
-  id="top">
-  {% block header %}
-  {% include "partials/home/home_header.html" %}
+class="{% if section or term or taxonomy %}list {% endif %}{% if config.extra.cela.color.default_theme == 'dark' %} dark{% endif %}"
+id="top">
+{% block header %}
+{% include "partials/home/home_header.html" %}
+{% endblock %}
+<main class="main">
+  {% block main %}
+  {% include "partials/home/home_info.html" %}
+  {% include "partials/home/home_list.html" %}
   {% endblock %}
-  <main class="main">
-    {% block main %}
-    {% include "partials/home/home_info.html" %}
-    {% include "partials/home/home_list.html" %}
-    {% endblock %}
-  </main>
-  {% block footer %}
-  {% include "partials/home/home_footer.html" %}
-  {% endblock %}
+</main>
+{% block footer %}
+{% include "partials/home/home_footer.html" %}
+{% endblock %}
 
+{% block search_panel %}
+<div id="searchbox" class="hidden">
+  <div class="search-modal">
+    <input type="text" id="searchInput" placeholder="Type to search..." />
+    <button id="searchButton">Search</button>
+  </div>
+</div>
+{% endblock %}
 
-  {% block extra_js %}
-  <script src="{{ get_url(path='js/toggle-sections.js') | safe }}"></script>
-  {% if config.extra.debug %}
-  {% include "macros/debug_console.html" %}
-  {% endif %}
-  {% endblock %}
+{% block extra_js %}
+<script src="{{ get_url(path='js/toggle-sections.js') | safe }}"></script>
+{% if config.extra.debug %}
+{% include "macros/debug_console.html" %}
+{% endif %}
+{% endblock %}
 </body>
 
 </html>
