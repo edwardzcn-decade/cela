@@ -1,1 +1,5 @@
-&nbsp;|&nbsp;<a href="{{ config.extra.cela.edit_post_url }}/content/{{ page.relative_path }}" rel="noopener noreferrer" target="_blank">Suggest Changes</a>
+{% if config.extra.cela.edit_post_url is starting_with("mailto:") %}
+&nbsp;|&nbsp;<a href="{{ config.extra.cela.edit_post_url }}?subject=Ref:{{- page.title -}}" target="_blank">Email me</a>
+{% elif config.extra.cela.edit_post_url is starting_with("https://") %}
+&nbsp;|&nbsp;<a href="{{ config.extra.cela.edit_post_url }}/content/{{ page.relative_path }}" rel="noopener noreferrer" target="_blank">Suggest changes</a>
+{% endif %}

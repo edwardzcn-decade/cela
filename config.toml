@@ -169,7 +169,13 @@ taxonomies_tail = [
 ]
 
 
-edit_post_url = ""
+# Trigger when readers click the "suggest changes" on each page
+# it can be
+# - an email address (e.g. "mailto:edward@edwardzcn.me" )
+# - a github or gitlab repo link (e.g. "https://github.com/<your-username>/<your-source>/tree/main")
+# if your blog source is public, cela will try to find the orinal page with its relative path
+edit_post_url = "mailto:your-username@gmail.com"
+edit_post_url = "https://github.com/your-username/your-source/tree/main"
 show_cela_logo = true
 show_code_copy_buttons = true
 show_post_edit_button = true
