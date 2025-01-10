@@ -152,7 +152,7 @@ home_content = "Welcome to a demo of the <b>Cela</b> theme!<br><b>Cela</b> is a 
 # If you set this to "blog", the all the content under "content/blog" will be shown (recommand)
 home_content_dir = "blog"
 # TODO fix "" empty string
-home_list_style = ""
+home_list_style = "default"
 
 social_icons = [
     { path = "https://github.com/", title = "GitHub", icon = "github" },
