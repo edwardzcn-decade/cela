@@ -1,6 +1,6 @@
 # Cela
 
-*Cela* is a simple and lightweight theme for Zola.<br>If you like it, Please give a 🌟 on Github :)<br>Cela is generally based on hugo theme [PaperMod](https://github.com/adityatelange/hugo-PaperMod) and style sheet provided by [Catppuccin](https://github.com/catppuccin/catppuccin).
+*Cela* is a simple and lightweight theme for Zola.<br>If you like it, Please give a 🌟 on Github :)<br>The style sheet of Cela is adapted from [Catppuccin](https://github.com/catppuccin/catppuccin).
 
 
 
@@ -11,8 +11,10 @@
 + [x] Catppuccin color theme support
 + [x] Light/Dark mode support
 + [x] Flexible Mathjax support
++ [x] Blog post RSS feeds
++ [x] Blog search
++ [x] Robot tools
 + [ ] Blog post archive (indexing by year)
-+ [ ] Blog post RSS feeds
 + [ ] Internationalization support (i18n directory and translation)
 
 ### Tags, Categories, and Taxonomies
