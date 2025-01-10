@@ -2,7 +2,6 @@
 title = "Github Footnotes Test"
 date = 2025-01-01
 [taxonomies]
-music = ["Pink Floyd"]
 tags = ["Rust", "Zola"]
 categories = ["Programming"]
 +++
