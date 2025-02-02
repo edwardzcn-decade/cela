@@ -6,7 +6,7 @@ tags = ["Rust", "Zola"]
 categories = ["Programming"]
 +++
 
-# Introduction to Markdown on GitHub
+> Introduction to Markdown on GitHub
 
 Markdown is a lightweight markup language that you can use to add formatting elements to plaintext text documents. It’s a great tool for writing documentation, READMEs, or blog posts.
 

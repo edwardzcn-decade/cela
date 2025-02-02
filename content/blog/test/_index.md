@@ -1,5 +1,8 @@
 +++
-title = "Test Category"
+title = "Test Transparent Category"
 sort_by = "date"
 paginate_by = 5
+transparent = false
 +++
+
+`transparent` is set to `false` as default.
