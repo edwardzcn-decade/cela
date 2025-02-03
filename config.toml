@@ -155,6 +155,7 @@ home_content = "Welcome to a demo of the <b>Cela</b> theme!<br><b>Cela</b> is a 
 # If you set this to "", the all the content under "content" will be shown (not recommand)
 # If you set this to "blog", the all the content under "content/blog" will be shown (recommand)
 home_content_dir = "blog"
+# [Cela hint] Use "mix" to show subsections as an archieve on home page with collapsible lists
 # TODO fix "" empty string
 home_list_style = "default"
 
@@ -216,4 +217,3 @@ i18n_dir = "i18n_dir"
 # social_icon = true
 # # Specify the directory of social icon (default = "") If set, the original social_icon macro will not be loaded and used
 # social_icon_dir = "auto"
-
