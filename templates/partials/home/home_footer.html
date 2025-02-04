@@ -134,7 +134,7 @@
 </script>
 {% endif %}
 
-{% if page.extra.is_search_page %}
-<script src="{{ get_url(path='elasticlunr.min.js') | safe }}"></script>
+{% set is_search = (page and page.extra and page.extra.is_search_page) or (section and section.extra and section.extra.is_search_page) %}
+{% if is_search %}
 <script src="{{ get_url(path='js/search.js') | safe }}"></script>
 {% endif %}

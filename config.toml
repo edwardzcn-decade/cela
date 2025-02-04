@@ -9,11 +9,9 @@ description = "A light weight theme for zola"
 # The default author for pages
 author = "edwardzcn-decade"
 
-
 # The default language; used in feeds.
 # [Cela hint] Html lang default setting
 default_language = "en"
-
 
 # The site theme to use.
 # [Cela hint] Try cela
@@ -26,7 +24,6 @@ output_dir = "public"
 # Enabling this also prevents the deletion of the output folder itself on rebuilds.
 # [Cela hint] Cela will enable this feature by default
 preserve_dotfiles_in_output = true
-
 
 # When set to "true", the Sass files in the `sass` directory in the site root are compiled.
 # Sass files in theme directories are always compiled.
@@ -128,25 +125,25 @@ enable_mathjax = false
 
 [extra.cela]
 # The template title (shown in home page )
-header_title = "Cela Template"
 default_keywords = ["Rust zola blog", "cela theme"]
-icon = "svg/cela_new_small_rec.svg"
-icon_dark = "svg/cela_new_small_rec.svg"
 favicon = "favicon.ico"
 favicon16x16 = "favicon-16x16.png"
 favicon32x32 = "favicon-32x32.png"
+header_title = "Cela Template"
+icon = "svg/cela_new_small_rec.svg"
+icon_dark = "svg/cela_new_small_rec.svg"
 
 date_format = "%Y-%m-%d"
-navigation = [
-    { path = "/", title = "Archive" },
-    { path = "/tags", title = "Tags" },
-    { path = "/categories", title = "Categories" },
-    {path = "#", title = "Search"},
-    { path = "/robot", title = "Robot", is_robot = true},
-    { path = "https://getzola.org/", title = "Zola", is_external = true }
-]
 show_home_title = true
 home_title = "Cela Template"
+navigation = [
+  {path = "/", title = "Archive"},
+  {path = "/tags", title = "Tags"},
+  {path = "/categories", title = "Categories"},
+  {path = "#", title = "Search"},
+  {path = "/robot", title = "Robot", is_robot = true},
+  {path = "https://getzola.org/", title = "Zola", is_external = true},
+]
 
 show_home_content = true
 home_content = "Welcome to a demo of the <b>Cela</b> theme!<br><b>Cela</b> is a simple and lightweight theme.<br>If you like it, Please give a 🌟 on Github :)"
@@ -161,19 +158,18 @@ home_list_style = "default"
 
 show_home_social_icons = true
 social_icons = [
-    { path = "https://github.com/", title = "GitHub", icon = "github" },
-    { path = "https://scholar.google.com/", title = "Google Scholar", icon = "googlescholar"},
-    { path = "https://sg.linkedin.com/", title = "Linkedin", icon = "linkedin"},
-    { path = "xxx@gmail.com", title = "Email", icon = "email"},
-    { path = "https://www.wikipedia.org", title = "Wiki", icon = "wiki" },
-    { path = "/atom.xml", title = "RSS", icon = "rss" },
+  {path = "https://github.com/", title = "GitHub", icon = "github"},
+  {path = "https://scholar.google.com/", title = "Google Scholar", icon = "googlescholar"},
+  {path = "https://sg.linkedin.com/", title = "Linkedin", icon = "linkedin"},
+  {path = "xxx@gmail.com", title = "Email", icon = "email"},
+  {path = "https://www.wikipedia.org", title = "Wiki", icon = "wiki"},
+  {path = "/atom.xml", title = "RSS", icon = "rss"},
 ]
 taxonomies_desc = []
 taxonomies_tail = [
   {name = "tags", emoji = "🏷️"},
   {name = "categories", emoji = "📂"},
 ]
-
 
 # Trigger when readers click the "suggest changes" on each page
 # it can be
@@ -184,6 +180,7 @@ taxonomies_tail = [
 edit_post_url = "https://github.com/your-username/your-source/tree/main"
 show_cela_logo = true
 show_code_copy_buttons = true
+show_header_title = false
 show_post_edit_button = true
 show_post_meta = true
 show_post_nav_links = true
@@ -192,9 +189,13 @@ show_scroll_to_top = true
 show_taxonomies_description = true
 show_taxonomies_tail = true
 show_theme_toggle = true
-show_header_title = false
 show_toc_default = true
 show_word_count = true
+
+# [Cela hint] Cela will use this for search page title (default is "Search" if not set)
+search_title = "From Config: Search"
+# [Cela hint] Cela will use this for search page description (default is "Find posts by title or body content" if not set)
+search_description = "From Config: Find posts by title or body content"
 
 [extra.cela.color]
 
@@ -202,7 +203,6 @@ default_theme = "dark"
 # If disable javascript, the website will always use the default_theme
 remember_choice = true
 # If remeber_choice is true, the cookie/localStorage will use the theme last time user visited
-
 
 [extra.cela.global]
 # Whether to show the original title defined in base configure

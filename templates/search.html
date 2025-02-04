@@ -1,0 +1,55 @@
+{% extends "index.html" %}
+{% block main %}
+
+{# Try to use search_title from config.toml #}
+{% set search_title_cfg = config.extra.cela.search_title | default(value="") %}
+{% set search_title = search_title_cfg %}
+{% if search_title_cfg | trim == "" %}
+  {% if page and page.title %}
+    {% set search_title = page.title %}
+  {% elif section and section.title %}
+    {% set search_title = section.title %}
+  {% else %}
+    {# Use default search title #}
+    {% set search_title = "Search" %}
+  {% endif %}
+{% endif %}
+
+{# Try to use search_description from config.toml first #}
+{% set search_description_cfg = config.extra.cela.search_description | default(value="") %}
+{% set search_description = search_description_cfg %}
+{% if search_description_cfg | trim == "" %}
+  {% if page and page.description %}
+    {% set search_description = page.description %}
+  {% elif section and section.description %}
+    {% set search_description = section.description %}
+  {% else %}
+    {# Use default search description #}
+    {% set search_description = "Find posts by title or body content" %}
+  {% endif %}
+{% endif %}
+
+<section class="post-single search-page">
+  <header class="post-header">
+    <div class="breadcrumbs">
+      <a href="{{ config.base_url }}">Home</a>&nbsp;»&nbsp;
+      <a href="{{ current_url | default(value=config.base_url ~ '/search/') }}">{{ search_title }}</a>
+    </div>
+    <h1 class="post-title">{{ search_title }}</h1>
+    <p class="post-description">{{ search_description }}</p>
+  </header>
+
+  <div class="post-content">
+    <div class="search-box">
+      <input
+        type="search"
+        id="searchInput"
+        placeholder="Type to search..."
+        aria-label="Search posts"
+        autocomplete="off"
+      />
+    </div>
+    <ul id="searchResults" class="search-results" style="display:none;"></ul>
+  </div>
+</section>
+{% endblock %}
