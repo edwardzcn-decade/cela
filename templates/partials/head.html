@@ -2,9 +2,10 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 <meta name="robots" content="index, follow">
-<title>{% if page.title %}{{ page.title }}{% else %}{{ config.title }}{% endif %}</title>
+<title>{% if page.title %}{{ page.title }}{% elif section.title %}{{ section.title }}{% else %}{{ config.title }}{% endif %}</title>
 
 
+{# Only for post page #}
 {% if page.taxonomies %}
 {% set tags = page.taxonomies.tags %}
 <meta name="keywords" content="{{ tags | join(sep=', ') }}">
@@ -15,15 +16,18 @@
 {% endif %}
 
 
-
 {% if page.description %}
 <meta name="description" content="{{ page.description }}">
+{% elif section.description %}
+<meta name="description" content="{{ section.description }}">
 {% else %}
 <meta name="description" content="{{ config.description }}">
 {% endif %}
 
 {% if page.author %}
 <meta name="author" content="{{ page.author }}">
+{% elif section.author %}
+<meta name="author" content="{{ section.author }}">
 {% elif config.author %}
 <meta name="author" content="{{ config.author }}">
 {% endif %}
@@ -32,9 +36,14 @@
 
 
 {% if page.path %}
-{% set current_url = config.base_url ~ '/' ~ page.path %}
-{% endif %}
+{% set canonical_url = config.base_url ~ '/' ~ page.path %}
+<link rel="canonical" href="{{ canonical_url }}">
+{% elif section.path %}
+{% set canonical_url = config.base_url ~ '/' ~ section.path %}
+<link rel="canonical" href="{{ canonical_url }}">
+{% else %}
 <link rel="canonical" href="{{ current_url }}">
+{% endif %}
 
 <link rel="stylesheet" href="{{ get_url(path='css/theme-vars.css') }}">
 <link rel="stylesheet" href="{{ get_url(path='css/theme-base.css') }}">

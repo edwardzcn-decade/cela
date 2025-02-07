@@ -59,6 +59,7 @@
   </div>
 </div>
 
+{# TODO: IP tool disabled in base theme; re-enable in custom branch if needed.
 <div class="post-entry">
   <header class="entry-header" style="display: flex; flex-direction: column; align-items: center; justify-content: center; text-align: center; ">
     <h2>IP Tools</h2>
@@ -72,8 +73,10 @@
     </div>
   </div>
 </div>
+#}
 
 
+{# TODO: WeChat sender disabled in base theme; re-enable in custom branch if needed.
 <div class="post-entry">
   <header class="entry-header" style="display: flex; flex-direction: column; align-items: center; justify-content: center; text-align: center; ">
     <h2>Send WeChat Message</h2>
@@ -95,6 +98,8 @@
     <!-- 返回信息将显示在这里 -->
   </div>
 </div>
+#}
+{# Disabled action scripts retained for reference; enable in custom branch only.
 <script src="https://cdnjs.cloudflare.com/ajax/libs/crypto-js/4.1.1/crypto-js.min.js"></script>
 <script>
   function encodeBase64() {
@@ -145,7 +150,7 @@ function decodeBase64() {
   }
 }
 
-// MD5 生成函数
+// MD5 generation
 function generateMD5() {
   const input = document.querySelector('.tool-section:nth-of-type(2) .input-group:nth-of-type(1) input');
   const output = document.querySelector('.tool-section:nth-of-type(2) .input-group:nth-of-type(2) input');
@@ -191,4 +196,5 @@ function generateMD5() {
   }
 
 </script>
+#}
 {% endblock %}

@@ -1,5 +1,5 @@
 {% if page.toc %}
-{% set expand_toc = page.extra.toc_open | default(value=config.extra.cela.show_toc_default) %}
+{% set expand_toc = page.extra.toc_open | default(value=config.extra.cela.show_toc_open_default) %}
 <div class="toc">
   <details {% if expand_toc==true %} open{% endif %}>
     <summary accesskey="c" title="(Alt + C)">
