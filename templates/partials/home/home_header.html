@@ -109,7 +109,7 @@
         {% endif %}
         {% set is_active_link = current_url and url | trim_end_matches(pat="/") == current_url | trim_end_matches(pat="/") %}
       <li>
-        <a href="{{ url }}" title="{{ item.title }}">
+        <a href="{{ url }}" title="{{ item.title }}" {%- if item.is_search -%} data-search-toggle="true"{%- endif -%}>
           <span {%- if is_active_link -%} class="active" {%- endif -%}>{{ item.title }}</span>
           {%- if item.is_external and item.is_external == true -%}
             {{ macro_extra_icon::extra_icon(icon='link') }}

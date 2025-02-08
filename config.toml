@@ -140,7 +140,7 @@ navigation = [
   {path = "/", title = "Archive"},
   {path = "/tags", title = "Tags"},
   {path = "/categories", title = "Categories"},
-  {path = "#", title = "Search"},
+  {path = "#", title = "Search", is_search = true},
   {path = "/robot", title = "Robot", is_robot = true},
   {path = "https://getzola.org/", title = "Zola", is_external = true},
 ]
