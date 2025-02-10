@@ -190,7 +190,7 @@ show_taxonomies_description = true
 show_taxonomies_tail = true
 show_theme_toggle = true
 show_toc = true
-show_toc_open_default = false
+unfold_toc = false
 show_word_count = true
 
 # [Cela hint] Cela will use this for search page title (default is "Search" if not set)

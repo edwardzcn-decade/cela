@@ -35,14 +35,19 @@
 
 
 
-{% if page.path %}
-{% set canonical_url = config.base_url ~ '/' ~ page.path %}
-<link rel="canonical" href="{{ canonical_url }}">
-{% elif section.path %}
-{% set canonical_url = config.base_url ~ '/' ~ section.path %}
-<link rel="canonical" href="{{ canonical_url }}">
+{# Canonical: allow explicit override, then fall back to current page/section URL #}
+{% if page and page.extra and page.extra.canonical %}
+  <link rel="canonical" href="{{ page.extra.canonical }}">
+{% elif section and section.extra and section.extra.canonical %}
+  <link rel="canonical" href="{{ section.extra.canonical }}">
+{% elif page and page.path %}
+  {% set canonical_url = config.base_url ~ '/' ~ page.path %}
+  <link rel="canonical" href="{{ canonical_url }}">
+{% elif section and section.path %}
+  {% set canonical_url = config.base_url ~ '/' ~ section.path %}
+  <link rel="canonical" href="{{ canonical_url }}">
 {% else %}
-<link rel="canonical" href="{{ current_url }}">
+  <link rel="canonical" href="{{ current_url | default(value=config.base_url) }}">
 {% endif %}
 
 <link rel="stylesheet" href="{{ get_url(path='css/theme-vars.css') }}">

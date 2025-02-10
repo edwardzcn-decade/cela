@@ -1,7 +1,7 @@
 {% if page.toc %}
-{% set expand_toc = page.extra.toc_open | default(value=config.extra.cela.show_toc_open_default) %}
+{% set unfold_toc = page.extra.toc_open | default(value=config.extra.cela.unfold_toc) %}
 <div class="toc">
-  <details {% if expand_toc==true %} open{% endif %}>
+  <details {% if unfold_toc==true %} open{% endif %}>
     <summary accesskey="c" title="(Alt + C)">
       <span class="details">Table of Contents</span>
     </summary>
