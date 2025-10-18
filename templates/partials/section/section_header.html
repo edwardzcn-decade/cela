@@ -1,26 +1,4 @@
-{% if config.extra.cela.color.default_theme == "light" %}
-<script>
-  if (localStorage.getItem("pref-theme") === "dark") {
-    document.body.classList.add("dark");
-  }
-</script>
-{% elif config.extra.cela.color.default_theme == "dark" %}
-<script>
-  if (localStorage.getItem("pref-theme") === "light") {
-    document.body.classList.remove("dark");
-  }
-</script>
-{% else %}
-<script>
-  if (localStorage.getItem("pref-theme") === "dark") {
-    document.body.classList.add("dark");
-  } else if (localStorage.getItem("pref-theme") === "light") {
-    document.body.classList.remove("dark");
-  } else if (window.matchMedia("(prefers-color-scheme: dark)").matches) {
-    document.body.classList.add("dark");
-  }
-</script>
-{% endif %}
+{% include "partials/common/header_body_theme.html" -%}
 <header class="header">
   <nav class="nav">
     <div class="logo">
@@ -134,9 +112,9 @@
         <a href="{{ url }}" title="{{ item.title }}">
           <span {%- if is_active_link -%} class="active" {%- endif -%}>{{ item.title }}</span>
           {%- if item.is_external and item.is_external == true -%}
-            {{ macro_external::external(icon='link') }}
+            {{ macro_extra_icon::extra_icon(icon='link') }}
           {%- elif item.is_robot and item.is_robot == true -%}
-            {{ macro_external::external(icon='robot')}}
+            {{ macro_extra_icon::extra_icon(icon='robot')}}
           {%- endif -%}
         </a>
       </li>

@@ -1,23 +1,27 @@
-{%- import "macros/external-link.svg.html" as macro_external %}
+{% import "macros/extra_icon.svg.html" as macro_extra_icon -%}
+{% import "macros/social_icon.svg.html" as macro_social_icon -%}
 <!DOCTYPE html>
 <html lang="{{ lang }}" dir="{{ config.extra.cela.global.i18n_dir }}">
 
 <head>
-  {% block head %}
-  {% include "partials/head.html" %}
-  {% endblock %}
+  {% block head -%}
+    {% include "partials/head.html" -%}
+  {% endblock -%}
 </head>
 
+{% set body_classes = "" -%}
+{% if section or term or taxonomy -%}
+  {% set body_classes = body_classes ~ "list " -%}
+{% endif -%}
+
 <body
-class="{% if section or term or taxonomy %}list {% endif %}{% if config.extra.cela.color.default_theme == 'dark' %} dark{% endif %}"
-id="top">
-{% block header %}
-{% include "partials/home/home_header.html" %}
-{% endblock %}
+class="{{ body_classes | trim }}" id="top">
+  {% block header -%}
+    {% include "partials/home/home_header.html" -%}
+  {% endblock %}
 <main class="main">
   {% block main %}
-  {% include "partials/home/home_info.html" %}
-  {% include "partials/home/home_list.html" %}
+  {% include "partials/home/home_main.html" %}
   {% endblock %}
 </main>
 {% block footer %}

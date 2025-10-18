@@ -145,7 +145,10 @@ navigation = [
     { path = "/robot", title = "Robot", is_robot = true},
     { path = "https://getzola.org/", title = "Zola", is_external = true }
 ]
+show_home_title = true
 home_title = "Cela Template"
+
+show_home_content = true
 home_content = "Welcome to a demo of the <b>Cela</b> theme!<br><b>Cela</b> is a simple and lightweight theme.<br>If you like it, Please give a 🌟 on Github :)"
 # The default home directory you will write your blog post content
 # This will be used to generate the home page (with subsections) posts list
@@ -155,6 +158,7 @@ home_content_dir = "blog"
 # TODO fix "" empty string
 home_list_style = "default"
 
+show_home_social_icons = true
 social_icons = [
     { path = "https://github.com/", title = "GitHub", icon = "github" },
     { path = "https://scholar.google.com/", title = "Google Scholar", icon = "googlescholar"},
@@ -192,7 +196,12 @@ show_toc_default = true
 show_word_count = true
 
 [extra.cela.color]
-default_theme = "light"
+
+default_theme = "dark"
+# If disable javascript, the website will always use the default_theme
+remember_choice = true
+# If remeber_choice is true, the cookie/localStorage will use the theme last time user visited
+
 
 [extra.cela.global]
 # Whether to show the original title defined in base configure

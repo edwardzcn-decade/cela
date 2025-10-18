@@ -1,0 +1,29 @@
+{% if not config.extra.cela.color.remember_choice -%}
+  {% if config.extra.cela.color.default_theme == "dark" -%}
+    <script>document.body.classList.add("dark");</script>
+  {% elif config.extra.cela.color.default_theme == "light" -%}
+    <script>document.body.classList.remove("dark");</script>
+  {% else -%}
+    <script>
+      if (window.matchMedia("(prefers-color-scheme: dark)").matches) {
+        document.body.classList.add("dark");
+      } else {
+        document.body.classList.remove("dark");
+      }
+    </script>
+  {% endif -%}
+{% else -%}
+  <script>
+    const preft = localStorage.getItem("pref-theme");
+    if (preft === "dark") {
+      document.body.classList.add("dark");
+    } else if (preft === "light") {
+      document.body.classList.remove("dark");
+    } else if (window.matchMedia("(prefers-color-scheme: dark)").matches) {
+      document.body.classList.add("dark");
+    } else {
+      document.body.classList.remove("dark");
+    }
+  </script>
+{% endif -%}
+

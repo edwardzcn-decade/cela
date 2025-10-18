@@ -1,15 +1,13 @@
-{% import "macros/social_icon.svg.html" as macro_social -%}
-{% import "macros/external-link.svg.html" as macro_external -%}
 <article class="first-entry home-info">
     <header class="entry-header">
         <h1>{{ config.extra.cela.home_title }}</h1>
     </header>
     <div class="entry-content">
-        {% block home_entry_content %}
         {{ config.extra.cela.home_content | markdown(inline=true) | safe }}
-        {% endblock %}
     </div>
     <footer class="entry-footer">
-        {% include "partials/social_icons.html" %}
+        {% if config.extra.cela.show_home_social_icons | default(value=true) %}
+            {% include "partials/home/home_social_icons.html" %}
+        {% endif %}
     </footer>
 </article>

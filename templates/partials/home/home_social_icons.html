@@ -1,0 +1,15 @@
+<div class="social-icons">
+    {% for i in config.extra.cela.social_icons %}
+    {% set rawpath = i.path | trim  %}
+    {% if rawpath is containing("@") %}
+    {% set icon_path = "mailto:" ~ rawpath %}
+    {% elif rawpath is starting_with("/")  %}
+    {% set icon_path = config.base_url ~ rawpath %}
+    {% else %}
+    {% set icon_path = rawpath %}
+    {% endif %}
+    <a href="{{ icon_path }}" target="_blank" rel="noopener noreferrer me" title="{{ i.title }}">
+        {{ macro_social_icon::social_icon(icon=i.icon) }}
+    </a>
+    {% endfor %}
+</div>

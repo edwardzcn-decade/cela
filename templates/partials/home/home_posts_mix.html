@@ -38,13 +38,13 @@
           aria-expanded="false" 
           class="toggle-content">
           <span>{{ subsec.title | default(value=default_title | capitalize) }}</span>
-          {{ macro_external::external(icon='arrowright', size="18") }}
+          {{ macro_extra_icon::extra_icon(icon='arrowright', size="18") }}
         </a>
 
         <a href="{{ subsec.permalink }}" 
           class="section-count" 
           title="Go to {{ subsec.title | default(value=default_title) }}">
-          {{ macro_external::external(icon='articles', size="18") }}
+          {{ macro_extra_icon::extra_icon(icon='articles', size="18") }}
           <span>{{ subsec.pages | length }}</span>
         </a>
         </div>
