@@ -26,16 +26,18 @@ function formatSearchResultItem(item) {
     }
   }
   return (
-    '<li class="post-entry">' +
+    '<article class="post-entry">' +
     '<header class="entry-header">' +
+    '<h3>'+
     title +
-    "&nbsp;»</header>" +
-    (summary ? '<p class="entry-content">' + summary + "</p>" : "") +
-    '<a href="' +
+    "&nbsp;»</h3></header>" +
+    (summary ? '<div class="entry-content"><p>' + summary + "</p></div>" : "") +
+    '<a class="entry-link" href="' +
     item.ref +
     '" aria-label="' +
     title +
-    '"></a></li>'
+    '"></a>' +
+    '</article>'
   );
 }
 
@@ -73,20 +75,6 @@ function initSearch() {
   }
 
   async function loadIndex() {
-    // Try modern JSON index first.
-    try {
-      var response = await fetch("/search_index.en.json");
-      if (
-        response.ok &&
-        response.headers.get("content-type")?.includes("application/json")
-      ) {
-        var data = await response.json();
-        return Array.isArray(data) ? data : data.docs || [];
-      }
-    } catch (_) {
-      // fall through to .js format
-    }
-
     // Fallback: Zola default JS index format (`window.searchIndex = {...}`)
     try {
       var jsResponse = await fetch("/search_index.en.js");
