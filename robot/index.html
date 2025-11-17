@@ -6,7 +6,8 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 <meta name="robots" content="index, follow">
-<title>Cela : A simple, lightweight theme for Zola🌟</title>
+<title>Robot</title>
+
 
 
 
@@ -15,8 +16,7 @@
 
 
 
-
-<meta name="description" content="A light weight theme for zola">
+<meta name="description" content="Little toolbox">
 
 
 
@@ -27,7 +27,9 @@
 
 
 
-<link rel="canonical" href="https:&#x2F;&#x2F;edwardzcn-decade.github.io&#x2F;cela&#x2F;robot&#x2F;">
+
+<link rel="canonical" href="https:&#x2F;&#x2F;edwardzcn-decade.github.io&#x2F;cela&#x2F;&#x2F;robot&#x2F;">
+
 
 <link rel="stylesheet" href="https://edwardzcn-decade.github.io/cela/css/theme-vars.css">
 <link rel="stylesheet" href="https://edwardzcn-decade.github.io/cela/css/theme-base.css">
@@ -236,7 +238,7 @@ class="list" id="top">
         
         
       <li>
-        <a href="https:&#x2F;&#x2F;edwardzcn-decade.github.io&#x2F;cela#" title="Search">
+        <a href="https:&#x2F;&#x2F;edwardzcn-decade.github.io&#x2F;cela#" title="Search"data-search-toggle="true">
           <span>Search</span></a>
       </li>
       
@@ -355,138 +357,11 @@ class="list" id="top">
   </div>
 </div>
 
-<div class="post-entry">
-  <header class="entry-header" style="display: flex; flex-direction: column; align-items: center; justify-content: center; text-align: center; ">
-    <h2>IP Tools</h2>
-  </header>
-  <div class="tool-section">
-    <div class="input-group">
-      <iframe id="ipFrame" style="width: 100%; height: 200px; border: 0; display: none;"></iframe>
-      <div class="button-container">
-        <button onclick="showIP()">Show ip info</button>
-      </div>
-    </div>
-  </div>
-</div>
 
 
-<div class="post-entry">
-  <header class="entry-header" style="display: flex; flex-direction: column; align-items: center; justify-content: center; text-align: center; ">
-    <h2>Send WeChat Message</h2>
-  </header>
-  <div class="tool-section">
-    <form id="wechat-message-form" class="tool-inputs">
-      <div class="input-group">
-        <input id="wechat-contact-name" placeholder="Wechat"></input>
-      </div>
-      <div class="input-group">
-        <input id="wechat-message-content" placeholder="Your message"></input>
-      </div>
-      <div class="button-container">
-        <button type="button" onclick="sendWeChatMessage()">发送消息</button>
-      </div>
-    </form>
-  </div>
-  <div id="wechat-response" class="tool-response" style="margin-top: 20px; text-align: center; color: green;">
-    <!-- 返回信息将显示在这里 -->
-  </div>
-</div>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/crypto-js/4.1.1/crypto-js.min.js"></script>
-<script>
-  function encodeBase64() {
-  const input = document.querySelector('.tool-section:nth-of-type(1) .input-group:nth-of-type(1) input');
-  const output = document.querySelector('.tool-section:nth-of-type(1) .input-group:nth-of-type(2) input');
-  if (!input || !output) {
-    console.error("Input or output field not found.");
-    return;
-  }
 
-  const text = input.value;
 
-  if (text.trim() === "") {
-    alert("Please enter text to encode.");
-    return;
-  }
 
-  try {
-    const encoded = btoa(text); // Base64 encode
-    output.value = encoded;
-  } catch (error) {
-    alert("Error encoding text: " + error.message);
-  }
-}
-
-// Base64 decode
-function decodeBase64() {
-  const input = document.querySelector('.tool-section:nth-of-type(1) .input-group:nth-of-type(2) input');
-  const output = document.querySelector('.tool-section:nth-of-type(1) .input-group:nth-of-type(1) input');
-  
-  if (!input || !output) {
-    console.error("Input or output field not found.");
-    return;
-  }
-
-  const text = input.value;
-
-  if (text.trim() === "") {
-    alert("Please enter Base64 encoded text to decode.");
-    return;
-  }
-
-  try {
-    const decoded = atob(text); // Base64 decode
-    output.value = decoded;
-  } catch (error) {
-    alert("Error decoding text: " + error.message);
-  }
-}
-
-// MD5 生成函数
-function generateMD5() {
-  const input = document.querySelector('.tool-section:nth-of-type(2) .input-group:nth-of-type(1) input');
-  const output = document.querySelector('.tool-section:nth-of-type(2) .input-group:nth-of-type(2) input');
-
-  if (!input || !output) {
-    console.error("Input or output field not found.");
-    return;
-  }
-
-  const text = input.value;
-
-  if (text.trim() === "") {
-    alert("Please enter text to hash.");
-    return;
-  }
-
-  try {
-    const hash = CryptoJS.MD5(text).toString(); // 使用 CryptoJS 生成 MD5
-    output.value = hash;
-  } catch (error) {
-    alert("Error generating MD5 hash: " + error.message);
-  }
-}
-  // Function to toggle IP information visibility
-  function showIP() {
-    const iframe = document.getElementById("ipFrame");
-    const button = document.querySelector(".button-container button");
-
-    // Check current visibility of the iframe
-    if (iframe.style.display === "none" || iframe.style.display === "") {
-      iframe.style.display = "block"; // Show iframe
-      iframe.style.width = "100%"; // Set width
-      iframe.style.height = "260px"; // Set height
-      iframe.src = document.body.classList.contains("dark")
-        ? "https://ip.skk.moe/simple-dark"
-        : "https://ip.skk.moe/simple"; // Set src dynamically based on theme
-      button.textContent = "Hide ip info"; // Update button text
-    } else {
-      iframe.style.display = "none"; // Hide iframe
-      iframe.style.height = "0"; // Set height to 0
-      button.textContent = "Show ip info"; // Update button text
-    }
-  }
-
-</script>
 
 </main>
 

@@ -75,6 +75,20 @@ function initSearch() {
   }
 
   async function loadIndex() {
+    // Try JSON index first (if enabled).
+    try {
+      var jsonResponse = await fetch("/search_index.en.json");
+      if (
+        jsonResponse.ok &&
+        jsonResponse.headers.get("content-type")?.includes("application/json")
+      ) {
+        var data = await jsonResponse.json();
+        return Array.isArray(data) ? data : data.docs || [];
+      }
+    } catch (_) {
+      // fall back to JS format
+    }
+
     // Fallback: Zola default JS index format (`window.searchIndex = {...}`)
     try {
       var jsResponse = await fetch("/search_index.en.js");

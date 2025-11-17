@@ -24,7 +24,7 @@ document.addEventListener("DOMContentLoaded", function () {
   const searchToggleModal = document.querySelector("#search-toggle-box .search-toggle-modal");
   const searchToggleInput = document.getElementById("search-toggle-input");
   const searchToggleButton = document.getElementById("search-toggle-button");
-  const searchToggleLink = document.querySelector('a[title="Search"]');
+  const searchToggleLink = document.querySelector('[data-search-toggle="true"]');
 
   if (!searchToggleBox || !searchToggleModal || !searchToggleInput || !searchToggleButton || !searchToggleLink) {
     return; // Search toggle UI not present.
