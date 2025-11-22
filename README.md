@@ -1,10 +1,15 @@
 # Cela
 
-*Cela* is a simple and lightweight theme for Zola.<br>If you like it, Please give a 🌟 on Github :)<br>The style sheet of Cela is adapted from [Catppuccin](https://github.com/catppuccin/catppuccin).
+<p align="center">
+  <a href="https://edwardzcn-decade.github.io/cela"><img src="https://img.shields.io/badge/Cela-f8f8f8?style=for-the-badge">
+  <a href="https://www.getzola.org"><img src="https://img.shields.io/badge/Zola-f8f8f8?style=for-the-badge&logo=zola&logoColor=black"></a>
+</p>
 
+*Cela* is an ongoing simple and lightweight theme for Zola.<br>If you like it, Please give a 🌟 on Github :)<br>The style sheet of Cela is adapted from [Catppuccin](https://github.com/catppuccin/catppuccin).
 
+![screenshot](screenshot.png)
 
-<!-- Demo TODO -->
+---
 
 ## Theme Features
 
