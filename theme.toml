@@ -1,7 +1,6 @@
 name = "Cela"
 description = "A minimalist documentation/blog theme."
 tags = ["blog", "documentation", "lightweight", "minimal" ,"responsive", "search"]
-author = "Edward Zhang"
 license = "MIT"
 min_version = "0.19.0"
 homepage = "https://github.com/edwardzcn-decade/cela"
@@ -15,7 +14,7 @@ demo = "https://edwardzcn-decade.github.io/cela/"
 # Refer to provided config.toml; [extra.cela] subsection
 
 [author]
-name = "edwardzcn"
+name = "Edward Zhang"
 homepage = "https://github.com/edwardzcn-decade"
 
 [original]
