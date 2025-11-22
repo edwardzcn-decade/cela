@@ -1,6 +1,24 @@
-name = "cela"
-description = "A modern, clean Zola theme for personal blogs."
+name = "Cela"
+description = "A minimalist documentation/blog theme."
+tags = ["blog", "documentation", "lightweight", "minimal" ,"responsive", "search"]
 author = "Edward Zhang"
 license = "MIT"
 min_version = "0.19.0"
 homepage = "https://github.com/edwardzcn-decade/cela"
+demo = "https://edwardzcn-decade.github.io/cela/"
+
+# Any variable there can be overridden in the end user `config.toml`
+# You don't need to prefix variables by the theme name but as this will
+# be merged with user data, some kind of prefix or nesting is preferable
+# Use snake_casing to be consistent with the rest of Zola
+[extra]
+# Refer to provided config.toml; [extra.cela] subsection
+
+[author]
+name = "edwardzcn"
+homepage = "https://github.com/edwardzcn-decade"
+
+[original]
+author = "Aditya Telange"
+homepage = "https://github.com/adityatelange"
+repo = "https://github.com/adityatelange/hugo-PaperMod"
