@@ -84,19 +84,6 @@ Any choices you make during the initialization can be changed later in the `conf
 
 ```bash
 git submodule add https://github.com/edwardzcn-decade/cela themes/cela
-```
-
-or modify the `.gitmodules` file directly
-
-```toml
-[submodule "themes/cela"]
-	path = themes/cela
-	url = https://github.com/edwardzcn-decade/cela
-```
-
-Init your submodule, update and sync.
-
-```bash
 git submodule update --init --force --recursive
 git submodule sync
 ```
