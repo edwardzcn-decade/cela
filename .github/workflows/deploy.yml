@@ -15,13 +15,25 @@ jobs:
     steps:
       # checkout code
       - name: Checkout code
-        uses: actions/checkout@v3
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 20
+          cache: npm
+
+      - name: Install CSS tooling
+        run: npm ci
+
+      - name: Build generated CSS
+        run: npm run build:css
 
       # install zola via install-action
       - name: Install Zola
         uses: taiki-e/install-action@v2
         with:
-          tool: zola@0.19.1
+          tool: zola@0.22.1
 
       # build zola static site
       - name: Build site

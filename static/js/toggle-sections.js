@@ -1,25 +1,27 @@
-document.addEventListener("DOMContentLoaded", () => {
+function initSectionToggles() {
   const toggles = document.querySelectorAll(".toggle-content");
 
   toggles.forEach((toggle) => {
     toggle.addEventListener("click", (event) => {
       event.preventDefault();
 
-      const content = toggle
-        .closest(".home-list")
-        .querySelector(".home-list-content");
-
-      if (content.classList.contains("show")) {
-        content.classList.remove("show");
-        toggle.setAttribute("aria-expanded", "false");
-      } else {
-        content.classList.add("show");
-        toggle.setAttribute("aria-expanded", "true");
+      const homeList = toggle.closest(".home-list");
+      if (!homeList) {
+        return;
       }
+
+      const content = homeList.querySelector(".home-list-content");
+      if (!content) {
+        return;
+      }
+
+      const isExpanded = content.classList.toggle("show");
+      toggle.setAttribute("aria-expanded", isExpanded ? "true" : "false");
     });
   });
-});
-document.addEventListener("DOMContentLoaded", function () {
+}
+
+function initSearchToggle() {
   const searchToggleBox = document.getElementById("search-toggle-box");
   const searchToggleModal = document.querySelector("#search-toggle-box .search-toggle-modal");
   const searchToggleInput = document.getElementById("search-toggle-input");
@@ -27,7 +29,7 @@ document.addEventListener("DOMContentLoaded", function () {
   const searchToggleLink = document.querySelector('[data-search-toggle="true"]');
 
   if (!searchToggleBox || !searchToggleModal || !searchToggleInput || !searchToggleButton || !searchToggleLink) {
-    return; // Search toggle UI not present.
+    return;
   }
 
   searchToggleLink.addEventListener("click", function (event) {
@@ -43,7 +45,6 @@ document.addEventListener("DOMContentLoaded", function () {
   });
 
   document.addEventListener("click", function (event) {
-    // check if click inside the search panel
     const isClickInside =
       searchToggleModal.contains(event.target) || searchToggleLink.contains(event.target);
     if (!isClickInside) {
@@ -51,16 +52,18 @@ document.addEventListener("DOMContentLoaded", function () {
     }
   });
 
-  // TODO search function
   searchToggleButton.addEventListener("click", function () {
     const searchTerm = searchToggleInput.value.trim();
 
     if (searchTerm) {
-      // TODO jump to search page?
-      const searchUrl = `/search/?q=${encodeURIComponent(searchTerm)}`;
-      window.location.href = searchUrl;
+      window.location.assign(`/search/?q=${encodeURIComponent(searchTerm)}`);
     } else {
       alert("Please enter a search term.");
     }
   });
+}
+
+document.addEventListener("DOMContentLoaded", function () {
+  initSectionToggles();
+  initSearchToggle();
 });

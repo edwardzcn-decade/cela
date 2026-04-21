@@ -12,13 +12,25 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v4
 
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 20
+          cache: npm
+
+      - name: Install CSS tooling
+        run: npm ci
+
+      - name: Build generated CSS
+        run: npm run build:css
+
       - name: Install Zola
         uses: taiki-e/install-action@v2
         with:
-          tool: zola@0.21.0
+          tool: zola@0.22.1
 
       - name: Check site
-        run: zola check
+        run: zola check --skip-external-links
 
       - name: Zola build
         run: zola build

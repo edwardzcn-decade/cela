@@ -87,10 +87,6 @@ build_search_index = true
 
 # Configuration of the Markdown rendering
 [markdown]
-# Whether to do syntax highlighting
-# Theme can be customised by setting the `highlight_theme` variable to a theme supported by Zola
-highlight_code = true
-
 # When set to "true", emoji aliases translated to their corresponding
 # Unicode emoji equivalent in the rendered Markdown files. (e.g.: :smile: => 😄)
 render_emoji = true
@@ -103,6 +99,10 @@ smart_punctuation = false
 # Default to open
 # Reference [Github Docs](https://docs.github.com/en/get-started/writing-on-github/getting-started-with-writing-and-formatting-on-github/basic-writing-and-formatting-syntax#footnotes)
 bottom_footnotes = true
+
+# Syntax highlighting settings for Zola 0.22.x
+[markdown.highlighting]
+theme = "catppuccin-mocha"
 
 [slugify]
 # default is on

@@ -1,23 +1,16 @@
-// Debounce helper to avoid hammering the index while typing.
-function debounce(func, wait, immediate) {
-  var timeout;
-  return function () {
-    var context = this,
-      args = arguments;
-    var later = function () {
-      timeout = null;
-      if (!immediate) func.apply(context, args);
-    };
-    var callNow = immediate && !timeout;
-    clearTimeout(timeout);
-    timeout = setTimeout(later, wait);
-    if (callNow) func.apply(context, args);
+function debounce(func, wait) {
+  let timeoutId;
+
+  return function debounced(...args) {
+    const context = this;
+    clearTimeout(timeoutId);
+    timeoutId = window.setTimeout(() => func.apply(context, args), wait);
   };
 }
 
 function formatSearchResultItem(item) {
-  var title = item.doc && item.doc.title ? item.doc.title : item.ref;
-  var summary = "";
+  const title = item.doc && item.doc.title ? item.doc.title : item.ref;
+  let summary = "";
   if (item.doc) {
     summary = item.doc.summary || item.doc.description || "";
     if (!summary && item.doc.body) {
@@ -46,9 +39,12 @@ function normalizeTerm(term) {
 }
 
 function documentMatches(doc, terms) {
-  if (!terms.length) return false;
-  var haystack = ((doc.title || "") + " " + (doc.body || "")).toLowerCase();
-  for (var i = 0; i < terms.length; i++) {
+  if (!terms.length) {
+    return false;
+  }
+
+  const haystack = ((doc.title || "") + " " + (doc.body || "")).toLowerCase();
+  for (let i = 0; i < terms.length; i += 1) {
     if (haystack.indexOf(terms[i]) === -1) {
       return false;
     }
@@ -57,15 +53,15 @@ function documentMatches(doc, terms) {
 }
 
 function initSearch() {
-  var input = document.getElementById("searchInput");
-  var resultsList = document.getElementById("searchResults");
+  const input = document.getElementById("searchInput");
+  const resultsList = document.getElementById("searchResults");
   if (!input || !resultsList) {
     return; // No search DOM on this page.
   }
 
-  var MAX_ITEMS = 10;
-  var currentTerm = "";
-  var indexPromise = null; // resolves to array of docs
+  const MAX_ITEMS = 10;
+  let currentTerm = "";
+  let indexPromise = null;
 
   async function initIndex() {
     if (!indexPromise) {
@@ -75,30 +71,28 @@ function initSearch() {
   }
 
   async function loadIndex() {
-    // Try JSON index first (if enabled).
     try {
-      var jsonResponse = await fetch("/search_index.en.json");
+      const jsonResponse = await fetch("/search_index.en.json");
       if (
         jsonResponse.ok &&
         jsonResponse.headers.get("content-type")?.includes("application/json")
       ) {
-        var data = await jsonResponse.json();
+        const data = await jsonResponse.json();
         return Array.isArray(data) ? data : data.docs || [];
       }
     } catch (_) {
-      // fall back to JS format
+      // Fall back to the JS index format below.
     }
 
-    // Fallback: Zola default JS index format (`window.searchIndex = {...}`)
     try {
-      var jsResponse = await fetch("/search_index.en.js");
-      var text = await jsResponse.text();
-      var prefix = "window.searchIndex = ";
+      const jsResponse = await fetch("/search_index.en.js");
+      const text = await jsResponse.text();
+      const prefix = "window.searchIndex = ";
       if (text.startsWith(prefix)) {
-        var parsed = JSON.parse(text.slice(prefix.length));
-        var docsObj = (parsed.documentStore && parsed.documentStore.docs) || {};
+        const parsed = JSON.parse(text.slice(prefix.length));
+        const docsObj = (parsed.documentStore && parsed.documentStore.docs) || {};
         return Object.keys(docsObj).map(function (key) {
-          var doc = docsObj[key];
+          const doc = docsObj[key];
           return {
             title: doc.title || key,
             body: doc.body || "",
@@ -120,10 +114,11 @@ function initSearch() {
       resultsList.innerHTML = "";
       return;
     }
-    var docs = await initIndex();
-    var terms = normalizeTerm(term);
-    var results = [];
-    for (var i = 0; i < docs.length; i++) {
+    const docs = await initIndex();
+    const terms = normalizeTerm(term);
+    const results = [];
+
+    for (let i = 0; i < docs.length; i += 1) {
       if (documentMatches(docs[i], terms)) {
         results.push({ ref: docs[i].permalink || docs[i].url, doc: docs[i] });
       }
@@ -134,47 +129,44 @@ function initSearch() {
       return;
     }
     resultsList.style.display = "block";
-    resultsList.innerHTML = "";
-    for (var i = 0; i < Math.min(results.length, MAX_ITEMS); i++) {
-      resultsList.innerHTML += formatSearchResultItem(results[i]);
-    }
+    resultsList.innerHTML = results
+      .slice(0, MAX_ITEMS)
+      .map(formatSearchResultItem)
+      .join("");
   }
 
-  var debounced = debounce(async function () {
-    var term = input.value.trim();
+  const debounced = debounce(function () {
+    const term = input.value.trim();
     if (term === currentTerm) {
       return;
     }
     currentTerm = term;
-    performSearch(term);
+    void performSearch(term);
   }, 150);
 
-  input.addEventListener("keyup", debounced);
+  input.addEventListener("input", debounced);
 
-  window.addEventListener("click", function (e) {
+  window.addEventListener("click", function (event) {
     if (
       resultsList.style.display === "block" &&
-      !resultsList.contains(e.target)
+      !resultsList.contains(event.target) &&
+      event.target !== input
     ) {
       resultsList.style.display = "none";
     }
   });
 
-  // Pre-fill from ?q=...
-  var params = new URLSearchParams(window.location.search);
-  var initial = params.get("q");
+  const params = new URLSearchParams(window.location.search);
+  const initial = params.get("q");
   if (initial) {
     input.value = initial;
-    currentTerm = ""; // force search
-    performSearch(initial);
+    currentTerm = "";
+    void performSearch(initial);
   }
 }
 
-if (
-  document.readyState === "complete" ||
-  (document.readyState !== "loading" && !document.documentElement.doScroll)
-) {
-  initSearch();
-} else {
+if (document.readyState === "loading") {
   document.addEventListener("DOMContentLoaded", initSearch);
+} else {
+  initSearch();
 }

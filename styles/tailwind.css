@@ -1,0 +1,16 @@
+@tailwind components;
+@tailwind utilities;
+
+@layer components {
+  .tw-search-panel {
+    @apply relative mb-[var(--gap)] rounded-[var(--radius)] border border-[var(--border)] bg-[var(--entry)] p-[var(--gap)] shadow-[0_4px_6px_rgba(0,0,0,0.1)];
+  }
+
+  .tw-search-results {
+    @apply my-[10px];
+  }
+
+  .tw-search-results .post-entry {
+    @apply bg-[var(--code-bg)];
+  }
+}

@@ -22,7 +22,7 @@ If you like it, please give it a 🌟 on GitHub. Thanks!
 + [x] Blog RSS feeds
 + [x] Full-text search
 + [x] Robot tools
-+ [ ] Blog archive (group by year)
++ [x] Home page archive grouping (group by year)
 + [ ] Internationalization (i18n)
 
 ### Tags, Categories, and Taxonomies
@@ -51,6 +51,13 @@ If you only need installation of the theme, skip to [Theme Installation](#theme-
 
 ### Zola Installation
 
+Cela is developed and validated against `Zola 0.22.1`.
+
+For syntax highlighting on `Zola 0.22.x`, use the nested
+`[markdown.highlighting]` table instead of the older flat
+`highlight_code` setting. See the official configuration docs:
+https://www.getzola.org/documentation/getting-started/configuration/
+
 ```bash
 # macOS
 brew install zola
@@ -59,7 +66,7 @@ apk add zola
 # Arch Linux
 pacman -S zola
 # Docker
-docker pull ghcr.io/getzola/zola:v0.19.1
+docker pull ghcr.io/getzola/zola:v0.22.1
 ```
 
 ### Create a Zola site
@@ -101,13 +108,59 @@ theme = "cela"
 3. Set `theme` in config.toml.
 4. (Optional) Delete unused example content under content/ if you start fresh.
 
-## 👐 Contributing
+## Development
 
-> [!NOTE]
->
-> If you find this project helpful and would like to support its development, see our [CONTRIBUTING](CONTRIBUTING.md) and [CODE_OF_CONDUCT](CODE_OF_CONDUCT.md) guidelines.
+### Static Runtime Model
+
+Cela stays a pure static Zola theme:
+
+- No backend
+- No frontend framework runtime
+- No Node.js requirement for theme users
+
+Node.js is used only for **theme development** to generate static CSS.
+
+### CSS Layers
+
+The CSS stack is split into three layers:
+
+1. `static/css/theme-vars.css`: design tokens and theme variables
+2. `static/css/theme-base.css` and `static/css/theme-common.css`: legacy baseline styles
+3. `styles/tailwind.css` -> `static/css/theme-generated.css`: generated Tailwind layer for gradual migration
+
+The generated CSS file is committed so downstream theme users still only need Zola.
+
+### Local Theme Development
+
+Install the development dependencies:
+
+```bash
+npm install
+```
+
+Build the generated CSS once:
+
+```bash
+npm run build:css
+```
+
+Watch CSS changes during theme development:
+
+```bash
+npm run watch:css
+```
+
+Validate and build the site:
+
+```bash
+zola check --skip-external-links
+zola build
+```
+
+### Smoke Checklist
+
+See [docs/smoke-checklist.md](docs/smoke-checklist.md) for the baseline routes and interactions to verify after template or CSS changes.
 
 ## LICENSE
 
 MIT
-
