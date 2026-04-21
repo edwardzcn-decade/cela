@@ -108,7 +108,11 @@ theme = "cela"
 3. Set `theme` in config.toml.
 4. (Optional) Delete unused example content under content/ if you start fresh.
 
-## Development
+## 👐 Development
+
+> [!NOTE]
+>
+> If you find this project helpful and would like to support its development, see our [CONTRIBUTING](CONTRIBUTING.md) and [CODE_OF_CONDUCT](CODE_OF_CONDUCT.md) guidelines.
 
 ### Static Runtime Model
 
@@ -122,13 +126,12 @@ Node.js is used only for **theme development** to generate static CSS.
 
 ### CSS Layers
 
-The CSS stack is split into three layers:
+The final CSS stack is split into two layers:
 
-1. `static/css/theme-vars.css`: design tokens and theme variables
-2. `static/css/theme-base.css` and `static/css/theme-common.css`: legacy baseline styles
-3. `styles/tailwind.css` -> `static/css/theme-generated.css`: generated Tailwind layer for gradual migration
+1. `static/css/theme-runtime.css`: a thin runtime theme layer for light/dark semantic color variables
+2. `styles/tailwind.css` -> `static/css/theme.css`: the generated Tailwind-controlled main stylesheet
 
-The generated CSS file is committed so downstream theme users still only need Zola.
+The generated CSS file is committed so downstream theme users still only need Zola. Legacy files are no longer part of the runtime load path.
 
 ### Local Theme Development
 
@@ -153,6 +156,7 @@ npm run watch:css
 Validate and build the site:
 
 ```bash
+npm run build:css
 zola check --skip-external-links
 zola build
 ```
@@ -161,6 +165,12 @@ zola build
 
 See [docs/smoke-checklist.md](docs/smoke-checklist.md) for the baseline routes and interactions to verify after template or CSS changes.
 
+Homepage motion is intentionally scoped to the landing page hero, social icons,
+year or section headers, and home post lists. It uses CSS animation plus
+`IntersectionObserver`, and degrades cleanly when JavaScript is disabled or
+`prefers-reduced-motion` is enabled.
+
 ## LICENSE
 
 MIT
+exit

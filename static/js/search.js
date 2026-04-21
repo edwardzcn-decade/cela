@@ -53,9 +53,11 @@ function documentMatches(doc, terms) {
 }
 
 function initSearch() {
+  const searchIndexJsonUrl = document.body.dataset.searchIndexJsonUrl;
+  const searchIndexJsUrl = document.body.dataset.searchIndexJsUrl;
   const input = document.getElementById("searchInput");
   const resultsList = document.getElementById("searchResults");
-  if (!input || !resultsList) {
+  if (!input || !resultsList || !searchIndexJsonUrl || !searchIndexJsUrl) {
     return; // No search DOM on this page.
   }
 
@@ -72,7 +74,7 @@ function initSearch() {
 
   async function loadIndex() {
     try {
-      const jsonResponse = await fetch("/search_index.en.json");
+      const jsonResponse = await fetch(searchIndexJsonUrl);
       if (
         jsonResponse.ok &&
         jsonResponse.headers.get("content-type")?.includes("application/json")
@@ -85,7 +87,7 @@ function initSearch() {
     }
 
     try {
-      const jsResponse = await fetch("/search_index.en.js");
+      const jsResponse = await fetch(searchIndexJsUrl);
       const text = await jsResponse.text();
       const prefix = "window.searchIndex = ";
       if (text.startsWith(prefix)) {

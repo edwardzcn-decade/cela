@@ -5,21 +5,10 @@
 <!-- Add home section pages (and transparent subsection pages)-->
 
 {% for year, pages in home_section.pages | group_by(attribute="year") %}
-<h1>{{ year }}</h1>
+<h1 class="home-year reveal-on-scroll">{{ year }}</h1>
 {% for page in pages %}
-<article class="post-entry">
-  <header class="entry-header">
-    <h2>{{ page.title }}</h2>
-  </header>
-  {% if page.summary %}
-  <div class="entry-content">
-    <p>{{ page.summary | safe }}</p>
-  </div>
-  {% endif %}
-  <footer class="entry-footer">
-    {% include "partials/post/post_meta.html" %}
-  </footer>
-  <a class="entry-link" aria-label="post link to {{ page.title }}" href="{{ page.permalink }}"></a>
-</article>
+{% set card_page = page %}
+{% set card_reveal = true %}
+{% include "partials/common/post_card.html" %}
 {% endfor %}
 {% endfor %}

@@ -50,10 +50,8 @@
   <link rel="canonical" href="{{ current_url | default(value=config.base_url) }}">
 {% endif %}
 
-<link rel="stylesheet" href="{{ get_url(path='css/theme-vars.css') }}">
-<link rel="stylesheet" href="{{ get_url(path='css/theme-base.css') }}">
-<link rel="stylesheet" href="{{ get_url(path='css/theme-common.css') }}">
-<link rel="stylesheet" href="{{ get_url(path='css/theme-generated.css') }}">
+<link rel="stylesheet" href="{{ get_url(path='css/theme-runtime.css') }}">
+<link rel="stylesheet" href="{{ get_url(path='css/theme.css') }}">
 <link rel="icon" href="{{ get_url(path=(config.extra.cela.favicon | default(value='favicon.ico'))) }}">
 <link rel="icon" type="image/png" sizes="16x16" href="{{ get_url(path=(config.extra.cela.favicon16x16 | default(value='favicon-16x16.png'))) }}">
 <link rel="icon" type="image/png" sizes="32x32" href="{{ get_url(path=(config.extra.cela.favicon32x32 | default(value='favicon-32x32.png'))) }}">
@@ -78,19 +76,26 @@
     <style>
         @media (prefers-color-scheme: dark) {
             :root {
-                --theme: rgb(30, 32, 48);           /* macchiato-mantle */
-                --entry: rgb(36, 39, 58);           /* macchiato-base  */
-                --primary: rgb(202, 211, 245);      /* macchiato-text */
-                --secondary: rgb(184,192, 224);     /* macchiato-subtext1 */
-                --tertiary: rgb(54, 58, 79);        /* macchiato-surface0 */
-                --content: rgb(165, 173, 203);      /* macchiato-subtext0 */
-                --hljs-bg: rgb(24, 25, 38);         /* macchiato-crust */
-                --code-bg: rgb(24, 25, 38);         /* macchiato-crust */
-                --border: rgb(30, 32, 48);          /* macchiato-mantle */
+                --theme-bg: rgb(24, 25, 38);
+                --surface-bg: rgb(36, 39, 58);
+                --surface-muted: rgb(54, 58, 79);
+                --surface-strong: rgb(68, 71, 90);
+                --text-main: rgb(202, 211, 245);
+                --text-muted: rgb(165, 173, 203);
+                --content-text: rgb(184, 192, 224);
+                --highlight-bg: rgb(54, 58, 79);
+                --code-bg: rgb(30, 32, 48);
+                --border-color: rgb(68, 71, 90);
+                --accent-color: rgb(138, 173, 244);
+                --accent-strong: rgb(125, 196, 228);
+                --accent-soft: rgba(138, 173, 244, 0.18);
+                --focus-ring: rgba(138, 173, 244, 0.32);
+                --overlay-backdrop: rgba(17, 17, 27, 0.72);
+                --hero-glow: radial-gradient(circle at top, rgba(138, 173, 244, 0.18), transparent 55%);
             }
 
             .list {
-                background: var(--theme);
+                background: var(--theme-bg);
             }
 
             .list:not(.dark)::-webkit-scrollbar-track {
@@ -98,7 +103,7 @@
             }
 
             .list:not(.dark)::-webkit-scrollbar-thumb {
-                border-color: var(--theme);
+                border-color: var(--theme-bg);
             }
         }
 

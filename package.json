@@ -4,9 +4,9 @@
   "version": "0.1.0",
   "description": "Development tooling for the Cela Zola theme.",
   "scripts": {
-    "build:css": "tailwindcss -c tailwind.config.js -i ./styles/tailwind.css -o ./static/css/theme-generated.css",
-    "build:css:min": "tailwindcss -c tailwind.config.js -i ./styles/tailwind.css -o ./static/css/theme-generated.css --minify",
-    "watch:css": "tailwindcss -c tailwind.config.js -i ./styles/tailwind.css -o ./static/css/theme-generated.css --watch"
+    "build:css": "tailwindcss -c tailwind.config.js -i ./styles/tailwind.css -o ./static/css/theme.css",
+    "build:css:min": "tailwindcss -c tailwind.config.js -i ./styles/tailwind.css -o ./static/css/theme.css --minify",
+    "watch:css": "tailwindcss -c tailwind.config.js -i ./styles/tailwind.css -o ./static/css/theme.css --watch"
   },
   "devDependencies": {
     "autoprefixer": "^10.4.21",

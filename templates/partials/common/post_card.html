@@ -1,0 +1,15 @@
+<article class="post-entry{% if card_extra_classes %} {{ card_extra_classes }}{% endif %}{% if card_reveal | default(value=false) %} reveal-on-scroll{% endif %}">
+  <header class="entry-header">
+    <h2>{{ card_page.title }}</h2>
+  </header>
+  {% if card_page.summary %}
+  <div class="entry-content">
+    <p>{{ card_page.summary | safe }}</p>
+  </div>
+  {% endif %}
+  <footer class="entry-footer">
+    {% set meta_page = card_page %}
+    {% include "partials/post/post_meta.html" %}
+  </footer>
+  <a class="entry-link" aria-label="post link to {{ card_page.title }}" href="{{ card_page.permalink }}"></a>
+</article>
