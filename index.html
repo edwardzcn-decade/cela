@@ -100,14 +100,17 @@
 class="list"
 id="top"
 data-show-code-copy-buttons="true"
+data-show-theme-toggle="true"
+data-remember-choice="true"
 data-search-page-url="https://edwardzcn-decade.github.io/cela/search"
 data-search-index-json-url="https://edwardzcn-decade.github.io/cela/search_index.en.json"
 data-search-index-js-url="https://edwardzcn-decade.github.io/cela/search_index.en.js">
   <script>document.documentElement.classList.add("js");</script>
 <script>
   (function () {
-    var scheme = localStorage.getItem("pref-scheme");
+    var scheme;
     var darkSchemes = ["catppuccin-macchiato", "rose-pine", "nord"];
+    scheme = localStorage.getItem("pref-scheme");
     if (!scheme) {
       scheme = "catppuccin-macchiato";
       }
@@ -117,7 +120,7 @@ data-search-index-js-url="https://edwardzcn-decade.github.io/cela/search_index.e
       document.body.classList.add("dark");
     }
     localStorage.setItem("pref-scheme", scheme);
-  })();
+    })();
 </script>
 <header class="header">
   <nav class="nav">
