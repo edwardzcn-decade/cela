@@ -1,7 +1,7 @@
 <header class="page-header">
-  <div class="breadcrumbs">
+  <nav class="breadcrumbs" aria-label="breadcrumb">
       <a href="{{ config.base_url }}">Home</a>
-  </div>
+  </nav>
   <h1>{{ section.title }}
     {% for feed_filename in config.feed_filenames %}
     <a href="{{ get_url(path=feed_filename, trailingslash=false) | safe }}" title="RSS" aria-label="RSS">

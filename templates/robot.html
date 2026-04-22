@@ -3,9 +3,9 @@
 
 <!-- robot header -->
 <header class="page-header">
-    <div class="breadcrumbs">
+    <nav class="breadcrumbs" aria-label="breadcrumb">
         <a href="{{ config.base_url }}">Home</a>
-    </div>
+    </nav>
     <h1>{{ section.title }}
       {{ macro_extra_icon::extra_icon(icon="robot", size="24") }}
   </h1>
@@ -22,15 +22,15 @@
     </div>
     <div class="tool-inputs">
       <div class="input-group">
-        <input placeholder="Text to be encoded"></input>
+        <input aria-label="Text to encode" placeholder="Text to encode"></input>
         <div class="button-container">
-          <button onclick="encodeBase64()">Encode</button>
+          <button aria-label="Encode to Base64" onclick="encodeBase64()">Encode</button>
         </div>
       </div>
       <div class="input-group">
-        <input placeholder="Text to be decoded"></input>
+        <input aria-label="Text to decode" placeholder="Text to decode"></input>
         <div class="button-container">
-          <button onclick="decodeBase64()">Decode</button>
+          <button aria-label="Decode from Base64" onclick="decodeBase64()">Decode</button>
         </div>
       </div>
     </div>
@@ -42,13 +42,13 @@
     </div>
     <div class="tool-inputs">
       <div class="input-group">
-        <input placeholder="Enter text here"></input>
+        <input aria-label="Text to hash" placeholder="Text to hash"></input>
         <div class="button-container">
-          <button onclick="generateMD5()">Generate MD5</button>
+          <button aria-label="Generate MD5 hash" onclick="generateMD5()">Generate MD5</button>
         </div>
       </div>
       <div class="input-group">
-        <input placeholder="MD5 hash will appear here"></input>
+        <input aria-label="MD5 hash output" placeholder="MD5 hash output" readonly></input>
       </div>
     </div>
   </div>
@@ -85,12 +85,12 @@
         <input id="wechat-message-content" placeholder="Your message"></input>
       </div>
       <div class="button-container">
-        <button type="button" onclick="sendWeChatMessage()">发送消息</button>
+        <button type="button" onclick="sendWeChatMessage()">Send Message</button>
       </div>
     </form>
   </div>
   <div id="wechat-response" class="tool-response" style="margin-top: 20px; text-align: center; color: green;">
-    <!-- 返回信息将显示在这里 -->
+    <!-- TODO: response message will appear here -->
   </div>
 </div>
 #}
@@ -163,7 +163,7 @@ function generateMD5() {
   }
 
   try {
-    const hash = CryptoJS.MD5(text).toString(); // 使用 CryptoJS 生成 MD5
+    const hash = CryptoJS.MD5(text).toString(); // generate MD5 using CryptoJS
     output.value = hash;
   } catch (error) {
     alert("Error generating MD5 hash: " + error.message);

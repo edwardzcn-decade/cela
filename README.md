@@ -170,8 +170,36 @@ year or section headers, and home post lists. It uses CSS animation plus
 `IntersectionObserver`, and degrades cleanly when JavaScript is disabled or
 `prefers-reduced-motion` is enabled.
 
+## CSS Class Reference
+
+Mapping between semantic template class names and their Tailwind token equivalents.
+
+| Class | File | Role | Key Tailwind tokens used |
+|-------|------|------|--------------------------|
+| `.post-single` | `page.html` | Article page container | `max-w-main`, `px-gap` |
+| `.search-page` | `search.html` | Search page container | `max-w-main`, `px-gap` |
+| `.search-box` | `search.html` | Search input wrapper | — |
+| `.post-entry` | `post_card.html` | Post card | `bg-surface`, `border`, `shadow-card` |
+| `.post-header` | `page.html`, `search.html` | Page/post header block | — |
+| `.post-title` | multiple | Page `<h1>` title | — |
+| `.entry-header` | `post_card.html` | Card title area | — |
+| `.entry-content` | `post_card.html` | Card summary area | `text-content` |
+| `.entry-footer` | `post_card.html` | Card meta area | `text-muted` |
+| `.entry-link` | `post_card.html` | Full-card click overlay | — |
+| `.breadcrumbs` | `page.html`, `search.html`, `robot.html`, `section_post.html` | `<nav>` breadcrumb trail | `text-muted` |
+| `.pagination` | `section_post.html` | Prev/next page nav | — |
+| `.pagination .previous` | `section_post.html` | Previous page link | `bg-text`, `text-theme` |
+| `.pagination .next` | `section_post.html` | Next page link | `bg-text`, `text-theme` |
+| `.footer-credits` | `home_footer.html` | Copyright + powered-by row | `text-muted` |
+| `.footer-scheme` | `home_footer.html` | Color scheme selector row | `text-muted` |
+| `#scheme-select` | `home_footer.html` | Color scheme `<select>` | `border`, `text-muted` |
+
+> Tailwind token names correspond to keys in `tailwind.config.js` → `theme.extend`.
+
 ## TODO
 
+- [ ] **Tailwind Path B migration**: All semantic classes (`.post-single`, `.post-entry`, `.footer`, etc.) in `styles/tailwind.css` currently use raw CSS values. Migrate them to use `@apply` with tokens defined in `tailwind.config.js` (e.g. `@apply bg-surface border-border rounded-theme`). This is the recommended step before considering Path A (utility classes in templates) or Tailwind v4.
+- [ ] **Tailwind Path A (future)**: Replace semantic classes in templates with inline Tailwind utility classes. Best done alongside Tailwind v4 migration.
 - [ ] Explore Tailwind v4 migration: v4 removes `tailwind.config.js` in favor of `@theme` blocks in CSS, aligns naturally with the CSS variable architecture, and offers significantly faster build times. Tracked for future investigation.
 
 ## LICENSE

@@ -365,6 +365,10 @@
     margin-inline-start: auto;
   }
 
+  .pagination .previous {
+    margin-inline-end: auto;
+  }
+
   .social-icons {
     padding: 12px 0;
   }
@@ -443,6 +447,9 @@
     font-size: 2rem;
     line-height: 1.2;
   }
+
+  /* structural wrapper for home section lists */
+  .home-list-container {}
 
   .home-list.row {
     display: flex;
@@ -612,6 +619,22 @@
   .page-header,
   .post-header {
     margin: 24px auto 1.25rem;
+  }
+
+  .post-single {
+    max-width: calc(45rem + 3rem);
+    margin: 0 auto;
+    padding: 0 1.5rem;
+  }
+
+  .search-page {
+    max-width: calc(45rem + 3rem);
+    margin: 0 auto;
+    padding: 0 1.5rem;
+  }
+
+  .search-box {
+    margin-bottom: 1rem;
   }
 
   .post-title {
