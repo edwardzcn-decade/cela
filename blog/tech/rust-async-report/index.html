@@ -33,9 +33,8 @@
   <link rel="canonical" href="https:&#x2F;&#x2F;edwardzcn-decade.github.io&#x2F;cela&#x2F;&#x2F;blog&#x2F;tech&#x2F;rust-async-report&#x2F;">
 
 
-<link rel="stylesheet" href="https://edwardzcn-decade.github.io/cela/css/theme-vars.css">
-<link rel="stylesheet" href="https://edwardzcn-decade.github.io/cela/css/theme-base.css">
-<link rel="stylesheet" href="https://edwardzcn-decade.github.io/cela/css/theme-common.css">
+<link rel="stylesheet" href="https://edwardzcn-decade.github.io/cela/css/theme-runtime.css">
+<link rel="stylesheet" href="https://edwardzcn-decade.github.io/cela/css/theme.css">
 <link rel="icon" href="https://edwardzcn-decade.github.io/cela/favicon.ico">
 <link rel="icon" type="image/png" sizes="16x16" href="https://edwardzcn-decade.github.io/cela/favicon-16x16.png">
 <link rel="icon" type="image/png" sizes="32x32" href="https://edwardzcn-decade.github.io/cela/favicon-32x32.png">
@@ -60,19 +59,26 @@
     <style>
         @media (prefers-color-scheme: dark) {
             :root {
-                --theme: rgb(30, 32, 48);           /* macchiato-mantle */
-                --entry: rgb(36, 39, 58);           /* macchiato-base  */
-                --primary: rgb(202, 211, 245);      /* macchiato-text */
-                --secondary: rgb(184,192, 224);     /* macchiato-subtext1 */
-                --tertiary: rgb(54, 58, 79);        /* macchiato-surface0 */
-                --content: rgb(165, 173, 203);      /* macchiato-subtext0 */
-                --hljs-bg: rgb(24, 25, 38);         /* macchiato-crust */
-                --code-bg: rgb(24, 25, 38);         /* macchiato-crust */
-                --border: rgb(30, 32, 48);          /* macchiato-mantle */
+                --theme-bg: rgb(24, 25, 38);
+                --surface-bg: rgb(36, 39, 58);
+                --surface-muted: rgb(54, 58, 79);
+                --surface-strong: rgb(68, 71, 90);
+                --text-main: rgb(202, 211, 245);
+                --text-muted: rgb(165, 173, 203);
+                --content-text: rgb(184, 192, 224);
+                --highlight-bg: rgb(54, 58, 79);
+                --code-bg: rgb(30, 32, 48);
+                --border-color: rgb(68, 71, 90);
+                --accent-color: rgb(138, 173, 244);
+                --accent-strong: rgb(125, 196, 228);
+                --accent-soft: rgba(138, 173, 244, 0.18);
+                --focus-ring: rgba(138, 173, 244, 0.32);
+                --overlay-backdrop: rgba(17, 17, 27, 0.72);
+                --hero-glow: radial-gradient(circle at top, rgba(138, 173, 244, 0.18), transparent 55%);
             }
 
             .list {
-                background: var(--theme);
+                background: var(--theme-bg);
             }
 
             .list:not(.dark)::-webkit-scrollbar-track {
@@ -80,7 +86,7 @@
             }
 
             .list:not(.dark)::-webkit-scrollbar-thumb {
-                border-color: var(--theme);
+                border-color: var(--theme-bg);
             }
         }
 
@@ -92,19 +98,28 @@
 </head>
 
 <body
-class="" id="top">
-  <script>
-    const preft = localStorage.getItem("pref-theme");
-    if (preft === "dark") {
+class=""
+id="top"
+data-show-code-copy-buttons="true"
+data-search-page-url="https://edwardzcn-decade.github.io/cela/search"
+data-search-index-json-url="https://edwardzcn-decade.github.io/cela/search_index.en.json"
+data-search-index-js-url="https://edwardzcn-decade.github.io/cela/search_index.en.js">
+  <script>document.documentElement.classList.add("js");</script>
+<script>
+  (function () {
+    var scheme = localStorage.getItem("pref-scheme");
+    var darkSchemes = ["catppuccin-macchiato", "rose-pine", "nord"];
+    if (!scheme) {
+      scheme = "catppuccin-macchiato";
+      }
+    document.documentElement.setAttribute("data-scheme", scheme);
+    if (darkSchemes.indexOf(scheme) !== -1) {
+      document.documentElement.classList.add("dark");
       document.body.classList.add("dark");
-    } else if (preft === "light") {
-      document.body.classList.remove("dark");
-    } else if (window.matchMedia("(prefers-color-scheme: dark)").matches) {
-      document.body.classList.add("dark");
-    } else {
-      document.body.classList.remove("dark");
     }
-  </script>
+    localStorage.setItem("pref-scheme", scheme);
+  })();
+</script>
 <header class="header">
   <nav class="nav">
     <div class="logo">
@@ -294,11 +309,11 @@ class="" id="top">
   
 <article class="post-single">
   <header class="post-header">
-      <div class="breadcrumbs">
+      <nav class="breadcrumbs" aria-label="breadcrumb">
           <a href="https:&#x2F;&#x2F;edwardzcn-decade.github.io&#x2F;cela">Home</a>&nbsp;»&nbsp;
           <a href="https://edwardzcn-decade.github.io/cela/blog/">Posts</a>&nbsp;»&nbsp;
           <a href="https:&#x2F;&#x2F;edwardzcn-decade.github.io&#x2F;cela&#x2F;blog&#x2F;tech&#x2F;rust-async-report&#x2F;">Async Rust Field Report</a>
-      </div>
+      </nav>
       <h1 class="post-title">Async Rust Field Report</h1>
       
       <div class="post-description">
@@ -322,7 +337,9 @@ class="" id="top">
 
 
 
-<span title="2024-03-28 00:00:00 +0000">2024-03-28</span>&nbsp;·&nbsp;2 min&nbsp;·&nbsp;238 words&nbsp;·&nbsp;edwardzcn-decade
+
+<span title="2024-03-28 00:00:00 +0000">2024-03-28</span>&nbsp;·&nbsp;1 min&nbsp;·&nbsp;159 words&nbsp;·&nbsp;edwardzcn-decade
+
       
           
 &nbsp;|&nbsp;<a href="https:&#x2F;&#x2F;github.com&#x2F;your-username&#x2F;your-source&#x2F;tree&#x2F;main/content/blog&#x2F;tech&#x2F;rust-async-report.md" rel="noopener noreferrer" target="_blank">Suggest changes</a>
@@ -371,31 +388,30 @@ class="" id="top">
       <p>Originally generated by OpenAI ChatGPT-5.1 and edited by myself. Texte factice de test.</p>
 <p>Shipping an async service is equal parts ergonomics and detective work. This week’s bug: sporadic timeouts when querying an upstream API. The culprit was a mix of unbounded buffering and quietly dropped spans.</p>
 <span id="continue-reading"></span><h2 id="minimal-repro">Minimal repro</h2>
-<pre data-lang="rust" style="background-color:#2b303b;color:#c0c5ce;" class="language-rust "><code class="language-rust" data-lang="rust"><span style="color:#b48ead;">use </span><span>axum::{routing::get, Router};
-</span><span style="color:#b48ead;">use </span><span>tokio::{sync::mpsc, time::Duration};
-</span><span>
-</span><span>async </span><span style="color:#b48ead;">fn </span><span style="color:#8fa1b3;">handler</span><span>(</span><span style="color:#bf616a;">tx</span><span>: mpsc::Sender&lt;String&gt;) -&gt; String {
-</span><span>    </span><span style="color:#65737e;">// fire and forget; errors ignored
-</span><span>    </span><span style="color:#b48ead;">let </span><span>_ = tx.</span><span style="color:#96b5b4;">send</span><span>(&quot;</span><span style="color:#a3be8c;">ping</span><span>&quot;.</span><span style="color:#96b5b4;">into</span><span>()).await;
-</span><span>    &quot;</span><span style="color:#a3be8c;">ok</span><span>&quot;.</span><span style="color:#96b5b4;">into</span><span>()
-</span><span>}
-</span><span>
-</span><span>#[</span><span style="color:#bf616a;">tokio</span><span>::</span><span style="color:#bf616a;">main</span><span>]
-</span><span>async </span><span style="color:#b48ead;">fn </span><span style="color:#8fa1b3;">main</span><span>() {
-</span><span>    </span><span style="color:#b48ead;">let </span><span>(tx, </span><span style="color:#b48ead;">mut</span><span> rx) = mpsc::channel::&lt;String&gt;(</span><span style="color:#d08770;">1</span><span>);
-</span><span>    tokio::spawn(async </span><span style="color:#b48ead;">move </span><span>{
-</span><span>        </span><span style="color:#b48ead;">while let </span><span>Some(msg) = rx.</span><span style="color:#96b5b4;">recv</span><span>().await {
-</span><span>            tracing::info!(%msg, &quot;</span><span style="color:#a3be8c;">got msg</span><span>&quot;);
-</span><span>        }
-</span><span>    });
-</span><span>
-</span><span>    </span><span style="color:#b48ead;">let</span><span> app = Router::new().</span><span style="color:#96b5b4;">route</span><span>(&quot;</span><span style="color:#a3be8c;">/</span><span>&quot;, </span><span style="color:#96b5b4;">get</span><span>(|| </span><span style="color:#96b5b4;">handler</span><span>(tx.</span><span style="color:#96b5b4;">clone</span><span>())));
-</span><span>    axum::Server::bind(&amp;&quot;</span><span style="color:#a3be8c;">0.0.0.0:3000</span><span>&quot;.</span><span style="color:#96b5b4;">parse</span><span>().</span><span style="color:#96b5b4;">unwrap</span><span>())
-</span><span>        .</span><span style="color:#96b5b4;">serve</span><span>(app.</span><span style="color:#96b5b4;">into_make_service</span><span>())
-</span><span>        .await
-</span><span>        .</span><span style="color:#96b5b4;">unwrap</span><span>();
-</span><span>}
-</span></code></pre>
+<pre class="giallo" style="color: #CDD6F4; background-color: #1E1E2E;"><code data-lang="rust"><span class="giallo-l"><span style="color: #CBA6F7;">use</span><span style="color: #F9E2AF;"> axum</span><span style="color: #94E2D5;">::</span><span style="color: #9399B2;">{</span><span style="color: #F9E2AF;">routing</span><span style="color: #94E2D5;">::</span><span>get</span><span style="color: #9399B2;">,</span><span style="color: #F9E2AF;font-style: italic;"> Router</span><span style="color: #9399B2;">};</span></span>
+<span class="giallo-l"><span style="color: #CBA6F7;">use</span><span style="color: #F9E2AF;"> tokio</span><span style="color: #94E2D5;">::</span><span style="color: #9399B2;">{</span><span style="color: #F9E2AF;">sync</span><span style="color: #94E2D5;">::</span><span>mpsc</span><span style="color: #9399B2;">,</span><span style="color: #F9E2AF;"> time</span><span style="color: #94E2D5;">::</span><span style="color: #F9E2AF;font-style: italic;">Duration</span><span style="color: #9399B2;">};</span></span>
+<span class="giallo-l"></span>
+<span class="giallo-l"><span style="color: #CBA6F7;">async fn</span><span style="color: #89B4FA;font-style: italic;"> handler</span><span style="color: #9399B2;">(</span><span style="color: #EBA0AC;">tx</span><span style="color: #94E2D5;">:</span><span style="color: #F9E2AF;"> mpsc</span><span style="color: #94E2D5;">::</span><span style="color: #F9E2AF;font-style: italic;">Sender</span><span style="color: #89DCEB;">&lt;</span><span style="color: #F9E2AF;font-style: italic;">String</span><span style="color: #89DCEB;">&gt;</span><span style="color: #9399B2;">)</span><span style="color: #94E2D5;"> -&gt;</span><span style="color: #F9E2AF;font-style: italic;"> String</span><span style="color: #9399B2;"> {</span></span>
+<span class="giallo-l"><span style="color: #9399B2;font-style: italic;">    // fire and forget; errors ignored</span></span>
+<span class="giallo-l"><span style="color: #CBA6F7;">    let</span><span> _</span><span style="color: #94E2D5;"> =</span><span> tx</span><span style="color: #94E2D5;">.</span><span style="color: #89B4FA;font-style: italic;">send</span><span style="color: #9399B2;">(</span><span style="color: #A6E3A1;">&quot;ping&quot;</span><span style="color: #94E2D5;">.</span><span style="color: #89B4FA;font-style: italic;">into</span><span style="color: #9399B2;">())</span><span style="color: #94E2D5;">.</span><span style="color: #CBA6F7;">await</span><span style="color: #9399B2;">;</span></span>
+<span class="giallo-l"><span style="color: #A6E3A1;">    &quot;ok&quot;</span><span style="color: #94E2D5;">.</span><span style="color: #89B4FA;font-style: italic;">into</span><span style="color: #9399B2;">()</span></span>
+<span class="giallo-l"><span style="color: #9399B2;">}</span></span>
+<span class="giallo-l"></span>
+<span class="giallo-l"><span style="color: #F9E2AF;font-style: italic;">#</span><span style="color: #9399B2;">[</span><span style="color: #F9E2AF;font-style: italic;">tokio</span><span style="color: #94E2D5;">::</span><span style="color: #F9E2AF;font-style: italic;">main</span><span style="color: #9399B2;">]</span></span>
+<span class="giallo-l"><span style="color: #CBA6F7;">async fn</span><span style="color: #89B4FA;font-style: italic;"> main</span><span style="color: #9399B2;">() {</span></span>
+<span class="giallo-l"><span style="color: #CBA6F7;">    let</span><span style="color: #9399B2;"> (</span><span>tx</span><span style="color: #9399B2;">,</span><span style="color: #CBA6F7;"> mut</span><span> rx</span><span style="color: #9399B2;">)</span><span style="color: #94E2D5;"> =</span><span style="color: #F9E2AF;"> mpsc</span><span style="color: #94E2D5;">::</span><span style="color: #89B4FA;font-style: italic;">channel</span><span style="color: #94E2D5;">::</span><span style="color: #89DCEB;">&lt;</span><span style="color: #F9E2AF;font-style: italic;">String</span><span style="color: #89DCEB;">&gt;</span><span style="color: #9399B2;">(</span><span style="color: #FAB387;">1</span><span style="color: #9399B2;">);</span></span>
+<span class="giallo-l"><span style="color: #F9E2AF;">    tokio</span><span style="color: #94E2D5;">::</span><span style="color: #89B4FA;font-style: italic;">spawn</span><span style="color: #9399B2;">(</span><span style="color: #CBA6F7;">async move</span><span style="color: #9399B2;"> {</span></span>
+<span class="giallo-l"><span style="color: #CBA6F7;">        while let</span><span style="color: #F9E2AF;font-style: italic;"> Some</span><span style="color: #9399B2;">(</span><span>msg</span><span style="color: #9399B2;">)</span><span style="color: #94E2D5;"> =</span><span> rx</span><span style="color: #94E2D5;">.</span><span style="color: #89B4FA;font-style: italic;">recv</span><span style="color: #9399B2;">()</span><span style="color: #94E2D5;">.</span><span style="color: #CBA6F7;">await</span><span style="color: #9399B2;"> {</span></span>
+<span class="giallo-l"><span style="color: #F9E2AF;">            tracing</span><span style="color: #94E2D5;">::</span><span style="color: #89B4FA;font-style: italic;">info!</span><span style="color: #9399B2;">(</span><span style="color: #94E2D5;">%</span><span>msg</span><span style="color: #9399B2;">,</span><span style="color: #A6E3A1;"> &quot;got msg&quot;</span><span style="color: #9399B2;">);</span></span>
+<span class="giallo-l"><span style="color: #9399B2;">        }</span></span>
+<span class="giallo-l"><span style="color: #9399B2;">    });</span></span>
+<span class="giallo-l"></span>
+<span class="giallo-l"><span style="color: #CBA6F7;">    let</span><span> app</span><span style="color: #94E2D5;"> =</span><span style="color: #F9E2AF;font-style: italic;"> Router</span><span style="color: #94E2D5;">::</span><span style="color: #89B4FA;font-style: italic;">new</span><span style="color: #9399B2;">()</span><span style="color: #94E2D5;">.</span><span style="color: #89B4FA;font-style: italic;">route</span><span style="color: #9399B2;">(</span><span style="color: #A6E3A1;">&quot;/&quot;</span><span style="color: #9399B2;">,</span><span style="color: #89B4FA;font-style: italic;"> get</span><span style="color: #9399B2;">(</span><span style="color: #94E2D5;">||</span><span style="color: #89B4FA;font-style: italic;"> handler</span><span style="color: #9399B2;">(</span><span>tx</span><span style="color: #94E2D5;">.</span><span style="color: #89B4FA;font-style: italic;">clone</span><span style="color: #9399B2;">())));</span></span>
+<span class="giallo-l"><span style="color: #F9E2AF;">    axum</span><span style="color: #94E2D5;">::</span><span style="color: #F9E2AF;font-style: italic;">Server</span><span style="color: #94E2D5;">::</span><span style="color: #89B4FA;font-style: italic;">bind</span><span style="color: #9399B2;">(</span><span style="color: #94E2D5;">&amp;</span><span style="color: #A6E3A1;">&quot;0.0.0.0:3000&quot;</span><span style="color: #94E2D5;">.</span><span style="color: #89B4FA;font-style: italic;">parse</span><span style="color: #9399B2;">()</span><span style="color: #94E2D5;">.</span><span style="color: #89B4FA;font-style: italic;">unwrap</span><span style="color: #9399B2;">())</span></span>
+<span class="giallo-l"><span style="color: #94E2D5;">        .</span><span style="color: #89B4FA;font-style: italic;">serve</span><span style="color: #9399B2;">(</span><span>app</span><span style="color: #94E2D5;">.</span><span style="color: #89B4FA;font-style: italic;">into_make_service</span><span style="color: #9399B2;">())</span></span>
+<span class="giallo-l"><span style="color: #94E2D5;">        .</span><span style="color: #CBA6F7;">await</span></span>
+<span class="giallo-l"><span style="color: #94E2D5;">        .</span><span style="color: #89B4FA;font-style: italic;">unwrap</span><span style="color: #9399B2;">();</span></span>
+<span class="giallo-l"><span style="color: #9399B2;">}</span></span></code></pre>
 <p>This “works,” but under load the single-slot channel backpressures and each request waits for the receiver.</p>
 <h2 id="what-fixed-it">What fixed it</h2>
 <ol>
@@ -466,14 +482,24 @@ Benchmarks for queue length vs P99 latency</li>
 </main>
 
 <footer class="footer">
-  
-  <span>&copy; 2025 <a href="https:&#x2F;&#x2F;edwardzcn-decade.github.io&#x2F;cela">edwardzcn-decade</a></span>
-  
-  <span>
-      Powered by
-      <a href="https://www.getzola.org/" rel="noopener noreferrer" target="_blank">Zola</a> &
-      <a href="https://github.com/edwardzcn-decade/cela" rel="noopener" target="_blank">Cela</a>
-  </span>
+  <div class="footer-credits">
+    
+    <span>&copy; 2026 <a href="https:&#x2F;&#x2F;edwardzcn-decade.github.io&#x2F;cela">edwardzcn-decade</a></span>
+    
+    <span>
+        Powered by
+        <a href="https://www.getzola.org/" rel="noopener noreferrer" target="_blank">Zola</a> &
+        <a href="https://github.com/edwardzcn-decade/cela" rel="noopener" target="_blank">Cela</a>
+    </span>
+  </div>
+  <div class="footer-scheme">
+    <select id="scheme-select" title="Color scheme" aria-label="Color scheme">
+      <option value="catppuccin-latte">Latte</option>
+      <option value="catppuccin-macchiato">Macchiato</option>
+      <option value="rose-pine">Rosé Pine</option>
+      <option value="nord">Nord</option>
+    </select>
+  </div>
 </footer>
 
 
@@ -482,119 +508,6 @@ Benchmarks for queue length vs P99 latency</li>
       <path d="M12 6H0l6-6z" />
   </svg>
 </a>
-
-
-<script>
-  let menu = document.getElementById('menu')
-  if (menu) {
-      menu.scrollLeft = localStorage.getItem("menu-scroll-position");
-      menu.onscroll = function () {
-          localStorage.setItem("menu-scroll-position", menu.scrollLeft);
-      }
-  }
-
-  document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-      anchor.addEventListener("click", function (e) {
-          e.preventDefault();
-          var id = this.getAttribute("href").substr(1);
-          if (!window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
-              document.querySelector(`[id='${decodeURIComponent(id)}']`).scrollIntoView({
-                  behavior: "smooth"
-              });
-          } else {
-              document.querySelector(`[id='${decodeURIComponent(id)}']`).scrollIntoView();
-          }
-          if (id === "top") {
-              history.replaceState(null, null, " ");
-          } else {
-              history.pushState(null, null, `#${id}`);
-          }
-      });
-  });
-
-</script>
-
-
-<script>
-  var mybutton = document.getElementById("top-link");
-  window.onscroll = function () {
-      if (document.body.scrollTop > 800 || document.documentElement.scrollTop > 800) {
-          mybutton.style.visibility = "visible";
-          mybutton.style.opacity = "1";
-      } else {
-          mybutton.style.visibility = "hidden";
-          mybutton.style.opacity = "0";
-      }
-  };
-
-</script>
-
-
-
-<script>
-  document.getElementById("theme-toggle").addEventListener("click", () => {
-      if (document.body.className.includes("dark")) {
-          document.body.classList.remove('dark');
-          localStorage.setItem("pref-theme", 'light');
-      } else {
-          document.body.classList.add('dark');
-          localStorage.setItem("pref-theme", 'dark');
-      }
-  })
-
-</script>
-
-
-<script>
-  document.querySelectorAll('pre > code').forEach((codeblock) => {
-      const container = codeblock.parentNode.parentNode;
-
-      const copybutton = document.createElement('button');
-      copybutton.classList.add('copy-code');
-      copybutton.innerText = 'copy';
-      function copyingDone() {
-          copybutton.innerText = 'copied!';
-          setTimeout(() => {
-              copybutton.innerText = 'copy';
-          }, 2000);
-      }
-
-      copybutton.addEventListener('click', (cb) => {
-          if ('clipboard' in navigator) {
-              var content = codeblock.textContent;
-              if(codeblock.firstChild.tagName == 'TABLE') {
-                  content = Array(...codeblock.firstChild.getElementsByTagName('span')).map((span) => { return span.textContent; }).join('');
-              }
-              navigator.clipboard.writeText(content);
-              copyingDone();
-              return;
-          }
-
-          const range = document.createRange();
-          range.selectNodeContents(codeblock);
-          const selection = window.getSelection();
-          selection.removeAllRanges();
-          selection.addRange(range);
-          try {
-              document.execCommand('copy');
-              copyingDone();
-          } catch (e) { };
-          selection.removeRange(range);
-      });
-
-      if (container.classList.contains("highlight")) {
-          container.appendChild(copybutton);
-      } else if (container.parentNode.firstChild == container) {
-          // td containing LineNos
-      } else if (codeblock.parentNode.parentNode.parentNode.parentNode.parentNode.nodeName == "TABLE") {
-          // table containing LineNos and code
-          codeblock.parentNode.parentNode.parentNode.parentNode.parentNode.appendChild(copybutton);
-      } else {
-          // code blocks not having highlight as parent class
-          codeblock.parentNode.appendChild(copybutton);
-      }
-  });
-</script>
 
 
 
@@ -612,7 +525,9 @@ Benchmarks for queue length vs P99 latency</li>
 
 
 
-<script src="https://edwardzcn-decade.github.io/cela/js/toggle-sections.js"></script>
+<script src="https://edwardzcn-decade.github.io/cela/js/site-ui.js"></script>
+<script src="https://edwardzcn-decade.github.io/cela/js/search-ui.js"></script>
+<script src="https://edwardzcn-decade.github.io/cela/js/home-effects.js"></script>
 
 
 </body>

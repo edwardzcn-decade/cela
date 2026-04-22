@@ -32,9 +32,8 @@
   <link rel="canonical" href="https:&#x2F;&#x2F;edwardzcn-decade.github.io&#x2F;cela&#x2F;&#x2F;robot&#x2F;">
 
 
-<link rel="stylesheet" href="https://edwardzcn-decade.github.io/cela/css/theme-vars.css">
-<link rel="stylesheet" href="https://edwardzcn-decade.github.io/cela/css/theme-base.css">
-<link rel="stylesheet" href="https://edwardzcn-decade.github.io/cela/css/theme-common.css">
+<link rel="stylesheet" href="https://edwardzcn-decade.github.io/cela/css/theme-runtime.css">
+<link rel="stylesheet" href="https://edwardzcn-decade.github.io/cela/css/theme.css">
 <link rel="icon" href="https://edwardzcn-decade.github.io/cela/favicon.ico">
 <link rel="icon" type="image/png" sizes="16x16" href="https://edwardzcn-decade.github.io/cela/favicon-16x16.png">
 <link rel="icon" type="image/png" sizes="32x32" href="https://edwardzcn-decade.github.io/cela/favicon-32x32.png">
@@ -59,19 +58,26 @@
     <style>
         @media (prefers-color-scheme: dark) {
             :root {
-                --theme: rgb(30, 32, 48);           /* macchiato-mantle */
-                --entry: rgb(36, 39, 58);           /* macchiato-base  */
-                --primary: rgb(202, 211, 245);      /* macchiato-text */
-                --secondary: rgb(184,192, 224);     /* macchiato-subtext1 */
-                --tertiary: rgb(54, 58, 79);        /* macchiato-surface0 */
-                --content: rgb(165, 173, 203);      /* macchiato-subtext0 */
-                --hljs-bg: rgb(24, 25, 38);         /* macchiato-crust */
-                --code-bg: rgb(24, 25, 38);         /* macchiato-crust */
-                --border: rgb(30, 32, 48);          /* macchiato-mantle */
+                --theme-bg: rgb(24, 25, 38);
+                --surface-bg: rgb(36, 39, 58);
+                --surface-muted: rgb(54, 58, 79);
+                --surface-strong: rgb(68, 71, 90);
+                --text-main: rgb(202, 211, 245);
+                --text-muted: rgb(165, 173, 203);
+                --content-text: rgb(184, 192, 224);
+                --highlight-bg: rgb(54, 58, 79);
+                --code-bg: rgb(30, 32, 48);
+                --border-color: rgb(68, 71, 90);
+                --accent-color: rgb(138, 173, 244);
+                --accent-strong: rgb(125, 196, 228);
+                --accent-soft: rgba(138, 173, 244, 0.18);
+                --focus-ring: rgba(138, 173, 244, 0.32);
+                --overlay-backdrop: rgba(17, 17, 27, 0.72);
+                --hero-glow: radial-gradient(circle at top, rgba(138, 173, 244, 0.18), transparent 55%);
             }
 
             .list {
-                background: var(--theme);
+                background: var(--theme-bg);
             }
 
             .list:not(.dark)::-webkit-scrollbar-track {
@@ -79,7 +85,7 @@
             }
 
             .list:not(.dark)::-webkit-scrollbar-thumb {
-                border-color: var(--theme);
+                border-color: var(--theme-bg);
             }
         }
 
@@ -91,19 +97,28 @@
 </head>
 
 <body
-class="list" id="top">
-  <script>
-    const preft = localStorage.getItem("pref-theme");
-    if (preft === "dark") {
+class="list"
+id="top"
+data-show-code-copy-buttons="true"
+data-search-page-url="https://edwardzcn-decade.github.io/cela/search"
+data-search-index-json-url="https://edwardzcn-decade.github.io/cela/search_index.en.json"
+data-search-index-js-url="https://edwardzcn-decade.github.io/cela/search_index.en.js">
+  <script>document.documentElement.classList.add("js");</script>
+<script>
+  (function () {
+    var scheme = localStorage.getItem("pref-scheme");
+    var darkSchemes = ["catppuccin-macchiato", "rose-pine", "nord"];
+    if (!scheme) {
+      scheme = "catppuccin-macchiato";
+      }
+    document.documentElement.setAttribute("data-scheme", scheme);
+    if (darkSchemes.indexOf(scheme) !== -1) {
+      document.documentElement.classList.add("dark");
       document.body.classList.add("dark");
-    } else if (preft === "light") {
-      document.body.classList.remove("dark");
-    } else if (window.matchMedia("(prefers-color-scheme: dark)").matches) {
-      document.body.classList.add("dark");
-    } else {
-      document.body.classList.remove("dark");
     }
-  </script>
+    localStorage.setItem("pref-scheme", scheme);
+  })();
+</script>
 <header class="header">
   <nav class="nav">
     <div class="logo">
@@ -294,9 +309,9 @@ class="list" id="top">
 
 <!-- robot header -->
 <header class="page-header">
-    <div class="breadcrumbs">
+    <nav class="breadcrumbs" aria-label="breadcrumb">
         <a href="https:&#x2F;&#x2F;edwardzcn-decade.github.io&#x2F;cela">Home</a>
-    </div>
+    </nav>
     <h1>Robot
       
 
@@ -312,13 +327,8 @@ class="list" id="top">
 </header>
 
 <!-- robot items -->
-<div class="post-entry">
-  <style>
-    .post-entry:active {
-      transform: none !important;
-    }
-  </style>
-  <header class="entry-header" style="display: flex; flex-direction: column; align-items: center; justify-content: center; text-align: center; ">
+<div class="post-entry robot-tool-card">
+  <header class="entry-header robot-card-header">
     <h2>Crypto Tools</h2>
   </header>
   <div class="tool-section">
@@ -327,15 +337,15 @@ class="list" id="top">
     </div>
     <div class="tool-inputs">
       <div class="input-group">
-        <input placeholder="Text to be encoded"></input>
+        <input aria-label="Text to encode" placeholder="Text to encode"></input>
         <div class="button-container">
-          <button onclick="encodeBase64()">Encode</button>
+          <button aria-label="Encode to Base64" onclick="encodeBase64()">Encode</button>
         </div>
       </div>
       <div class="input-group">
-        <input placeholder="Text to be decoded"></input>
+        <input aria-label="Text to decode" placeholder="Text to decode"></input>
         <div class="button-container">
-          <button onclick="decodeBase64()">Decode</button>
+          <button aria-label="Decode from Base64" onclick="decodeBase64()">Decode</button>
         </div>
       </div>
     </div>
@@ -347,13 +357,13 @@ class="list" id="top">
     </div>
     <div class="tool-inputs">
       <div class="input-group">
-        <input placeholder="Enter text here"></input>
+        <input aria-label="Text to hash" placeholder="Text to hash"></input>
         <div class="button-container">
-          <button onclick="generateMD5()">Generate MD5</button>
+          <button aria-label="Generate MD5 hash" onclick="generateMD5()">Generate MD5</button>
         </div>
       </div>
       <div class="input-group">
-        <input placeholder="MD5 hash will appear here"></input>
+        <input aria-label="MD5 hash output" placeholder="MD5 hash output" readonly></input>
       </div>
     </div>
   </div>
@@ -368,14 +378,24 @@ class="list" id="top">
 </main>
 
 <footer class="footer">
-  
-  <span>&copy; 2025 <a href="https:&#x2F;&#x2F;edwardzcn-decade.github.io&#x2F;cela">edwardzcn-decade</a></span>
-  
-  <span>
-      Powered by
-      <a href="https://www.getzola.org/" rel="noopener noreferrer" target="_blank">Zola</a> &
-      <a href="https://github.com/edwardzcn-decade/cela" rel="noopener" target="_blank">Cela</a>
-  </span>
+  <div class="footer-credits">
+    
+    <span>&copy; 2026 <a href="https:&#x2F;&#x2F;edwardzcn-decade.github.io&#x2F;cela">edwardzcn-decade</a></span>
+    
+    <span>
+        Powered by
+        <a href="https://www.getzola.org/" rel="noopener noreferrer" target="_blank">Zola</a> &
+        <a href="https://github.com/edwardzcn-decade/cela" rel="noopener" target="_blank">Cela</a>
+    </span>
+  </div>
+  <div class="footer-scheme">
+    <select id="scheme-select" title="Color scheme" aria-label="Color scheme">
+      <option value="catppuccin-latte">Latte</option>
+      <option value="catppuccin-macchiato">Macchiato</option>
+      <option value="rose-pine">Rosé Pine</option>
+      <option value="nord">Nord</option>
+    </select>
+  </div>
 </footer>
 
 
@@ -384,119 +404,6 @@ class="list" id="top">
       <path d="M12 6H0l6-6z" />
   </svg>
 </a>
-
-
-<script>
-  let menu = document.getElementById('menu')
-  if (menu) {
-      menu.scrollLeft = localStorage.getItem("menu-scroll-position");
-      menu.onscroll = function () {
-          localStorage.setItem("menu-scroll-position", menu.scrollLeft);
-      }
-  }
-
-  document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-      anchor.addEventListener("click", function (e) {
-          e.preventDefault();
-          var id = this.getAttribute("href").substr(1);
-          if (!window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
-              document.querySelector(`[id='${decodeURIComponent(id)}']`).scrollIntoView({
-                  behavior: "smooth"
-              });
-          } else {
-              document.querySelector(`[id='${decodeURIComponent(id)}']`).scrollIntoView();
-          }
-          if (id === "top") {
-              history.replaceState(null, null, " ");
-          } else {
-              history.pushState(null, null, `#${id}`);
-          }
-      });
-  });
-
-</script>
-
-
-<script>
-  var mybutton = document.getElementById("top-link");
-  window.onscroll = function () {
-      if (document.body.scrollTop > 800 || document.documentElement.scrollTop > 800) {
-          mybutton.style.visibility = "visible";
-          mybutton.style.opacity = "1";
-      } else {
-          mybutton.style.visibility = "hidden";
-          mybutton.style.opacity = "0";
-      }
-  };
-
-</script>
-
-
-
-<script>
-  document.getElementById("theme-toggle").addEventListener("click", () => {
-      if (document.body.className.includes("dark")) {
-          document.body.classList.remove('dark');
-          localStorage.setItem("pref-theme", 'light');
-      } else {
-          document.body.classList.add('dark');
-          localStorage.setItem("pref-theme", 'dark');
-      }
-  })
-
-</script>
-
-
-<script>
-  document.querySelectorAll('pre > code').forEach((codeblock) => {
-      const container = codeblock.parentNode.parentNode;
-
-      const copybutton = document.createElement('button');
-      copybutton.classList.add('copy-code');
-      copybutton.innerText = 'copy';
-      function copyingDone() {
-          copybutton.innerText = 'copied!';
-          setTimeout(() => {
-              copybutton.innerText = 'copy';
-          }, 2000);
-      }
-
-      copybutton.addEventListener('click', (cb) => {
-          if ('clipboard' in navigator) {
-              var content = codeblock.textContent;
-              if(codeblock.firstChild.tagName == 'TABLE') {
-                  content = Array(...codeblock.firstChild.getElementsByTagName('span')).map((span) => { return span.textContent; }).join('');
-              }
-              navigator.clipboard.writeText(content);
-              copyingDone();
-              return;
-          }
-
-          const range = document.createRange();
-          range.selectNodeContents(codeblock);
-          const selection = window.getSelection();
-          selection.removeAllRanges();
-          selection.addRange(range);
-          try {
-              document.execCommand('copy');
-              copyingDone();
-          } catch (e) { };
-          selection.removeRange(range);
-      });
-
-      if (container.classList.contains("highlight")) {
-          container.appendChild(copybutton);
-      } else if (container.parentNode.firstChild == container) {
-          // td containing LineNos
-      } else if (codeblock.parentNode.parentNode.parentNode.parentNode.parentNode.nodeName == "TABLE") {
-          // table containing LineNos and code
-          codeblock.parentNode.parentNode.parentNode.parentNode.parentNode.appendChild(copybutton);
-      } else {
-          // code blocks not having highlight as parent class
-          codeblock.parentNode.appendChild(copybutton);
-      }
-  });
-</script>
 
 
 
@@ -514,7 +421,9 @@ class="list" id="top">
 
 
 
-<script src="https://edwardzcn-decade.github.io/cela/js/toggle-sections.js"></script>
+<script src="https://edwardzcn-decade.github.io/cela/js/site-ui.js"></script>
+<script src="https://edwardzcn-decade.github.io/cela/js/search-ui.js"></script>
+<script src="https://edwardzcn-decade.github.io/cela/js/home-effects.js"></script>
 
 
 </body>

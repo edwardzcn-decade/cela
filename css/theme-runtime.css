@@ -1,0 +1,80 @@
+/* ─── Catppuccin Latte (light default) ─────────────────────────────────────── */
+:root,
+[data-scheme="catppuccin-latte"] {
+  color-scheme: light;
+  --theme-bg: #f8f8f8;
+  --surface-bg: #ffffff;
+  --surface-muted: #ccd0da;
+  --surface-strong: #e6e9ef;
+  --text-main: #1e1e1e;
+  --text-muted: #5c5f77;
+  --content-text: #4c4f69;
+  --highlight-bg: #dce0e8;
+  --code-bg: #f8f8f8;
+  --border-color: #e6e9ef;
+  --accent-color: #1e66f5;
+  --accent-strong: #04a5e5;
+  --accent-soft: rgba(30, 102, 245, 0.14);
+  --focus-ring: rgba(30, 102, 245, 0.2);
+  --overlay-backdrop: rgba(15, 23, 42, 0.72);
+}
+
+/* ─── Catppuccin Macchiato (dark default) ───────────────────────────────────── */
+[data-scheme="catppuccin-macchiato"] {
+  color-scheme: dark;
+  --theme-bg: #1e2030;
+  --surface-bg: #24273a;
+  --surface-muted: #363a4f;
+  --surface-strong: #303446;
+  --text-main: #cad3f5;
+  --text-muted: #b8c0e0;
+  --content-text: #a5adcb;
+  --highlight-bg: #181926;
+  --code-bg: #181926;
+  --border-color: #1e2030;
+  --accent-color: #8bd5ca;
+  --accent-strong: #91d7e3;
+  --accent-soft: rgba(139, 213, 202, 0.16);
+  --focus-ring: rgba(138, 173, 244, 0.28);
+  --overlay-backdrop: rgba(12, 14, 22, 0.82);
+}
+
+/* ─── Rosé Pine (dark) ──────────────────────────────────────────────────────── */
+[data-scheme="rose-pine"] {
+  color-scheme: dark;
+  --theme-bg: #191724;
+  --surface-bg: #1f1d2e;
+  --surface-muted: #403d52;
+  --surface-strong: #26233a;
+  --text-main: #e0def4;
+  --text-muted: #908caa;
+  --content-text: #e0def4;
+  --highlight-bg: #26233a;
+  --code-bg: #26233a;
+  --border-color: #403d52;
+  --accent-color: #ebbcba;
+  --accent-strong: #eb6f92;
+  --accent-soft: rgba(235, 188, 186, 0.16);
+  --focus-ring: rgba(196, 167, 231, 0.28);
+  --overlay-backdrop: rgba(10, 9, 18, 0.82);
+}
+
+/* ─── Nord (dark) ───────────────────────────────────────────────────────────── */
+[data-scheme="nord"] {
+  color-scheme: dark;
+  --theme-bg: #2e3440;
+  --surface-bg: #3b4252;
+  --surface-muted: #434c5e;
+  --surface-strong: #4c566a;
+  --text-main: #eceff4;
+  --text-muted: #d8dee9;
+  --content-text: #e5e9f0;
+  --highlight-bg: #2e3440;
+  --code-bg: #2e3440;
+  --border-color: #434c5e;
+  --accent-color: #88c0d0;
+  --accent-strong: #81a1c1;
+  --accent-soft: rgba(136, 192, 208, 0.16);
+  --focus-ring: rgba(136, 192, 208, 0.28);
+  --overlay-backdrop: rgba(10, 12, 16, 0.82);
+}
