@@ -185,6 +185,8 @@ show_post_edit_button = true
 show_post_meta = true
 show_post_nav_links = true
 show_reading_time = true
+# Card hover: show accent-colored border on hover (default: false, uses shadow lift instead)
+card_hover_border = false
 show_scroll_to_top = true
 show_taxonomies_description = true
 show_taxonomies_tail = true

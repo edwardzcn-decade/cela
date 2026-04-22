@@ -1,4 +1,4 @@
-<article class="post-entry{% if card_extra_classes %} {{ card_extra_classes }}{% endif %}{% if card_reveal | default(value=false) %} reveal-on-scroll{% endif %}">
+<article class="post-entry{% if card_extra_classes %} {{ card_extra_classes }}{% endif %}{% if card_reveal | default(value=false) %} reveal-on-scroll{% endif %}{% if config.extra.cela.card_hover_border | default(value=false) %} card-hover-border{% endif %}">
   <header class="entry-header">
     <h2>{{ card_page.title }}</h2>
   </header>

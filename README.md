@@ -170,6 +170,10 @@ year or section headers, and home post lists. It uses CSS animation plus
 `IntersectionObserver`, and degrades cleanly when JavaScript is disabled or
 `prefers-reduced-motion` is enabled.
 
+## TODO
+
+- [ ] Explore Tailwind v4 migration: v4 removes `tailwind.config.js` in favor of `@theme` blocks in CSS, aligns naturally with the CSS variable architecture, and offers significantly faster build times. Tracked for future investigation.
+
 ## LICENSE
 
 MIT

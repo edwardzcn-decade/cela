@@ -22,7 +22,7 @@ jobs:
         run: npm ci
 
       - name: Build generated CSS
-        run: npm run build:css
+        run: npm run build:css:min
 
       - name: Install Zola
         uses: taiki-e/install-action@v2

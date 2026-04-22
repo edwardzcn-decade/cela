@@ -21,6 +21,9 @@ module.exports = {
         highlight: "var(--highlight-bg)",
         accent: "var(--accent-color)",
         "accent-strong": "var(--accent-strong)",
+        "accent-soft": "var(--accent-soft)",
+        "surface-strong": "var(--surface-strong)",
+        "focus-ring": "var(--focus-ring)",
       },
       fontFamily: {
         sans: [

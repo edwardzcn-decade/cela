@@ -56,8 +56,13 @@ function initThemeToggle() {
   }
 
   toggle.addEventListener("click", function () {
-    const isDark = document.body.classList.toggle("dark");
-    localStorage.setItem("pref-theme", isDark ? "dark" : "light");
+    const current = localStorage.getItem("pref-scheme") || "catppuccin-latte";
+    const next = current === "catppuccin-latte" ? "catppuccin-macchiato" : "catppuccin-latte";
+    applyScheme(next);
+    const select = document.getElementById("scheme-select");
+    if (select) {
+      select.value = next;
+    }
   });
 }
 
@@ -123,10 +128,34 @@ function initCodeCopyButtons() {
   });
 }
 
+function applyScheme(scheme) {
+  document.documentElement.setAttribute("data-scheme", scheme);
+  const isDark = scheme !== "catppuccin-latte";
+  document.documentElement.classList.toggle("dark", isDark);
+  document.body.classList.toggle("dark", isDark);
+  localStorage.setItem("pref-scheme", scheme);
+}
+
+function initSchemeSelect() {
+  const select = document.getElementById("scheme-select");
+  if (!select) {
+    return;
+  }
+
+  const saved = localStorage.getItem("pref-scheme") || "catppuccin-latte";
+  applyScheme(saved);
+  select.value = saved;
+
+  select.addEventListener("change", function () {
+    applyScheme(select.value);
+  });
+}
+
 document.addEventListener("DOMContentLoaded", function () {
   initMenuScrollPersistence();
   initSmoothAnchors();
   initTopLink();
   initThemeToggle();
   initCodeCopyButtons();
+  initSchemeSelect();
 });

@@ -1,29 +1,22 @@
 <script>document.documentElement.classList.add("js");</script>
-{% if not config.extra.cela.color.remember_choice -%}
-  {% if config.extra.cela.color.default_theme == "dark" -%}
-    <script>document.body.classList.add("dark");</script>
-  {% elif config.extra.cela.color.default_theme == "light" -%}
-    <script>document.body.classList.remove("dark");</script>
-  {% else -%}
-    <script>
-      if (window.matchMedia("(prefers-color-scheme: dark)").matches) {
-        document.body.classList.add("dark");
-      } else {
-        document.body.classList.remove("dark");
-      }
-    </script>
-  {% endif -%}
-{% else -%}
-  <script>
-    const preft = localStorage.getItem("pref-theme");
-    if (preft === "dark") {
-      document.body.classList.add("dark");
-    } else if (preft === "light") {
-      document.body.classList.remove("dark");
-    } else if (window.matchMedia("(prefers-color-scheme: dark)").matches) {
-      document.body.classList.add("dark");
-    } else {
-      document.body.classList.remove("dark");
+<script>
+  (function () {
+    var scheme = localStorage.getItem("pref-scheme");
+    var darkSchemes = ["catppuccin-macchiato", "rose-pine", "nord"];
+    if (!scheme) {
+      {% if config.extra.cela.color.default_theme == "dark" -%}
+      scheme = "catppuccin-macchiato";
+      {% elif config.extra.cela.color.default_theme == "light" -%}
+      scheme = "catppuccin-latte";
+      {% else -%}
+      scheme = window.matchMedia("(prefers-color-scheme: dark)").matches ? "catppuccin-macchiato" : "catppuccin-latte";
+      {% endif -%}
     }
-  </script>
-{% endif -%}
+    document.documentElement.setAttribute("data-scheme", scheme);
+    if (darkSchemes.indexOf(scheme) !== -1) {
+      document.documentElement.classList.add("dark");
+      document.body.classList.add("dark");
+    }
+    localStorage.setItem("pref-scheme", scheme);
+  })();
+</script>
