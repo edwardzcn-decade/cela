@@ -1,8 +1,11 @@
 <script>document.documentElement.classList.add("js");</script>
 <script>
   (function () {
-    var scheme = localStorage.getItem("pref-scheme");
+    var scheme;
     var darkSchemes = ["catppuccin-macchiato", "rose-pine", "nord"];
+    {% if config.extra.cela.color.remember_choice -%}
+    scheme = localStorage.getItem("pref-scheme");
+    {% endif -%}
     if (!scheme) {
       {% if config.extra.cela.color.default_theme == "dark" -%}
       scheme = "catppuccin-macchiato";
@@ -17,6 +20,8 @@
       document.documentElement.classList.add("dark");
       document.body.classList.add("dark");
     }
+    {% if config.extra.cela.color.remember_choice -%}
     localStorage.setItem("pref-scheme", scheme);
+    {% endif -%}
   })();
 </script>
