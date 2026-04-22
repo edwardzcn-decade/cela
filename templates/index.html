@@ -15,7 +15,14 @@
 {% endif -%}
 
 <body
-class="{{ body_classes | trim }}" id="top">
+class="{{ body_classes | trim }}"
+id="top"
+data-show-code-copy-buttons="{{ config.extra.cela.show_code_copy_buttons | default(value=true) }}"
+data-show-theme-toggle="{{ config.extra.cela.show_theme_toggle | default(value=true) }}"
+data-remember-choice="{{ config.extra.cela.color.remember_choice | default(value=true) }}"
+data-search-page-url="{{ get_url(path='search/') }}"
+data-search-index-json-url="{{ get_url(path='search_index.' ~ lang ~ '.json') }}"
+data-search-index-js-url="{{ get_url(path='search_index.' ~ lang ~ '.js') }}">
   {% block header -%}
     {% include "partials/home/home_header.html" -%}
   {% endblock %}
@@ -38,7 +45,9 @@ class="{{ body_classes | trim }}" id="top">
 {% endblock %}
 
 {% block extra_js %}
-<script src="{{ get_url(path='js/toggle-sections.js') | safe }}"></script>
+<script src="{{ get_url(path='js/site-ui.js') | safe }}"></script>
+<script src="{{ get_url(path='js/search-ui.js') | safe }}"></script>
+<script src="{{ get_url(path='js/home-effects.js') | safe }}"></script>
 {% if config.extra.debug %}
 {% include "macros/debug_console.html" %}
 {% endif %}

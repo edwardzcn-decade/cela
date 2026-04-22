@@ -31,10 +31,10 @@
 
 <section class="post-single search-page">
   <header class="post-header">
-    <div class="breadcrumbs">
+    <nav class="breadcrumbs" aria-label="breadcrumb">
       <a href="{{ config.base_url }}">Home</a>&nbsp;»&nbsp;
       <a href="{{ current_url | default(value=config.base_url ~ '/search/') }}">{{ search_title }}</a>
-    </div>
+    </nav>
     <h1 class="post-title">{{ search_title }}</h1>
     <p class="post-description">{{ search_description }}</p>
   </header>
