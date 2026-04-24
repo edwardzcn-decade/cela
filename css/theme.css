@@ -396,27 +396,30 @@ code {
   margin-inline-end: 8px;
 }
 
-.logo-switches,
-  .lang-switch li {
+.logo-switches {
   display: inline-flex;
   margin: auto 4px;
-}
-
-.logo-switches {
   flex-wrap: inherit;
 }
 
-.lang-switch {
-  display: flex;
-  flex-wrap: inherit;
-  list-style: none;
-}
+/* Reserved for a future language switcher. */
 
-.lang-switch a {
-  margin: auto 3px;
-  font-size: 16px;
-  font-weight: 500;
-}
+/* .lang-switch li {
+    display: inline-flex;
+    margin: auto 4px;
+  }
+
+  .lang-switch {
+    display: flex;
+    flex-wrap: inherit;
+    list-style: none;
+  }
+
+  .lang-switch a {
+    margin: auto 3px;
+    font-size: 16px;
+    font-weight: 500;
+  } */
 
 #theme-toggle {
   margin: auto 4px;
