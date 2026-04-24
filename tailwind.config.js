@@ -2,6 +2,7 @@ module.exports = {
   content: [
     "./templates/**/*.html",
     "./content/**/*.{md,html}",
+    "!./content/_bak/**/*",
     "./static/js/**/*.js",
   ],
   corePlugins: {
