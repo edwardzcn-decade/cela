@@ -397,25 +397,13 @@ code {
 }
 
 .logo-switches,
-  .lang-switch li {
+   li {
   display: inline-flex;
   margin: auto 4px;
 }
 
 .logo-switches {
   flex-wrap: inherit;
-}
-
-.lang-switch {
-  display: flex;
-  flex-wrap: inherit;
-  list-style: none;
-}
-
-.lang-switch a {
-  margin: auto 3px;
-  font-size: 16px;
-  font-weight: 500;
 }
 
 #theme-toggle {
@@ -487,6 +475,10 @@ html:not(.dark) #sun {
 
 .pagination .next {
   margin-inline-start: auto;
+}
+
+.pagination .previous {
+  margin-inline-end: auto;
 }
 
 .social-icons {
@@ -568,6 +560,11 @@ div.highlight:hover .copy-code,
   margin: 0 0 1rem;
   font-size: 2rem;
   line-height: 1.2;
+}
+
+/* structural wrapper for home section lists */
+
+.home-list-container {
 }
 
 .home-list.row {
@@ -711,6 +708,22 @@ a.section-count:hover {
 .page-header,
   .post-header {
   margin: 24px auto 1.25rem;
+}
+
+.post-single {
+  max-width: calc(45rem + 3rem);
+  margin: 0 auto;
+  padding: 0 1.5rem;
+}
+
+.search-page {
+  max-width: calc(45rem + 3rem);
+  margin: 0 auto;
+  padding: 0 1.5rem;
+}
+
+.search-box {
+  margin-bottom: 1rem;
 }
 
 .post-title {

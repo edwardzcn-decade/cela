@@ -273,7 +273,7 @@
   }
 
   .logo-switches,
-  .lang-switch li {
+   li {
     display: inline-flex;
     margin: auto 4px;
   }
@@ -282,17 +282,6 @@
     flex-wrap: inherit;
   }
 
-  .lang-switch {
-    display: flex;
-    flex-wrap: inherit;
-    list-style: none;
-  }
-
-  .lang-switch a {
-    margin: auto 3px;
-    font-size: 16px;
-    font-weight: 500;
-  }
 
   #theme-toggle {
     margin: auto 4px;
