@@ -12,6 +12,6 @@ taxonomies:
 
 ```yaml
 taxonomies:
-  tags: ["Rust", "Zola"]
+  tags: ["Rust", "Zola", "YAML"]
   categories: ["编程"]
 ```

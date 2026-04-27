@@ -2,7 +2,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 <meta name="robots" content="index, follow">
-<title>{% if page.title %}{{ page.title }}{% elif section.title %}{{ section.title }}{% else %}{{ config.title }}{% endif %}</title>
+<title>{% if page.title %}{{ page.title }}{% elif section.title %}{{ section.title }}{% elif term is defined and term.name %}{{ term.name }}{% elif taxonomy is defined and taxonomy.name == "tags" %}{{ trans(key='nav_tags', lang=lang) }}{% elif taxonomy is defined and taxonomy.name == "categories" %}{{ trans(key='nav_categories', lang=lang) }}{% else %}{{ config.title }}{% endif %}</title>
 
 
 {# Only for post page #}

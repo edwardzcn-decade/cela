@@ -91,6 +91,8 @@ nav_blog = "Blog"
 language_switcher = "Language"
 missing_translation = "Translation is not available"
 nav_card_home_label = "Blog"
+taxonomy_tags_desc = "Here is a list of tags in this site."
+taxonomy_categories_desc = "Here is a list of categories in this site."
 
 [languages.zh]
 title = "Cela：一个简单轻量的 Zola 主题"
@@ -114,6 +116,8 @@ nav_blog = "博客"
 language_switcher = "语言"
 missing_translation = "暂无该语言翻译"
 nav_card_home_label = "博客"
+taxonomy_tags_desc = "这里是本站标签集合。"
+taxonomy_categories_desc = "这里是本站分类集合。"
 
 # When set to "false", Sitemap.xml is not generated
 # [Cela hint] Cela will enable this feature by default

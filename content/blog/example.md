@@ -12,6 +12,6 @@ Test the yaml front matter in this post.
 
 ```yaml
 taxonomies:
-  tags: ["Rust", "Zola"]
+  tags: ["Rust", "Zola", "YAML"]
   categories: ["Programming"]
 ```

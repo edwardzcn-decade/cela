@@ -1,7 +1,7 @@
 <!-- taxonomy header (mostly used in single template) just below the nav bar -->
 <header class="page-header">
   <div class="breadcrumbs">
-      <a href="{{ get_url(path='', lang=lang) }}">Home</a>&nbsp;»&nbsp;
+      <a href="{{ get_url(path='', lang=lang) }}">{{ trans(key='nav_home', lang=lang) }}</a>&nbsp;»&nbsp;
       <a href="{{ get_url(path=taxonomy.name, lang=lang) }}">
         {{- taxonomy_title -}}
         {% if config.extra.cela.show_taxonomies_tail %}

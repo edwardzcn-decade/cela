@@ -18,6 +18,18 @@
       {% set localized_path = section.path | trim_start_matches(pat="/") | trim_start_matches(pat=current_lang ~ "/") %}
       {% set language_url = get_url(path=localized_path, lang=language_code) %}
       {% set is_missing_translation = false %}
+    {% elif not is_current_language and taxonomy is defined and term is defined %}
+      {# Taxonomy pages do not expose page/section translations; resolve them through taxonomy APIs instead. #}
+      {# Term translations can be absent in the target language; required=false keeps that case as a stay-on-page toast. #}
+      {# Zola matches terms by name across languages: shared names like YAML work, translated names like Programming/编程 do not. #}
+      {% set target_term = get_taxonomy_term(kind=taxonomy.name, term=term.name, lang=language_code, required=false) %}
+      {% if target_term %}
+        {% set language_url = target_term.permalink %}
+        {% set is_missing_translation = false %}
+      {% endif %}
+    {% elif not is_current_language and taxonomy is defined and term is not defined %}
+      {% set language_url = get_url(path=taxonomy.name, lang=language_code) %}
+      {% set is_missing_translation = false %}
     {% endif %}
     <a
       href="{{ language_url | safe }}"
