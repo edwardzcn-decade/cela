@@ -436,6 +436,31 @@ code {
   color: var(--text-main);
 }
 
+.language-toast {
+  position: fixed;
+  right: 1rem;
+  bottom: 1rem;
+  z-index: 1100;
+  max-width: min(22rem, calc(100vw - 2rem));
+  border: 1px solid var(--border-color);
+  border-radius: 999px;
+  background: var(--surface-bg);
+  color: var(--text-main);
+  padding: 0.65rem 1rem;
+  box-shadow: 0 18px 40px rgba(15, 23, 42, 0.18);
+  opacity: 0;
+  pointer-events: none;
+  transform: translateY(0.75rem);
+  transition:
+      opacity 160ms ease,
+      transform 160ms ease;
+}
+
+.language-toast.is-visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
 #scheme-select {
   font-size: 12px;
   color: var(--text-muted);
@@ -1523,6 +1548,10 @@ input {
 
 .flex {
   display: flex;
+}
+
+.contents {
+  display: contents;
 }
 
 .hidden {

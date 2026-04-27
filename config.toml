@@ -89,6 +89,7 @@ nav_search = "Search"
 nav_robot = "Robot"
 nav_blog = "Blog"
 language_switcher = "Language"
+missing_translation = "Translation is not available"
 nav_card_home_label = "Blog"
 
 [languages.zh]
@@ -111,6 +112,7 @@ nav_search = "搜索"
 nav_robot = "工具"
 nav_blog = "博客"
 language_switcher = "语言"
+missing_translation = "暂无该语言翻译"
 nav_card_home_label = "博客"
 
 # When set to "false", Sitemap.xml is not generated
@@ -175,7 +177,8 @@ home_title = "Cela Template"
 # Now the title of navigation item will be the default name. If the title_key is set, it will be override by the translation.
 # More details in the i18n/translations configuration.
 navigation = [
-  # {path = "/", title = "Archive", title_key = "nav_archive"},
+  # TODO: May explain the archieve
+  {path = "/", title = "Archive", title_key = "nav_archive"},
   {path = "/tags", title = "Tags", title_key = "nav_tags"},
   {path = "/categories", title = "Categories", title_key = "nav_categories"},
   {path = "#", title = "Search", title_key = "nav_search", is_search = true},
@@ -239,7 +242,7 @@ search_title = "Search"
 search_description = "Find posts by title or body content"
 
 [extra.cela.nav_card]
-enabled = true
+enabled = false
 show_avatar = true
 avatar = "android-chrome-192x192.png"
 title = "Cela Template"
