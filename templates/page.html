@@ -3,8 +3,9 @@
 <article class="post-single">
   <header class="post-header">
       <nav class="breadcrumbs" aria-label="breadcrumb">
-          <a href="{{ config.base_url }}">Home</a>&nbsp;»&nbsp;
-          <a href="{{ get_url(path='@/blog/_index.md') }}">Posts</a>&nbsp;»&nbsp;
+          <a href="{{ get_url(path='', lang=lang) }}">Home</a>&nbsp;»&nbsp;
+          <!-- FIXME: Polish Posts/Blog contents template and remove this comment -->
+          <a href="{{ get_url(path='@/blog/_index.md', lang=lang) }}">Posts</a>&nbsp;»&nbsp;
           <a href="{{ page.permalink }}">{{ page.title }}</a>
       </nav>
       <h1 class="post-title">{{ page.title }}</h1>

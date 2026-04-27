@@ -4,4 +4,4 @@ description = "Little toolbox"
 template = "robot.html"
 +++
 
-Tools for quick encoding and checks.打开页面即可使用。
+Tools for quick encoding and checks. Open the page and use.

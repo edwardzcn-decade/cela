@@ -1,0 +1,26 @@
+{% set current_lang = lang | default(value=config.default_language) %}
+{% set fallback_language_path = "" %}
+{% if config.extra.cela.nav_card.enabled | default(value=false) %}
+  {% set fallback_language_path = config.extra.cela.nav_card.home_path | default(value="/home") | trim_start_matches(pat="/") %}
+{% endif %}
+<div class="language-switcher" aria-label="{{ trans(key='language_switcher', lang=current_lang) }}">
+  <span class="language-switcher-icon" aria-hidden="true">
+    {{ macro_extra_icon::extra_icon(icon='language', size="18") }}
+  </span>
+  {% for language_code in ["en", "zh"] %}
+    {% set language_url = get_url(path=fallback_language_path, lang=language_code) %}
+    {% if page and page.translations and page.translations | length > 1 %}
+      {% set localized_path = page.path | trim_start_matches(pat="/") | trim_start_matches(pat=current_lang ~ "/") %}
+      {% set language_url = get_url(path=localized_path, lang=language_code) %}
+    {% elif section and section.translations and section.translations | length > 1 %}
+      {% set localized_path = section.path | trim_start_matches(pat="/") | trim_start_matches(pat=current_lang ~ "/") %}
+      {% set language_url = get_url(path=localized_path, lang=language_code) %}
+    {% endif %}
+    <a
+      href="{{ language_url | safe }}"
+      hreflang="{{ language_code }}"
+      lang="{{ language_code }}"
+      {% if current_lang == language_code %}class="active" aria-current="true"{% endif %}
+    >{{ language_code | upper }}</a>
+  {% endfor %}
+</div>
