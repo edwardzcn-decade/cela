@@ -80,6 +80,9 @@
         <loc>https://edwardzcn-decade.github.io/cela/categories/test/</loc>
     </url>
     <url>
+        <loc>https://edwardzcn-decade.github.io/cela/home/</loc>
+    </url>
+    <url>
         <loc>https://edwardzcn-decade.github.io/cela/robot/</loc>
     </url>
     <url>
@@ -114,5 +117,45 @@
     </url>
     <url>
         <loc>https://edwardzcn-decade.github.io/cela/tags/zola/</loc>
+    </url>
+    <url>
+        <loc>https://edwardzcn-decade.github.io/cela/zh/</loc>
+    </url>
+    <url>
+        <loc>https://edwardzcn-decade.github.io/cela/zh/blog/</loc>
+    </url>
+    <url>
+        <loc>https://edwardzcn-decade.github.io/cela/zh/blog/example/</loc>
+        <lastmod>2025-01-01</lastmod>
+    </url>
+    <url>
+        <loc>https://edwardzcn-decade.github.io/cela/zh/blog/page/1/</loc>
+    </url>
+    <url>
+        <loc>https://edwardzcn-decade.github.io/cela/zh/categories/</loc>
+    </url>
+    <url>
+        <loc>https://edwardzcn-decade.github.io/cela/zh/categories/bian-cheng/</loc>
+    </url>
+    <url>
+        <loc>https://edwardzcn-decade.github.io/cela/zh/home/</loc>
+    </url>
+    <url>
+        <loc>https://edwardzcn-decade.github.io/cela/zh/robot/</loc>
+    </url>
+    <url>
+        <loc>https://edwardzcn-decade.github.io/cela/zh/search/</loc>
+    </url>
+    <url>
+        <loc>https://edwardzcn-decade.github.io/cela/zh/tags/</loc>
+    </url>
+    <url>
+        <loc>https://edwardzcn-decade.github.io/cela/zh/tags/rust/</loc>
+    </url>
+    <url>
+        <loc>https://edwardzcn-decade.github.io/cela/zh/tags/yaml/</loc>
+    </url>
+    <url>
+        <loc>https://edwardzcn-decade.github.io/cela/zh/tags/zola/</loc>
     </url>
 </urlset>
