@@ -425,15 +425,35 @@ code {
 }
 
 .language-switcher a {
+  position: relative;
   border-radius: 0.25rem;
   color: var(--text-muted);
-  padding: 0.1rem 0.25rem;
+  padding: 0.1rem 0.1rem 0.08rem;
+  transition: color 160ms ease;
+}
+
+.language-switcher a::after {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 0;
+  height: 2px;
+  border-radius: 999px;
+  background: currentColor;
+  content: "";
+  transition: width 180ms ease;
 }
 
 .language-switcher a:hover,
-  .language-switcher a.active {
-  background: var(--surface-muted);
+  .language-switcher a.active,
+  #menu a:hover span,
+  #menu .active {
   color: var(--text-main);
+}
+
+.language-switcher a:hover::after,
+  .language-switcher a.active::after {
+  width: 100%;
 }
 
 .language-toast {
@@ -500,9 +520,33 @@ html:not(.dark) #sun {
   font-size: 16px;
 }
 
+#menu a span {
+  position: relative;
+  display: inline-block;
+  padding-bottom: 0.08rem;
+  color: var(--text-muted);
+  transition: color 160ms ease;
+}
+
+#menu a span::after {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 0;
+  height: 2px;
+  border-radius: 999px;
+  background: currentColor;
+  content: "";
+  transition: width 180ms ease;
+}
+
 #menu .active {
   font-weight: 500;
-  border-bottom: 2px solid currentColor;
+}
+
+#menu a:hover span::after,
+  #menu .active::after {
+  width: 100%;
 }
 
 .page-header h1,
