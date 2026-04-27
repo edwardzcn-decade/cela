@@ -429,6 +429,7 @@ code {
   border-radius: 0.25rem;
   color: var(--text-muted);
   padding: 0.1rem 0.1rem 0.08rem;
+  line-height: 1.2;
   transition: color 160ms ease;
 }
 
@@ -525,6 +526,7 @@ html:not(.dark) #sun {
   display: inline-block;
   padding-bottom: 0.08rem;
   color: var(--text-muted);
+  line-height: 1.2;
   transition: color 160ms ease;
 }
 
