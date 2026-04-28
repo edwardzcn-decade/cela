@@ -1,0 +1,52 @@
+{% set current_lang = lang | default(value=config.default_language) %}
+{% set current_language_url = current_url | default(value=get_url(path="", lang=current_lang)) %}
+<div class="language-switcher" aria-label="{{ trans(key='language_switcher', lang=current_lang) }}">
+  <span class="language-switcher-icon" aria-hidden="true">
+    {{ macro_extra_icon::extra_icon(icon='language', size="18") }}
+  </span>
+  {% for language_code in ["en", "zh"] %}
+    {% set is_current_language = language_code == current_lang %}
+    {% set_global language_url = current_language_url %}
+    {% set_global is_missing_translation = not is_current_language %}
+
+    {# Page/section translations can use custom paths, so use Zola's resolved permalink. #}
+    {% if not is_current_language and page and page.translations %}
+      {% for translation in page.translations %}
+        {% if translation.lang == language_code %}
+          {% set_global language_url = translation.permalink %}
+          {% set_global is_missing_translation = false %}
+        {% endif %}
+      {% endfor %}
+    {% elif not is_current_language and section and section.translations %}
+      {% for translation in section.translations %}
+        {% if translation.lang == language_code %}
+          {% set_global language_url = translation.permalink %}
+          {% set_global is_missing_translation = false %}
+        {% endif %}
+      {% endfor %}
+    {% elif not is_current_language and taxonomy is defined and term is defined %}
+      {# Taxonomy pages do not expose page/section translations; resolve them through taxonomy APIs instead. #}
+      {# Term translations can be absent in the target language; required=false keeps that case as a stay-on-page toast. #}
+      {# Zola matches terms by name across languages: shared names like YAML work, translated names like Programming/编程 do not. #}
+      {% set target_term = get_taxonomy_term(kind=taxonomy.name, term=term.name, lang=language_code, required=false) %}
+      {% if target_term %}
+        {% set_global language_url = target_term.permalink %}
+        {% set_global is_missing_translation = false %}
+      {% endif %}
+    {% elif not is_current_language and taxonomy is defined and term is not defined %}
+      {# Taxonomy list pages should also use Zola's resolved permalink instead of hand-built paths. #}
+      {% set target_taxonomy = get_taxonomy(kind=taxonomy.name, lang=language_code, required=false) %}
+      {% if target_taxonomy %}
+        {% set_global language_url = target_taxonomy.permalink %}
+        {% set_global is_missing_translation = false %}
+      {% endif %}
+    {% endif %}
+    <a
+      href="{{ language_url | safe }}"
+      hreflang="{{ language_code }}"
+      lang="{{ language_code }}"
+      {% if current_lang == language_code %}class="active" aria-current="true"{% endif %}
+      {% if is_missing_translation %}data-missing-translation="true" data-missing-translation-message="{{ trans(key='missing_translation', lang=current_lang) }}"{% endif %}
+    >{{ language_code | upper }}</a>
+  {% endfor %}
+</div>

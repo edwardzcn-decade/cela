@@ -1,7 +1,7 @@
 {% extends "index.html" %}
 {% block main %}
 {% if not title %}
-  {% set title = taxonomy.name | replace(from="_",to=" ") | title %}
+  {% set title = trans(key='nav_categories', lang=lang) %}
 	{% set css_class = "terms-" ~ taxonomy.name %}
 {% endif %}
 

@@ -1,6 +1,6 @@
 <header class="page-header">
   <nav class="breadcrumbs" aria-label="breadcrumb">
-      <a href="{{ config.base_url }}">Home</a>
+      <a href="{{ get_url(path='', lang=lang) }}">Home</a>
   </nav>
   <h1>{{ section.title }}
     {% for feed_filename in config.feed_filenames %}
@@ -16,20 +16,9 @@
 </header>
 {% if paginator %}
 {% for page in paginator.pages %}
-<article class="post-entry">
-<header class="entry-header">
-  <h2>{{ page.title }}</h2>
-</header>
-{% if page.summary %}
-<div class="entry-content">
-    <p>{{ page.summary | safe }}</p>
-</div>
-{% endif %}
-<footer class="entry-footer">
-    {% include "partials/post/post_meta.html" %}
-</footer>
-<a class="entry-link" aria-label="post link to {{ page.title }}" href="{{ page.permalink }}"></a>
-</article>
+{% set card_page = page %}
+{% set card_reveal = false %}
+{% include "partials/common/post_card.html" %}
 {% endfor %}
 {% else %}
 <!-- no paginator_by in _index.mnd -->

@@ -32,8 +32,10 @@
 <section class="post-single search-page">
   <header class="post-header">
     <nav class="breadcrumbs" aria-label="breadcrumb">
-      <a href="{{ config.base_url }}">Home</a>&nbsp;»&nbsp;
-      <a href="{{ current_url | default(value=config.base_url ~ '/search/') }}">{{ search_title }}</a>
+      <a href="{{ get_url(path='', lang=lang) }}">Home</a>&nbsp;»&nbsp;
+      <!-- <a href="{{ current_url | default(value=config.base_url ~ '/search/') }}">{{ search_title }}</a> -->
+      <!-- FIXME: consider using config.base_url -->
+      <a href="{{ get_url(path='@/search/_index.md', lang=lang) }}">{{ search_title }}</a>
     </nav>
     <h1 class="post-title">{{ search_title }}</h1>
     <p class="post-description">{{ search_description }}</p>

@@ -1,6 +1,6 @@
 {% extends "index.html" %}
 {% block main %}
-{% set taxonomy_title = taxonomy.name | replace(from="_",to=" ") | title %}
+{% set taxonomy_title = trans(key='nav_categories', lang=lang) %}
   {% include "partials/taxonomy/single_header.html" %}
 {% for page in term.pages %}
 {% set card_page = page %}

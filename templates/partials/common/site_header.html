@@ -92,6 +92,7 @@
             <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
           </svg>
         </button>
+        {% include "partials/common/language_switcher.html" %}
       </div>
     </div>
     {% if config.extra.cela.navigation %}
@@ -100,13 +101,23 @@
         {% set path = item.path | trim | trim_start_matches(pat="//") %}
         {% if path is starting_with("https") %}
           {% set url = path %}
+        {% elif path == "/" %}
+          {% set url = get_url(path="", lang=lang) %}
+        {% elif path == "#" %}
+          {% set url = path %}
         {% else %}
-          {% set url = config.base_url ~ path %}
+          {% set nav_path = path | trim_start_matches(pat="/") %}
+          {% set url = get_url(path=nav_path, lang=lang) %}
+        {% endif %}
+        <!-- FIXME: here use item.title (ignoring translation as default value of item_title) -->
+        {% set item_title = item.title %}
+        {% if item.title_key %}
+          {% set item_title = trans(key=item.title_key, lang=lang) %}
         {% endif %}
         {% set is_active_link = current_url and url | trim_end_matches(pat="/") == current_url | trim_end_matches(pat="/") %}
       <li>
-        <a href="{{ url }}" title="{{ item.title }}" {%- if item.is_search -%} data-search-toggle="true"{%- endif -%}>
-          <span {%- if is_active_link -%} class="active" {%- endif -%}>{{ item.title }}</span>
+        <a href="{{ url }}" title="{{ item_title }}" {%- if item.is_search -%} data-search-toggle="true"{%- endif -%}>
+          <span{% if is_active_link %} class="active"{% endif %}>{{ item_title }}</span>
           {%- if item.is_external and item.is_external == true -%}
             {{ macro_extra_icon::extra_icon(icon='link') }}
           {%- elif item.is_robot and item.is_robot == true -%}

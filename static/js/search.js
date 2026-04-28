@@ -52,6 +52,23 @@ function documentMatches(doc, terms) {
   return true;
 }
 
+function dedupeSearchDocs(docs) {
+  const seen = new Set();
+  const uniqueDocs = [];
+
+  for (let i = 0; i < docs.length; i += 1) {
+    const doc = docs[i];
+    const key = doc.permalink || doc.url || doc.title || String(i);
+    if (seen.has(key)) {
+      continue;
+    }
+    seen.add(key);
+    uniqueDocs.push(doc);
+  }
+
+  return uniqueDocs;
+}
+
 function initSearch() {
   const searchIndexJsonUrl = document.body.dataset.searchIndexJsonUrl;
   const searchIndexJsUrl = document.body.dataset.searchIndexJsUrl;
@@ -80,7 +97,7 @@ function initSearch() {
         jsonResponse.headers.get("content-type")?.includes("application/json")
       ) {
         const data = await jsonResponse.json();
-        return Array.isArray(data) ? data : data.docs || [];
+        return dedupeSearchDocs(Array.isArray(data) ? data : data.docs || []);
       }
     } catch (_) {
       // Fall back to the JS index format below.
@@ -93,7 +110,7 @@ function initSearch() {
       if (text.startsWith(prefix)) {
         const parsed = JSON.parse(text.slice(prefix.length));
         const docsObj = (parsed.documentStore && parsed.documentStore.docs) || {};
-        return Object.keys(docsObj).map(function (key) {
+        return dedupeSearchDocs(Object.keys(docsObj).map(function (key) {
           const doc = docsObj[key];
           return {
             title: doc.title || key,
@@ -102,7 +119,7 @@ function initSearch() {
             permalink: key,
             url: key,
           };
-        });
+        }));
       }
     } catch (err) {
       console.error("Failed to load search index", err);

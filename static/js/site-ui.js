@@ -49,6 +49,34 @@ function initTopLink() {
   window.addEventListener("scroll", syncTopLink, { passive: true });
 }
 
+function showLanguageToast(message) {
+  let toast = document.getElementById("language-toast");
+  if (!toast) {
+    toast = document.createElement("div");
+    toast.id = "language-toast";
+    toast.className = "language-toast";
+    toast.setAttribute("role", "status");
+    toast.setAttribute("aria-live", "polite");
+    document.body.appendChild(toast);
+  }
+
+  toast.textContent = message;
+  toast.classList.add("is-visible");
+  window.clearTimeout(toast.hideTimer);
+  toast.hideTimer = window.setTimeout(function () {
+    toast.classList.remove("is-visible");
+  }, 1800);
+}
+
+function initLanguageSwitcher() {
+  document.querySelectorAll("[data-missing-translation='true']").forEach(function (link) {
+    link.addEventListener("click", function (event) {
+      event.preventDefault();
+      showLanguageToast(link.dataset.missingTranslationMessage || "Translation is not available");
+    });
+  });
+}
+
 function initThemeToggle() {
   if (document.body.dataset.showThemeToggle !== "true") {
     return;
@@ -162,6 +190,7 @@ document.addEventListener("DOMContentLoaded", function () {
   initMenuScrollPersistence();
   initSmoothAnchors();
   initTopLink();
+  initLanguageSwitcher();
   initThemeToggle();
   initCodeCopyButtons();
   initSchemeSelect();

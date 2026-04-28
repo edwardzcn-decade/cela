@@ -8,15 +8,21 @@
 <div class="taxonomy-desc">
 {% set form_taxonomy = (taxonomy.name | replace(from="_",to=" ")) %}
 {% set default_desc = "Here is a list of " ~ form_taxonomy ~ " in this site." %}
+{% if taxonomy.name == "tags" %}
+	{% set default_desc = trans(key='taxonomy_tags_desc', lang=lang) %}
+{% elif taxonomy.name == "categories" %}
+	{% set default_desc = trans(key='taxonomy_categories_desc', lang=lang) %}
+{% endif %}
 {% set description = default_desc %}
 
+{# FIXME: Keep this set_global + single output form for comparison with the old in-loop <p> output behavior. #}
 {% for kv in config.extra.cela.taxonomies_desc %}
 {% if kv.name == taxonomy.name %}
-	{% set description = kv.desc %}
-	<p>{{ description }}</p>
+	{% set_global description = kv.desc %}
 {% endif %}
 
 {% endfor %}
+<p>{{ description }}</p>
 </div>
 {% endif %}
 </article>

@@ -4,7 +4,7 @@
 <!-- robot header -->
 <header class="page-header">
     <nav class="breadcrumbs" aria-label="breadcrumb">
-        <a href="{{ config.base_url }}">Home</a>
+        <a href="{{ get_url(path='', lang=lang) }}">Home</a>
     </nav>
     <h1>{{ section.title }}
       {{ macro_extra_icon::extra_icon(icon="robot", size="24") }}

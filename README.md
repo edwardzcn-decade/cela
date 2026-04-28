@@ -23,7 +23,7 @@ If you like it, please give it a 🌟 on GitHub. Thanks!
 + [x] Full-text search
 + [x] Robot tools
 + [x] Home page archive grouping (group by year)
-+ [ ] Internationalization (i18n)
++ [x] Internationalization (i18n, first-class `en` / `zh`)
 
 ### Tags, Categories, and Taxonomies
 

@@ -2,7 +2,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 <meta name="robots" content="index, follow">
-<title>{% if page.title %}{{ page.title }}{% elif section.title %}{{ section.title }}{% else %}{{ config.title }}{% endif %}</title>
+<title>{% if page.title %}{{ page.title }}{% elif section.title %}{{ section.title }}{% elif term is defined and term.name %}{{ term.name }}{% elif taxonomy is defined and taxonomy.name == "tags" %}{{ trans(key='nav_tags', lang=lang) }}{% elif taxonomy is defined and taxonomy.name == "categories" %}{{ trans(key='nav_categories', lang=lang) }}{% else %}{{ config.title }}{% endif %}</title>
 
 
 {# Only for post page #}
@@ -40,12 +40,10 @@
   <link rel="canonical" href="{{ page.extra.canonical }}">
 {% elif section and section.extra and section.extra.canonical %}
   <link rel="canonical" href="{{ section.extra.canonical }}">
-{% elif page and page.path %}
-  {% set canonical_url = config.base_url ~ '/' ~ page.path %}
-  <link rel="canonical" href="{{ canonical_url }}">
-{% elif section and section.path %}
-  {% set canonical_url = config.base_url ~ '/' ~ section.path %}
-  <link rel="canonical" href="{{ canonical_url }}">
+{% elif page and page.permalink %}
+  <link rel="canonical" href="{{ page.permalink }}">
+{% elif section and section.permalink %}
+  <link rel="canonical" href="{{ section.permalink }}">
 {% else %}
   <link rel="canonical" href="{{ current_url | default(value=config.base_url) }}">
 {% endif %}
@@ -61,7 +59,7 @@
 
 {% if config.generate_feeds %}
 {% for feed_filename in config.feed_filenames %}
-<link rel="alternate" type={% if feed_filename == "atom.xml" %}"application/atom+xml"{% else %}"application/rss+xml"{% endif %} title="RSS" href="{{ get_url(path=feed_filename) | safe }}">
+<link rel="alternate" type={% if feed_filename == "atom.xml" %}"application/atom+xml"{% else %}"application/rss+xml"{% endif %} title="RSS" href="{{ get_url(path=feed_filename, lang=lang) | safe }}">
 {% endfor %}
 {% endif %}
 

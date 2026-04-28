@@ -1,35 +1,46 @@
 {% import "macros/extra_icon.svg.html" as macro_extra_icon -%}
 {% import "macros/social_icon.svg.html" as macro_social_icon -%}
 <!DOCTYPE html>
-<html lang="{{ lang }}" dir="{{ config.extra.cela.global.i18n_dir }}">
+<html lang="{{ lang }}" dir="ltr">
 
 <head>
-  {% block head -%}
-    {% include "partials/head.html" -%}
-  {% endblock -%}
+{% block head -%}
+{% include "partials/head.html" -%}
+{% endblock -%}
 </head>
 
 {% set body_classes = "" -%}
 {% if section or term or taxonomy -%}
   {% set body_classes = body_classes ~ "list " -%}
 {% endif -%}
-
+{% set current_lang = lang | default(value=config.default_language) -%}
 <body
 class="{{ body_classes | trim }}"
 id="top"
 data-show-code-copy-buttons="{{ config.extra.cela.show_code_copy_buttons | default(value=true) }}"
 data-show-theme-toggle="{{ config.extra.cela.show_theme_toggle | default(value=true) }}"
 data-remember-choice="{{ config.extra.cela.color.remember_choice | default(value=true) }}"
-data-search-page-url="{{ get_url(path='search/') }}"
+data-search-page-url="{{ get_url(path='search/', lang=current_lang) | safe }}"
 data-search-index-json-url="{{ get_url(path='search_index.' ~ lang ~ '.json') }}"
 data-search-index-js-url="{{ get_url(path='search_index.' ~ lang ~ '.js') }}">
-  {% block header -%}
-    {% include "partials/home/home_header.html" -%}
-  {% endblock %}
+{% set nav_card_enabled = config.extra.cela.nav_card.enabled | default(value=false) -%}
+{% set root_url = get_url(path="", lang=lang) | trim_end_matches(pat="/") -%}
+{% set page_url = current_url | default(value="") | trim_end_matches(pat="/") -%}
+{% set is_site_root = page_url == root_url -%}
+
+{% block header -%}
+{% if not nav_card_enabled or not is_site_root -%}
+  {% include "partials/home/home_header.html" -%}
+{% endif -%}
+{% endblock %}
 <main class="main">
-  {% block main %}
+{% block main %}
+{% if nav_card_enabled and is_site_root -%}
+  {% include "partials/home/nav_card.html" %}
+{% else -%}
   {% include "partials/home/home_main.html" %}
-  {% endblock %}
+{% endif -%}
+{% endblock %}
 </main>
 {% block footer %}
 {% include "partials/home/home_footer.html" %}

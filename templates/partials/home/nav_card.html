@@ -1,0 +1,44 @@
+{% set nav_card = config.extra.cela.nav_card %}
+{% set nav_card_title = nav_card.title | default(value=config.extra.cela.home_title | default(value=config.title)) %}
+{% set nav_card_slogan = nav_card.slogan | default(value="") %}
+{% set home_path = nav_card.home_path | default(value="/home") | trim_start_matches(pat="/") %}
+{% set home_url = get_url(path=home_path, lang=lang) %}
+{% set home_label = nav_card.home_label | default(value="") %}
+{% if home_label | trim == "" %}
+  {% set home_label = trans(key='nav_card_home_label', lang=lang) %}
+{% endif %}
+
+<section class="nav-card-page">
+  <article class="nav-card">
+    {% if nav_card.show_avatar | default(value=true) %}
+    <img
+      class="nav-card-avatar"
+      src="{{ get_url(path=(nav_card.avatar | default(value=config.extra.cela.favicon | default(value='favicon.ico')))) }}"
+      alt="{{ nav_card_title }}"
+    />
+    {% endif %}
+
+    <h1>{{ nav_card_title }}</h1>
+    {% if nav_card_slogan %}
+    <p>{{ nav_card_slogan }}</p>
+    {% endif %}
+
+    <div class="nav-card-actions">
+      <a class="nav-card-button nav-card-button-primary" href="{{ home_url | safe }}">{{ home_label }}</a>
+      {% for link in nav_card.links | default(value=[]) %}
+        {% set link_path = link.path | trim %}
+        {% if link_path is starting_with("http") or link_path is starting_with("mailto:") %}
+          {% set link_url = link_path %}
+        {% else %}
+          {% set link_url = get_url(path=(link_path | trim_start_matches(pat="/")), lang=lang) %}
+        {% endif %}
+        <a class="nav-card-button" href="{{ link_url | safe }}" {% if link_path is starting_with("http") %}target="_blank" rel="noopener noreferrer"{% endif %}>
+          {% if link.icon %}
+            {{ macro_social_icon::social_icon(icon=link.icon) }}
+          {% endif %}
+          <span>{{ link.title }}</span>
+        </a>
+      {% endfor %}
+    </div>
+  </article>
+</section>
