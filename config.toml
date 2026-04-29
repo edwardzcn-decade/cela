@@ -201,6 +201,7 @@ home_content = "Welcome to a demo of the <b>Cela</b> theme!<br><b>Cela</b> is a 
 # Examples:
 #   - ""      → includes all content under "content/"
 #   - "blog"  → includes only content under "content/blog/"
+# NOTE: Currently supports only first-level paths like "blog"; nested paths like "blog/engineering" may render no home posts. See https://github.com/edwardzcn-decade/cela/pull/4
 home_content_dir = "blog"
 
 # [Cela hint] Controls how posts are displayed on the content homepage.
