@@ -1624,8 +1624,8 @@ input {
   text-align: center;
 }
 
-.text-\[clamp\(7rem\2c 24vw\2c 14rem\)\] {
-  font-size: clamp(7rem, 24vw, 14rem);
+.text-\[clamp\(5rem\2c 18vw\2c 10rem\)\] {
+  font-size: clamp(5rem, 18vw, 10rem);
 }
 
 .font-black {

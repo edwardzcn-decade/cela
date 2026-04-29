@@ -5,10 +5,20 @@
 {% set content_dir = content_dir | trim_start_matches(pat="content/") %}
 {% set home_section_path = content_dir ~ '/_index.md' %}
 {% endif %}
-{% set home_section = get_section(path=home_section_path, lang=lang)%}
+{% if home_section_path == "_index.md" %}
+{% set home_section = get_section(path=home_section_path, lang=lang) %}
+{% else %}
+{% set home_section = false %}
+{% set root_section = get_section(path="_index.md", lang=lang) %}
+{% if root_section.subsections is containing(home_section_path) %}
+{% set home_section = get_section(path=home_section_path, lang=lang) %}
+{% endif %}
+{% endif %}
 
+{% if home_section %}
 {% for page in home_section.pages %}
 {% set card_page = page %}
 {% set card_reveal = true %}
 {% include "partials/common/post_card.html" %}
 {% endfor %}
+{% endif %}

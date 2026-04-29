@@ -1,11 +1,19 @@
 {% extends "index.html" %}
 {% block main %}
+{% set content_dir = config.extra.cela.home_content_dir | default(value = "blog") | trim_start_matches(pat="content/") %}
+{% set posts_section_path = content_dir ~ '/_index.md' %}
+{% set posts_section = false %}
+{% set root_section = get_section(path="_index.md", lang=lang) %}
+{% if root_section.subsections is containing(posts_section_path) %}
+{% set posts_section = get_section(path=posts_section_path, lang=lang) %}
+{% endif %}
 <article class="post-single">
   <header class="post-header">
       <nav class="breadcrumbs" aria-label="breadcrumb">
           <a href="{{ get_url(path='', lang=lang) }}">Home</a>&nbsp;»&nbsp;
-          <!-- FIXME: Polish Posts/Blog contents template and remove this comment -->
-          <a href="{{ get_url(path='@/blog/_index.md', lang=lang) }}">Posts</a>&nbsp;»&nbsp;
+          {% if posts_section %}
+          <a href="{{ posts_section.permalink }}">Posts</a>&nbsp;»&nbsp;
+          {% endif %}
           <a href="{{ page.permalink }}">{{ page.title }}</a>
       </nav>
       <h1 class="post-title">{{ page.title }}</h1>

@@ -1,9 +1,14 @@
 {% set content_dir = config.extra.cela.home_content_dir | default(value = "blog") %}
 {% set content_dir = content_dir | trim_start_matches(pat="content/") %}
 {% set home_section_path = content_dir ~ '/_index.md' %}
-{% set home_section = get_section(path=home_section_path, lang=lang)%}
+{% set home_section = false %}
+{% set root_section = get_section(path="_index.md", lang=lang) %}
+{% if root_section.subsections is containing(home_section_path) %}
+  {% set home_section = get_section(path=home_section_path, lang=lang) %}
+{% endif %}
 <!-- Add home section pages (and transparent subsection pages)-->
 
+{% if home_section %}
 {% for year, pages in home_section.pages | group_by(attribute="year") %}
 <h1 class="home-year reveal-on-scroll">{{ year }}</h1>
 {% for page in pages %}
@@ -12,3 +17,4 @@
 {% include "partials/common/post_card.html" %}
 {% endfor %}
 {% endfor %}
+{% endif %}
