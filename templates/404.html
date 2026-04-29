@@ -1,0 +1,21 @@
+{% extends "index.html" %}
+
+{% block head %}
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<meta name="robots" content="noindex, follow">
+<title>404 | {{ config.title }}</title>
+<link rel="stylesheet" href="{{ get_url(path='css/theme-runtime.css') }}">
+<link rel="stylesheet" href="{{ get_url(path='css/theme.css') }}">
+<link rel="icon" href="{{ get_url(path=(config.extra.cela.favicon | default(value='favicon.ico'))) }}">
+{% endblock %}
+
+{% block main %}
+<section class="not-found flex min-h-[60vh] items-center justify-center text-center" aria-label="Page not found">
+  <a
+    class="text-[clamp(5rem,18vw,10rem)] font-black leading-none tracking-[-0.08em] text-[var(--text-main)] transition-colors hover:text-[var(--accent-color)] focus:outline-none focus-visible:ring-2 focus-visible:ring-[var(--focus-ring)] focus-visible:ring-offset-4 focus-visible:ring-offset-[var(--theme-bg)]"
+    href="{{ get_url(path='', lang=lang | default(value=config.default_language)) | safe }}"
+  >404</a>
+</section>
+{% endblock %}

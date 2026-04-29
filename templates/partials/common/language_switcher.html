@@ -35,8 +35,9 @@
       {% endif %}
     {% elif not is_current_language and taxonomy is defined and term is not defined %}
       {# Taxonomy list pages should also use Zola's resolved permalink instead of hand-built paths. #}
+      {# Empty taxonomy lists may still resolve, but should behave like missing translations. #}
       {% set target_taxonomy = get_taxonomy(kind=taxonomy.name, lang=language_code, required=false) %}
-      {% if target_taxonomy %}
+      {% if target_taxonomy and target_taxonomy.items | length > 0 %}
         {% set_global language_url = target_taxonomy.permalink %}
         {% set_global is_missing_translation = false %}
       {% endif %}

@@ -192,15 +192,31 @@ navigation = [
 
 show_home_content = true
 home_content = "Welcome to a demo of the <b>Cela</b> theme!<br><b>Cela</b> is a simple and lightweight theme.<br>If you like it, Please give a 🌟 on Github :)"
-# The default home directory you will write your blog post content
-# This will be used to generate the home page (with subsections) posts list
-# If you set this to "", the all the content under "content" will be shown (not recommand)
-# If you set this to "blog", the all the content under "content/blog" will be shown (recommand)
+
+# [Cela hint] Default directory for blog post content.
+# This setting determines things following:
+#   1) Content in which directory is included when generating the homepage (including subsections)
+#   2) Base path used for resolving content.
+#
+# Examples:
+#   - ""      → includes all content under "content/"
+#   - "blog"  → includes only content under "content/blog/"
+# NOTE: Currently supports only first-level paths like "blog"; nested paths like "blog/engineering" may render no home posts. See https://github.com/edwardzcn-decade/cela/pull/4
 home_content_dir = "blog"
-# [Cela hint] Use "mix" to show subsections as an archieve on home page with collapsible lists
-# TODO fix "" empty string
+
+# [Cela hint] Controls how posts are displayed on the content homepage.
+# Available values: "default" (default), "mix", "bare"
+#
+#   - "default" → displays posts grouped by year in descending order
+#   - "mix"     → displays posts in archive style with collapsible subsections
+#   - "bare"    → displays a simple descending list of posts (no year grouping)
+#
+# TODO: handle "" (empty string) case
 home_list_style = "default"
 
+# [Cela hint] Decide whether to display social icons on the homepage.
+# Default: true
+# Note: If home-info is disabled, the icons listed under "social_icons" will not be shown.
 show_home_social_icons = true
 social_icons = [
   {path = "https://github.com/", title = "GitHub", icon = "github"},
@@ -211,6 +227,12 @@ social_icons = [
   {path = "/atom.xml", title = "RSS", icon = "rss"},
 ]
 taxonomies_desc = []
+
+
+# [Cela hint] Decide whether to append an emoji "tail" to the header of a specific taxonomy page (e.g., selected tag/category).
+# Default: true
+# Note: When enabled, the emoji is matched and applied based on the taxonomy name defined in "taxonomies_tail".
+show_taxonomies_tail = true
 taxonomies_tail = [
   {name = "tags", emoji = "🏷️"},
   {name = "categories", emoji = "📂"},
@@ -234,7 +256,7 @@ show_reading_time = true
 card_hover_border = false
 show_scroll_to_top = true
 show_taxonomies_description = true
-show_taxonomies_tail = true
+
 show_theme_toggle = true
 show_toc = true
 unfold_toc = false

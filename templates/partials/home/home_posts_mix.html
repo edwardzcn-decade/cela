@@ -2,6 +2,7 @@
 {% if content_dir == "" or content_dir == "content" %}
 {% set home_section_path = '_index.md' %}
 {% set home_section = get_section(path=home_section_path, lang=lang)%}
+{% if home_section %}
 {% for page in home_section.pages %}
 <!-- only show pages under content base url -->
 <article class="post-entry">
@@ -19,12 +20,19 @@
   <a class="entry-link" aria-label="post link to {{ page.title }}" href="{{ page.permalink }}"></a>
 </article>
 {% endfor %}
+{% endif %}
 
 {% else %}
 {% set content_dir = content_dir | trim_start_matches(pat="content/") %}
 {% set home_section_path = content_dir ~ '/_index.md' %}
-{% set home_section = get_section(path=home_section_path, lang=lang)%}
+{% set home_section = false %}
+{% set root_section = get_section(path="_index.md", lang=lang) %}
+{# NOTE: Supports only first-level home_content_dir like "blog"; nested values like "blog/engineering" render no home posts. See https://github.com/edwardzcn-decade/cela/pull/4 #}
+{% if root_section.subsections is containing(home_section_path) %}
+{% set home_section = get_section(path=home_section_path, lang=lang) %}
+{% endif %}
 
+{% if home_section %}
 <div class="home-list-container">
     {% for subsec_path in home_section.subsections %}
       {% set subsec = get_section(path=subsec_path, lang=lang) %}
@@ -64,4 +72,5 @@
     {% endfor %}
 
 </div>
+{% endif %}
 {% endif %}
