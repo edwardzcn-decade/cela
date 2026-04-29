@@ -44,3 +44,5 @@ logs/
 test_svg.html
 tasks.json
 settings.json
+example.txt
+example.txt.sig

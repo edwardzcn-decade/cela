@@ -1,3 +1,4 @@
+{% import "macros/extra_icon.svg.html" as macro_extra_icon -%}
 {% include "partials/common/header_body_theme.html" -%}
 <header class="header">
   <nav class="nav">
@@ -99,7 +100,10 @@
     <ul id="menu">
       {% for item in config.extra.cela.navigation %}
         {% set path = item.path | trim | trim_start_matches(pat="//") %}
+        {% set is_missing_nav_target = false %}
+        {% set missing_nav_message = trans(key='missing_translation', lang=lang) %}
         {% if path is starting_with("https") %}
+          {# External URL #}
           {% set url = path %}
         {% elif path == "/" %}
           {% set url = get_url(path="", lang=lang) %}
@@ -107,16 +111,41 @@
           {% set url = path %}
         {% else %}
           {% set nav_path = path | trim_start_matches(pat="/") %}
-          {% set url = get_url(path=nav_path, lang=lang) %}
+
+          {% set_global is_taxonomy_nav = false %}
+          {% for conf_taxonomy in config.taxonomies | default(value=[]) %}
+            {# Search and check taxonomy name list in configuration #}
+            {% if nav_path == conf_taxonomy.name %}
+              {% set_global is_taxonomy_nav = true %}
+            {% endif %}
+          {% endfor %}
+
+          {% if is_taxonomy_nav %}
+            {# Match taxonomy #}
+            {% set target_taxonomy = get_taxonomy(kind=nav_path, lang=lang, required=false) %}
+            {% if target_taxonomy and target_taxonomy.items | length > 0 %}
+              {% set url = target_taxonomy.permalink %}
+            {% else %}
+              {# Taxonomy name exist but no items #}
+              {% set url = current_url | default(value=get_url(path="", lang=lang)) %}
+              {% set is_missing_nav_target = true %}
+            {% endif %}
+          {% else %}
+            {% set url = get_url(path=nav_path, lang=lang) %}
+          {% endif %}
         {% endif %}
-        <!-- FIXME: here use item.title (ignoring translation as default value of item_title) -->
+
+        {# Get item name or title with translation #}
         {% set item_title = item.title %}
         {% if item.title_key %}
+          {# Use translation key for item title #}
           {% set item_title = trans(key=item.title_key, lang=lang) %}
         {% endif %}
-        {% set is_active_link = current_url and url | trim_end_matches(pat="/") == current_url | trim_end_matches(pat="/") %}
+        {% set is_active_link = not is_missing_nav_target and current_url and url | trim_end_matches(pat="/") == current_url | trim_end_matches(pat="/") %}
       <li>
-        <a href="{{ url }}" title="{{ item_title }}" {%- if item.is_search -%} data-search-toggle="true"{%- endif -%}>
+        <a href="{{ url }}" title="{{ item_title }}"
+          {% if item.is_search %}data-search-toggle="true"{% endif %}
+          {% if is_missing_nav_target %}data-missing-translation="true" data-missing-translation-message="{{ missing_nav_message }}"{% endif %}>
           <span{% if is_active_link %} class="active"{% endif %}>{{ item_title }}</span>
           {%- if item.is_external and item.is_external == true -%}
             {{ macro_extra_icon::extra_icon(icon='link') }}
