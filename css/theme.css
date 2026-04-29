@@ -1596,28 +1596,66 @@ input {
   display: flex;
 }
 
-.contents {
-  display: contents;
-}
-
 .hidden {
   display: none;
+}
+
+.min-h-\[60vh\] {
+  min-height: 60vh;
 }
 
 .transform {
   transform: translate(var(--tw-translate-x), var(--tw-translate-y)) rotate(var(--tw-rotate)) skewX(var(--tw-skew-x)) skewY(var(--tw-skew-y)) scaleX(var(--tw-scale-x)) scaleY(var(--tw-scale-y));
 }
 
+.items-center {
+  align-items: center;
+}
+
+.justify-center {
+  justify-content: center;
+}
+
 .border {
   border-width: 1px;
+}
+
+.text-center {
+  text-align: center;
+}
+
+.text-\[clamp\(5rem\2c 18vw\2c 10rem\)\] {
+  font-size: clamp(5rem, 18vw, 10rem);
+}
+
+.font-black {
+  font-weight: 900;
 }
 
 .capitalize {
   text-transform: capitalize;
 }
 
+.leading-none {
+  line-height: 1;
+}
+
+.tracking-\[-0\.08em\] {
+  letter-spacing: -0.08em;
+}
+
+.text-\[var\(--text-main\)\] {
+  color: var(--text-main);
+}
+
 .filter {
   filter: var(--tw-blur) var(--tw-brightness) var(--tw-contrast) var(--tw-grayscale) var(--tw-hue-rotate) var(--tw-invert) var(--tw-saturate) var(--tw-sepia) var(--tw-drop-shadow);
+}
+
+.transition-colors {
+  transition-property: color, background-color, border-color, text-decoration-color, fill, stroke;
+  transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+  transition-duration: 150ms;
 }
 
 .chroma .line {
@@ -1718,4 +1756,31 @@ input {
     .search-toggle-modal button:hover {
     transform: none !important;
   }
+}
+
+.hover\:text-\[var\(--accent-color\)\]:hover {
+  color: var(--accent-color);
+}
+
+.focus\:outline-none:focus {
+  outline: 2px solid transparent;
+  outline-offset: 2px;
+}
+
+.focus-visible\:ring-2:focus-visible {
+  --tw-ring-offset-shadow: var(--tw-ring-inset) 0 0 0 var(--tw-ring-offset-width) var(--tw-ring-offset-color);
+  --tw-ring-shadow: var(--tw-ring-inset) 0 0 0 calc(2px + var(--tw-ring-offset-width)) var(--tw-ring-color);
+  box-shadow: var(--tw-ring-offset-shadow), var(--tw-ring-shadow), var(--tw-shadow, 0 0 #0000);
+}
+
+.focus-visible\:ring-\[var\(--focus-ring\)\]:focus-visible {
+  --tw-ring-color: var(--focus-ring);
+}
+
+.focus-visible\:ring-offset-4:focus-visible {
+  --tw-ring-offset-width: 4px;
+}
+
+.focus-visible\:ring-offset-\[var\(--theme-bg\)\]:focus-visible {
+  --tw-ring-offset-color: var(--theme-bg);
 }
