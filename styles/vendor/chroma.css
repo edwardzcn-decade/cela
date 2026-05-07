@@ -1,0 +1,113 @@
+@layer utilities {
+  .bg {
+    color: #f8f8f2;
+    background-color: #282a36;
+  }
+
+  .chroma {
+    color: #f8f8f2;
+    background-color: #282a36;
+  }
+
+  .chroma .hl {
+    background-color: #474733;
+  }
+
+  .chroma .lnt,
+  .chroma .ln {
+    white-space: pre;
+    user-select: none;
+    margin-right: 0.4em;
+    padding: 0 0.4em;
+    color: #7f7f7f;
+  }
+
+  .chroma .line {
+    display: flex;
+  }
+
+  .chroma .k,
+  .chroma .kn,
+  .chroma .kp,
+  .chroma .kr,
+  .chroma .o,
+  .chroma .ow,
+  .chroma .cp,
+  .chroma .cpf,
+  .chroma .nt {
+    color: #ff79c6;
+  }
+
+  .chroma .kd,
+  .chroma .nb,
+  .chroma .nl,
+  .chroma .kt,
+  .chroma .nv,
+  .chroma .vc,
+  .chroma .vg,
+  .chroma .vi {
+    color: #8be9fd;
+    font-style: italic;
+  }
+
+  .chroma .na,
+  .chroma .nc,
+  .chroma .nf,
+  .chroma .gi {
+    color: #50fa7b;
+  }
+
+  .chroma .s,
+  .chroma .sa,
+  .chroma .sb,
+  .chroma .sc,
+  .chroma .dl,
+  .chroma .sd,
+  .chroma .s2,
+  .chroma .se,
+  .chroma .sh,
+  .chroma .si,
+  .chroma .sx,
+  .chroma .sr,
+  .chroma .s1,
+  .chroma .ss {
+    color: #f1fa8c;
+  }
+
+  .chroma .m,
+  .chroma .mb,
+  .chroma .mf,
+  .chroma .mh,
+  .chroma .mi,
+  .chroma .il,
+  .chroma .mo {
+    color: #bd93f9;
+  }
+
+  .chroma .c,
+  .chroma .ch,
+  .chroma .cm,
+  .chroma .c1,
+  .chroma .cs {
+    color: #6272a4;
+  }
+
+  .chroma .gd {
+    color: #ff5555;
+  }
+
+  .chroma .ge,
+  .chroma .gl {
+    text-decoration: underline;
+  }
+
+  .chroma .gh,
+  .chroma .gi,
+  .chroma .gu {
+    font-weight: 700;
+  }
+
+  .chroma .go {
+    color: #44475a;
+  }
+}
