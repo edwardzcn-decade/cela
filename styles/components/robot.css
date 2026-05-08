@@ -1,0 +1,129 @@
+@layer components {
+  .buttons,
+  .main .profile {
+    display: flex;
+    justify-content: center;
+  }
+
+  .main .profile {
+    min-height: calc(100vh - theme("spacing.site-header") - theme("spacing.site-header") - 3rem);
+    align-items: center;
+    text-align: center;
+  }
+
+  .profile .profile_inner h1 {
+    padding: 12px 0;
+  }
+
+  .profile img {
+    display: inline-table;
+    border-radius: 50%;
+  }
+
+  .buttons {
+    max-width: 400px;
+    flex-wrap: wrap;
+    margin: 0 auto;
+  }
+
+  .button {
+    margin: 8px;
+    border-radius: theme("borderRadius.theme");
+    background: var(--surface-muted);
+    padding: 6px;
+    transition: transform 0.12s ease;
+  }
+
+  .button-inner {
+    padding: 0 8px;
+  }
+
+  .button:active {
+    transform: scale(0.96);
+  }
+
+  .button-container {
+    text-align: center;
+  }
+
+  .button-container button {
+    border-radius: theme("borderRadius.theme");
+    background-color: var(--accent-color);
+    color: white;
+    padding: 5px 10px;
+    font-size: 16px;
+    transition:
+      background-color 0.3s ease,
+      transform 0.16s ease;
+  }
+
+  .button-container button:hover {
+    background-color: var(--accent-strong);
+    transform: translateY(-1px);
+  }
+
+  .robot-card-header {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+  }
+
+  .tool-section {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 20px 0;
+  }
+
+  .tool-section .tool-label {
+    flex: 1;
+    margin-right: 20px;
+    text-align: center;
+  }
+
+  .tool-section .tool-inputs {
+    flex: 4;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    text-align: left;
+  }
+
+  .tool-iframe {
+    width: 100%;
+    height: 200px;
+    border: 0;
+  }
+
+  .tool-iframe.hidden {
+    display: none;
+  }
+
+  .input-group {
+    display: flex;
+    width: 100%;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 5px;
+    margin: 10px;
+  }
+
+  input {
+    width: 100%;
+    border: 1px solid var(--surface-muted);
+    border-radius: theme("borderRadius.theme");
+    background: var(--code-bg);
+    color: var(--text-main);
+    padding: 4px 10px;
+    font-weight: 700;
+  }
+
+  .tool-response {
+    margin-top: 20px;
+    color: green;
+    text-align: center;
+  }
+}

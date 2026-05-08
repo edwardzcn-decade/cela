@@ -56,10 +56,6 @@
     {% if config.extra.cela.show_post_nav_links | default(value=true) %}
     {% include "partials/post/post_nav_links.html" %}
     {% endif %}
-    {# TODO #}
-    {#- if (and site.Params.ShowShareButtons (ne .Params.disableShare true)) }}
-    {{- partial "share_icons.html" . -}}
-    {{- end #}
   </footer>
 
 </article>

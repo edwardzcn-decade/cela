@@ -56,12 +56,12 @@
 
 {# TODO: IP tool disabled in base theme; re-enable in custom branch if needed.
 <div class="post-entry">
-  <header class="entry-header" style="display: flex; flex-direction: column; align-items: center; justify-content: center; text-align: center; ">
+  <header class="entry-header robot-card-header">
     <h2>IP Tools</h2>
   </header>
   <div class="tool-section">
     <div class="input-group">
-      <iframe id="ipFrame" style="width: 100%; height: 200px; border: 0; display: none;"></iframe>
+      <iframe id="ipFrame" class="tool-iframe hidden"></iframe>
       <div class="button-container">
         <button onclick="showIP()">Show ip info</button>
       </div>
@@ -73,7 +73,7 @@
 
 {# TODO: WeChat sender disabled in base theme; re-enable in custom branch if needed.
 <div class="post-entry">
-  <header class="entry-header" style="display: flex; flex-direction: column; align-items: center; justify-content: center; text-align: center; ">
+  <header class="entry-header robot-card-header">
     <h2>Send WeChat Message</h2>
   </header>
   <div class="tool-section">
@@ -89,7 +89,7 @@
       </div>
     </form>
   </div>
-  <div id="wechat-response" class="tool-response" style="margin-top: 20px; text-align: center; color: green;">
+  <div id="wechat-response" class="tool-response">
     <!-- TODO: response message will appear here -->
   </div>
 </div>

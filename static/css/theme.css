@@ -693,14 +693,14 @@ div.highlight:hover .copy-code,
 
 .nav-card-button {
   display: inline-flex;
-  align-items: center;
-  gap: 0.45rem;
   border: 1px solid var(--border-color);
   border-radius: 0.5rem;
   background: var(--surface-bg);
   color: var(--text-main);
-  padding: 0.55rem 0.9rem;
   font-weight: 700;
+  align-items: center;
+  gap: 0.45rem;
+  padding: 0.55rem 0.9rem;
   transition:
       border-color 0.16s ease,
       transform 0.16s ease,
@@ -814,13 +814,13 @@ a.section-count:hover {
 }
 
 .post-entry {
-  position: relative;
-  margin-bottom: 1.5rem;
   border: 1px solid var(--border-color);
   border-radius: 0.5rem;
   background: var(--surface-bg);
-  padding: 1.5rem;
   box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  position: relative;
+  margin-bottom: 1.5rem;
+  padding: 1.5rem;
   transition:
       transform 0.16s ease,
       box-shadow 0.22s ease,
@@ -1158,10 +1158,10 @@ a.section-count:hover {
 }
 
 .toc {
-  margin: 0 2px 40px;
   border: 1px solid var(--border-color);
   border-radius: 0.5rem;
   background: var(--code-bg);
+  margin: 0 2px 40px;
   padding: 0.4em;
 }
 
@@ -1211,7 +1211,6 @@ a.section-count:hover {
 }
 
 .post-tags a,
-  .share-buttons,
   .paginav {
   border: 1px solid var(--border-color);
   border-radius: 0.5rem;
@@ -1220,7 +1219,6 @@ a.section-count:hover {
 
 .post-tags a {
   display: block;
-  background: var(--code-bg);
   color: var(--text-muted);
   font-size: 14px;
   line-height: 34px;
@@ -1231,6 +1229,27 @@ a.section-count:hover {
   .paginav a:hover {
   background: var(--surface-strong);
 }
+
+/* TODO: .share-buttons is currently not rendered. Re-enable after adding a
+     Zola-native share_icons.html partial and related theme configuration. */
+
+/* .share-buttons {
+    @apply link-panel;
+
+    display: flex;
+    justify-content: center;
+    overflow-x: auto;
+    margin: 14px 0;
+    padding-inline-start: 0.5rem;
+  } */
+
+/* .share-buttons a {
+    margin-top: 10px;
+  } */
+
+/* .share-buttons a:not(:last-of-type) {
+    margin-inline-end: 12px;
+  } */
 
 h1:hover .anchor,
   h2:hover .anchor,
@@ -1360,6 +1379,16 @@ h1 > a > svg {
   text-align: left;
 }
 
+.tool-iframe {
+  width: 100%;
+  height: 200px;
+  border: 0;
+}
+
+.tool-iframe.hidden {
+  display: none;
+}
+
 .input-group {
   display: flex;
   width: 100%;
@@ -1378,6 +1407,12 @@ input {
   color: var(--text-main);
   padding: 4px 10px;
   font-weight: 700;
+}
+
+.tool-response {
+  margin-top: 20px;
+  color: green;
+  text-align: center;
 }
 
 #search-toggle-box {
@@ -1437,14 +1472,18 @@ input {
   margin: 10px 0;
 }
 
+.search-results.hidden {
+  display: none;
+}
+
 .search-entry {
-  position: relative;
-  margin-bottom: 1.5rem;
   border: 1px solid var(--border-color);
   border-radius: 0.5rem;
   background: var(--surface-bg);
-  padding: 1.5rem;
   box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  position: relative;
+  margin-bottom: 1.5rem;
+  padding: 1.5rem;
 }
 
 .search-entry .post-entry {
@@ -1614,10 +1653,6 @@ input {
 
 .justify-center {
   justify-content: center;
-}
-
-.border {
-  border-width: 1px;
 }
 
 .text-center {

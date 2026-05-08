@@ -199,6 +199,7 @@ Mapping between semantic template class names and their Tailwind token equivalen
 ## TODO
 
 - [ ] **Tailwind Path B migration**: All semantic classes (`.post-single`, `.post-entry`, `.footer`, etc.) in `styles/tailwind.css` currently use raw CSS values. Migrate them to use `@apply` with tokens defined in `tailwind.config.js` (e.g. `@apply bg-surface border-border rounded-theme`). This is the recommended step before considering Path A (utility classes in templates) or Tailwind v4.
+- [ ] Add a Zola-native `share_icons.html` partial for optional post share buttons in `page.html` after include `post_nav_links.html`. Should be configured in `show_share_buttons` and `disable_share`.
 - [ ] **Tailwind Path A (future)**: Replace semantic classes in templates with inline Tailwind utility classes. Best done alongside Tailwind v4 migration.
 - [ ] Explore Tailwind v4 migration: v4 removes `tailwind.config.js` in favor of `@theme` blocks in CSS, aligns naturally with the CSS variable architecture, and offers significantly faster build times. Tracked for future investigation.
 

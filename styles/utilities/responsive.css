@@ -1,0 +1,58 @@
+@layer utilities {
+  @media screen and (min-width: 768px) {
+    ::-webkit-scrollbar {
+      width: 22px;
+      height: 11px;
+    }
+  }
+
+  @media screen and (max-width: 768px) {
+    .main {
+      padding: theme("spacing.page-x-mobile");
+    }
+
+    .profile img {
+      transform: scale(0.85);
+    }
+
+    .first-entry {
+      min-height: 260px;
+    }
+
+    .footer {
+      padding: calc((theme("spacing.site-header") - theme("spacing.page-x-mobile") - 10px) / 2) theme("spacing.page-x-mobile");
+    }
+  }
+
+  @media screen and (max-width: 900px) {
+    .list .top-link {
+      transform: translateY(-5rem);
+    }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .js .reveal-on-scroll,
+    .js .home-hero .entry-header,
+    .js .home-hero .entry-content,
+    .js .home-hero .entry-footer,
+    .js .home-social-icons a {
+      animation: none !important;
+      opacity: 1 !important;
+      transform: none !important;
+      transition: none !important;
+    }
+
+    .terms-tags a:active,
+    .button:active,
+    .button-container button:hover,
+    .nav-card-button:hover,
+    .post-entry:active,
+    .post-entry:hover,
+    .top-link,
+    #searchResults .focus,
+    #searchResults li:active,
+    .search-toggle-modal button:hover {
+      transform: none !important;
+    }
+  }
+}
