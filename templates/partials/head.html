@@ -2,7 +2,14 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 <meta name="robots" content="index, follow">
-<title>{% if page.title %}{{ page.title }}{% elif section.title %}{{ section.title }}{% elif term is defined and term.name %}{{ term.name }}{% elif taxonomy is defined and taxonomy.name == "tags" %}{{ trans(key='nav_tags', lang=lang) }}{% elif taxonomy is defined and taxonomy.name == "categories" %}{{ trans(key='nav_categories', lang=lang) }}{% else %}{{ config.title }}{% endif %}</title>
+{# Set default titles for tags and categories as fallbacks of i18n support #}
+{% set nav_tags_title = "Tags" %}
+{% set nav_categories_title = "Categories" %}
+{% if config.translations %}
+  {% set nav_tags_title = trans(key='nav_tags', lang=lang) %}
+  {% set nav_categories_title = trans(key='nav_categories', lang=lang) %}
+{% endif %}
+<title>{% if page.title %}{{ page.title }}{% elif section.title %}{{ section.title }}{% elif term is defined and term.name %}{{ term.name }}{% elif taxonomy is defined and taxonomy.name == "tags" %}{{ nav_tags_title }}{% elif taxonomy is defined and taxonomy.name == "categories" %}{{ nav_categories_title }}{% else %}{{ config.title }}{% endif %}</title>
 
 
 {# Only for post page #}

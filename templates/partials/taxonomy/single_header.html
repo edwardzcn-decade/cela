@@ -1,7 +1,12 @@
 <!-- taxonomy header (mostly used in single template) just below the nav bar -->
 <header class="page-header">
   <div class="breadcrumbs">
-      <a href="{{ get_url(path='', lang=lang) }}">{{ trans(key='nav_home', lang=lang) }}</a>&nbsp;»&nbsp;
+      {# Set default home title as fallbacks of i18n support #}
+      {% set nav_home_title = "Home" %}
+      {% if config.translations %}
+        {% set nav_home_title = trans(key='nav_home', lang=lang) %}
+      {% endif %}
+      <a href="{{ get_url(path='', lang=lang) }}">{{ nav_home_title }}</a>&nbsp;»&nbsp;
       <a href="{{ get_url(path=taxonomy.name, lang=lang) }}">
         {{- taxonomy_title -}}
         {% if config.extra.cela.show_taxonomies_tail %}

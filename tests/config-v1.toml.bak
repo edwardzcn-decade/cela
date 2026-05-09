@@ -15,7 +15,7 @@ default_language = "en"
 
 # The site theme to use.
 # [Cela hint] Try cela
-# theme = "cela"
+theme = "cela"
 
 # Output directory `public` (by default)
 output_dir = "public"
@@ -59,14 +59,6 @@ feed_filenames = ["atom.xml"]
 feed_limit = 50
 
 # The taxonomies to be rendered for the site and their configuration of the default languages
-# Example:
-#     taxonomies = [
-#       {name = "tags", feed = true}, # each tag will have its own feed
-#       {name = "tags"}, # you can have taxonomies with the same name in multiple languages
-#       {name = "categories", paginate_by = 5},  # 5 items per page for a term
-#       {name = "authors"}, # Basic definition: no feed or pagination
-#     ]
-#
 taxonomies = [
   {name = "tags", feed = true},
   {name = "categories", feed = true},
@@ -77,55 +69,9 @@ taxonomies = [
 # [Cela hint] Cela will enable this feature by default
 build_search_index = true
 
-[search]
-index_format = "fuse_json"
-
-[translations]
-nav_archive = "Archive"
-nav_home = "Home"
-nav_tags = "Tags"
-nav_categories = "Categories"
-nav_search = "Search"
-nav_robot = "Robot"
-nav_blog = "Blog"
-language_switcher = "Language"
-missing_translation = "Translation is not available"
-nav_card_home_label = "Blog"
-taxonomy_tags_desc = "Here is a list of tags in this site."
-taxonomy_categories_desc = "Here is a list of categories in this site."
-
-[languages.zh]
-title = "Cela：一个简单轻量的 Zola 主题"
-description = "一个轻量的 Zola 主题"
-generate_feeds = true
-feed_filenames = ["atom.xml"]
-build_search_index = true
-taxonomies = [
-  {name = "tags", feed = true},
-  {name = "categories", feed = true},
-]
-
-[languages.zh.translations]
-nav_archive = "归档"
-nav_home = "主页"
-nav_tags = "标签"
-nav_categories = "分类"
-nav_search = "搜索"
-nav_robot = "工具"
-nav_blog = "博客"
-language_switcher = "语言"
-missing_translation = "暂无该语言翻译"
-nav_card_home_label = "博客"
-taxonomy_tags_desc = "这里是本站标签集合。"
-taxonomy_categories_desc = "这里是本站分类集合。"
-
-# When set to "false", Sitemap.xml is not generated
-# [Cela hint] Cela will enable this feature by default
-# generate_sitemap = true
-
 # When set to "false", robots.txt is not generated
 # [Cela hint] Cela will enable this feature by default
-# generate_robots_txt = true
+generate_robots_txt = true
 
 # Configuration of the Markdown rendering
 [markdown]
@@ -145,11 +91,6 @@ bottom_footnotes = true
 # Syntax highlighting settings for Zola 0.22.x
 [markdown.highlighting]
 theme = "catppuccin-mocha"
-
-[link_checker]
-# See more details in https://www.getzola.org/documentation/getting-started/configuration/
-# YouTube watch link (used in test pages) are valid but can reject automated checker requests. 
-skip_prefixes = ["https://www.youtube.com"]
 
 [slugify]
 # default is on
@@ -183,61 +124,25 @@ icon_dark = "svg/cela_new_small_rec.svg"
 date_format = "%Y-%m-%d"
 show_home_title = true
 home_title = "Cela Template"
-# Now the title of navigation item will be the default name. If the title_key is set, it will be override by the translation.
-# More details in the i18n/translations configuration.
 navigation = [
-  # TODO: May explain the archieve
-  {path = "/", title = "Archive", title_key = "nav_archive"},
-  {path = "/tags", title = "Tags", title_key = "nav_tags"},
-  {path = "/categories", title = "Categories", title_key = "nav_categories"},
-  {path = "#", title = "Search", title_key = "nav_search", is_search = true},
-  {path = "/robot", title = "Robot", title_key = "nav_robot", is_robot = true},
-  {path = "https://getzola.org/", title = "Zola", is_external = true},
+  {path = "/", title = "Archive"},
+  {path = "/tags", title = "Tags"},
+  {path = "/categories", title = "Categories"},
+  {path = "#", title = "Search", is_search = true},
 ]
 
 show_home_content = true
 home_content = "Welcome to a demo of the <b>Cela</b> theme!<br><b>Cela</b> is a simple and lightweight theme.<br>If you like it, Please give a 🌟 on Github :)"
-
-# [Cela hint] Default directory for blog post content.
-# This setting determines things following:
-#   1) Content in which directory is included when generating the homepage (including subsections)
-#   2) Base path used for resolving content.
-#
-# Examples:
-#   - ""      → includes all content under "content/"
-#   - "blog"  → includes only content under "content/blog/"
-# NOTE: Currently supports only first-level paths like "blog"; nested paths like "blog/engineering" may render no home posts. See https://github.com/edwardzcn-decade/cela/pull/4
 home_content_dir = "blog"
-
-# [Cela hint] Controls how posts are displayed on the content homepage.
-# Available values: "default" (default), "mix", "bare"
-#
-#   - "default" → displays posts grouped by year in descending order
-#   - "mix"     → displays posts in archive style with collapsible subsections
-#   - "bare"    → displays a simple descending list of posts (no year grouping)
-#
-# TODO: handle "" (empty string) case
 home_list_style = "default"
 
-# [Cela hint] Decide whether to display social icons on the homepage.
-# Default: true
-# Note: If home-info is disabled, the icons listed under "social_icons" will not be shown.
 show_home_social_icons = true
 social_icons = [
-  {path = "https://github.com/", title = "GitHub", icon = "github"},
-  {path = "https://scholar.google.com/", title = "Google Scholar", icon = "googlescholar"},
-  {path = "https://sg.linkedin.com/", title = "Linkedin", icon = "linkedin"},
+  {path = "https://github.com/", title = "GitHub Account", icon = "github"},
   {path = "xxx@gmail.com", title = "Email", icon = "email"},
-  {path = "https://www.wikipedia.org", title = "Wiki", icon = "wiki"},
   {path = "/atom.xml", title = "RSS", icon = "rss"},
 ]
 taxonomies_desc = []
-
-
-# [Cela hint] Decide whether to append an emoji "tail" to the header of a specific taxonomy page (e.g., selected tag/category).
-# Default: true
-# Note: When enabled, the emoji is matched and applied based on the taxonomy name defined in "taxonomies_tail".
-show_taxonomies_tail = true
 taxonomies_tail = [
   {name = "tags", emoji = "🏷️"},
   {name = "categories", emoji = "📂"},
@@ -245,7 +150,7 @@ taxonomies_tail = [
 
 # Trigger when readers click the "suggest changes" on each page
 # it can be
-# - an email address (e.g. "mailto:edward@edwardzcn.me" )
+# - an email address (e.g. "mailto:your-name@example.com" )
 # - a github or gitlab repo link (e.g. "https://github.com/<your-username>/<your-source>/tree/main")
 # if your blog source is public, cela will try to find the orinal page with its relative path
 # edit_post_url = "mailto:your-username@gmail.com"
@@ -261,30 +166,16 @@ show_reading_time = true
 card_hover_border = false
 show_scroll_to_top = true
 show_taxonomies_description = true
-
+show_taxonomies_tail = true
 show_theme_toggle = true
 show_toc = true
 unfold_toc = false
 show_word_count = true
 
-# [Cela hint] Cela will use this for search page title (default is "Search" if not set), and it wil be override by `./search/index.md` title if set.
-search_title = "Search"
-# [Cela hint] Cela will use this for search page description (default is "Find posts by title or body content" if not set), and it wil be override by `./search/index.md` description if set.
-search_description = "Find posts by title or body content"
-
-[extra.cela.nav_card]
-enabled = false
-show_avatar = true
-avatar = "android-chrome-192x192.png"
-title = "Cela Template"
-slogan = "Your slogan here"
-home_path = "/home"
-# Empty uses the translated home-info default label.
-home_label = ""
-links = [
-  {path = "https://github.com/", title = "GitHub", icon = "github"},
-  {path = "/atom.xml", title = "RSS", icon = "rss"},
-]
+# [Cela hint] Cela will use this for search page title (default is "Search" if not set)
+search_title = "From Config: Search"
+# [Cela hint] Cela will use this for search page description (default is "Find posts by title or body content" if not set)
+search_description = "From Config: Find posts by title or body content"
 
 [extra.cela.color]
 
@@ -298,11 +189,5 @@ remember_choice = true
 title_show = true
 # Title prefix/delimiter before page or section title
 title_prefix = "🌟"
-# Language direction map for the first i18n version.
-language_directions = { en = "ltr", zh = "ltr" }
-
-# # TODO
-# # Whether to load social icons (default = true)
-# social_icon = true
-# # Specify the directory of social icon (default = "") If set, the original social_icon macro will not be loaded and used
-# social_icon_dir = "auto"
+# The internationalization directory for multi-language support
+i18n_dir = "i18n_dir"

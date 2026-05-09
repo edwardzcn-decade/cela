@@ -1,10 +1,13 @@
 {% extends "index.html" %}
 {% block main %}
-{% set taxonomy_title = trans(key='nav_categories', lang=lang) %}
-  {% include "partials/taxonomy/single_header.html" %}
+{% set taxonomy_title = "Categories" %}
+{% if config.translations %}
+  {% set taxonomy_title = trans(key='nav_categories', lang=lang) %}
+{% endif %}
+{% include "partials/taxonomy/single_header.html" %}
 {% for page in term.pages %}
-{% set card_page = page %}
-{% set card_reveal = false %}
-{% include "partials/common/post_card.html" %}
+  {% set card_page = page %}
+  {% set card_reveal = false %}
+  {% include "partials/common/post_card.html" %}
 {% endfor %}
 {% endblock %}

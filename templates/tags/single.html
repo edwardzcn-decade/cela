@@ -1,6 +1,9 @@
 {% extends "index.html" %}
 {% block main %}
-{% set taxonomy_title = trans(key='nav_tags', lang=lang) %}
+{% set taxonomy_title = "Tags" %}
+{% if config.translations %}
+  {% set taxonomy_title = trans(key='nav_tags', lang=lang) %}
+{% endif %}
   {% include "partials/taxonomy/single_header.html" %}
 {% for page in term.pages %}
 <article class="post-entry">
