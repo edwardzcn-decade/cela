@@ -157,7 +157,7 @@ Validate and build the site:
 
 ```bash
 npm run build:css
-zola check --skip-external-links
+zola check
 zola build
 ```
 
@@ -198,12 +198,11 @@ Mapping between semantic template class names and their Tailwind token equivalen
 
 ## TODO
 
-- [ ] **Tailwind Path B migration**: All semantic classes (`.post-single`, `.post-entry`, `.footer`, etc.) in `styles/tailwind.css` currently use raw CSS values. Migrate them to use `@apply` with tokens defined in `tailwind.config.js` (e.g. `@apply bg-surface border-border rounded-theme`). This is the recommended step before considering Path A (utility classes in templates) or Tailwind v4.
-- [ ] Add a Zola-native `share_icons.html` partial for optional post share buttons in `page.html` after include `post_nav_links.html`. Should be configured in `show_share_buttons` and `disable_share`.
-- [ ] **Tailwind Path A (future)**: Replace semantic classes in templates with inline Tailwind utility classes. Best done alongside Tailwind v4 migration.
-- [ ] Explore Tailwind v4 migration: v4 removes `tailwind.config.js` in favor of `@theme` blocks in CSS, aligns naturally with the CSS variable architecture, and offers significantly faster build times. Tracked for future investigation.
+- [ ] **Tailwind Path B migration**: Status: in progress. Shared primitives such as `surface-card`, `theme-action-button`, `theme-pill`, and `link-panel` now use Tailwind `@apply`, and several component styles already consume `theme()` tokens from `tailwind.config.js`. Remaining work: continue moving semantic component rules away from raw CSS values where a real Tailwind token exists, while keeping runtime color variables in `static/css/theme-runtime.css`.
+- [ ] Add a Zola-native `share_icons.html` partial for optional post share buttons in `page.html` after include `post_nav_links.html`. Should be configured in `show_share_buttons` and `disable_share`. Status: not started; `.share-buttons` CSS is still intentionally commented out.
+- [ ] **Tailwind Path A (future)**: Replace semantic classes in templates with inline Tailwind utility classes. Status: deferred until Path B is substantially complete and the Tailwind v4 direction is clear.
+- [ ] Explore Tailwind v4 migration: v4 removes `tailwind.config.js` in favor of `@theme` blocks in CSS, aligns naturally with the CSS variable architecture, and offers significantly faster build times. Status: future investigation; current tooling remains Tailwind CSS 3.4.
 
 ## LICENSE
 
 MIT
-exit

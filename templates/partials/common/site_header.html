@@ -93,7 +93,10 @@
             <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
           </svg>
         </button>
-        {% include "partials/common/language_switcher.html" %}
+        {# Include language switcher panel if multiple languages are configured #}
+        {% if config.languages %}
+          {% include "partials/common/language_switcher.html" %}
+        {% endif %}
       </div>
     </div>
     {% if config.extra.cela.navigation %}
@@ -101,7 +104,11 @@
       {% for item in config.extra.cela.navigation %}
         {% set path = item.path | trim | trim_start_matches(pat="//") %}
         {% set is_missing_nav_target = false %}
-        {% set missing_nav_message = trans(key='missing_translation', lang=lang) %}
+        {# Set default missing translation message as fallbacks of i18n support #}
+        {% set missing_nav_message = "Translation is not available" %}
+        {% if config.translations %}
+          {% set missing_nav_message = trans(key='missing_translation', lang=lang) %}
+        {% endif %}
         {% if path is starting_with("https") %}
           {# External URL #}
           {% set url = path %}
@@ -136,8 +143,9 @@
         {% endif %}
 
         {# Get item name or title with translation #}
+        {# Set default item title name as fallback #}
         {% set item_title = item.title %}
-        {% if item.title_key %}
+        {% if item.title_key and config.translations %}
           {# Use translation key for item title #}
           {% set item_title = trans(key=item.title_key, lang=lang) %}
         {% endif %}

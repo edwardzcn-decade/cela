@@ -8,9 +8,9 @@
 <div class="taxonomy-desc">
 {% set form_taxonomy = (taxonomy.name | replace(from="_",to=" ")) %}
 {% set default_desc = "Here is a list of " ~ form_taxonomy ~ " in this site." %}
-{% if taxonomy.name == "tags" %}
+{% if taxonomy.name == "tags" and config.translations %}
 	{% set default_desc = trans(key='taxonomy_tags_desc', lang=lang) %}
-{% elif taxonomy.name == "categories" %}
+{% elif taxonomy.name == "categories" and config.translations %}
 	{% set default_desc = trans(key='taxonomy_categories_desc', lang=lang) %}
 {% endif %}
 {% set description = default_desc %}

@@ -5,7 +5,11 @@
 {% set home_url = get_url(path=home_path, lang=lang) %}
 {% set home_label = nav_card.home_label | default(value="") %}
 {% if home_label | trim == "" %}
-  {% set home_label = trans(key='nav_card_home_label', lang=lang) %}
+  {# Set default home label as fallbacks of i18n support #}
+  {% set home_label = "Blog" %}
+  {% if config.translations %}
+    {% set home_label = trans(key='nav_card_home_label', lang=lang) %}
+  {% endif %}
 {% endif %}
 
 <section class="nav-card-page">

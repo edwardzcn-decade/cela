@@ -1,7 +1,10 @@
 {% extends "index.html" %}
 {% block main %}
 {% if not title %}
-  {% set title = trans(key='nav_tags', lang=lang) %}
+  {% set title = "Tags" %}
+  {% if config.translations %}
+    {% set title = trans(key='nav_tags', lang=lang) %}
+  {% endif %}
 	{% set css_class = "terms-" ~ taxonomy.name %}
 {% endif %}
 

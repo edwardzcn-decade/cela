@@ -30,7 +30,17 @@ jobs:
           tool: zola@0.22.1
 
       - name: Check site
-        run: zola check --skip-external-links
+        run: zola check
 
       - name: Zola build
         run: zola build
+
+      - name: Check config compatibility
+        run: |
+          mkdir -p .compat-site/themes
+          ln -s "$GITHUB_WORKSPACE" .compat-site/themes/cela
+          ln -s "$GITHUB_WORKSPACE/content" .compat-site/content
+          ln -s "$GITHUB_WORKSPACE/static" .compat-site/static
+          cp tests/config-v1.toml.bak .compat-site/config.toml
+          zola --root .compat-site check --skip-external-links
+          zola --root .compat-site build

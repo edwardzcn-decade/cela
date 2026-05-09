@@ -29,7 +29,9 @@ Desktop.ini
 # Temporary files created by editors or operating systems
 *.swp
 *.bak
+!*.toml.bak
 *~
+.compat-site/
 
 # Log files and directories
 *.log
