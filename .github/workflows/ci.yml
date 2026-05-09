@@ -1,4 +1,5 @@
-name: zola-themes-cela-ci
+name: Cela theme CI
+run-name: Validate theme build and config compatibility by @${{ github.actor }}
 
 on:
   pull_request:
@@ -6,19 +7,21 @@ on:
     branches: [ main, master ]
 
 jobs:
-  build:
+  validate-build:
+    name: Validate theme build
     runs-on: ubuntu-latest
-    steps:
-      - name: Checkout
-        uses: actions/checkout@v4
 
-      - name: Setup Node.js
-        uses: actions/setup-node@v4
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v6
+
+      - name: Setup Node.js toolchain
+        uses: actions/setup-node@v6
         with:
-          node-version: 20
+          node-version: 24
           cache: npm
 
-      - name: Install CSS tooling
+      - name: Install CSS dependencies
         run: npm ci
 
       - name: Build generated CSS
@@ -29,10 +32,10 @@ jobs:
         with:
           tool: zola@0.22.1
 
-      - name: Check site
+      - name: Check primary demo site
         run: zola check
 
-      - name: Zola build
+      - name: Build primary demo site
         run: zola build
 
       - name: Check config compatibility

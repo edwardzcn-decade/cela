@@ -1,4 +1,5 @@
-name: Deploy zola-theme-cela to GitHub Pages
+name: Deploy Cela demo site to GitHub Pages
+run-name: Build and publish demo site to GitHub Pages by @${{ github.actor }}
 
 on:
   push:
@@ -10,37 +11,38 @@ on:
 
 jobs:
   build-deploy:
+    name: Build and publish Pages site
     runs-on: ubuntu-latest
 
     steps:
-      # checkout code
-      - name: Checkout code
-        uses: actions/checkout@v4
+      - name: Checkout repository
+        uses: actions/checkout@v6
 
-      - name: Setup Node.js
-        uses: actions/setup-node@v4
+      - name: Setup Node.js toolchain
+        uses: actions/setup-node@v6
         with:
-          node-version: 20
+          node-version: 24
           cache: npm
 
-      - name: Install CSS tooling
+      - name: Install CSS dependencies
         run: npm ci
 
-      - name: Build generated CSS
+      - name: Build generated CSS artifact
         run: npm run build:css
 
-      # install zola via install-action
+      # Install zola via install-action
       - name: Install Zola
         uses: taiki-e/install-action@v2
         with:
           tool: zola@0.22.1
 
-      # build zola static site
-      - name: Build site
+      # Build zola static site (pre-deploy)
+      - name: Build pre-deploy Pages site
         run: zola build
 
-      # deploy to GitHub Pages
+      # Deploy to GitHub Pages via peaceiris/actions-gh-pages
       - name: Deploy to GitHub Pages
+        if: github.event_name == 'push'
         uses: peaceiris/actions-gh-pages@v3
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
